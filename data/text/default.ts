@@ -213,6 +213,30 @@ export const DefaultText: {[k: string]: DefaultText} = {
 		endFromItem: "  [POKEMON]'s [ITEM] woke it up!",
 		cant: "[POKEMON] is fast asleep.",
 	},
+	aff: {
+		start: "  [POKEMON] was affected by spores!",
+		alreadyStarted: "  [POKEMON] is already affected by spores!",
+		end: "  [POKEMON] is no longer affected by spores!",
+		endFromItem: "  [POKEMON]'s [ITEM] removed spores' effect!",
+		damage: "  [POKEMON] was hurt by spores!",
+	},
+	tri: {
+		start: "  [POKEMON] has three status conditions!",
+		alreadyStarted: "  [POKEMON] already has status conditions!",
+		end: "  [POKEMON]'s status conditions have been cured!",
+		endFromItem: "  [POKEMON]'s [ITEM] cured its status conditions!",
+		endFromMove: "  [POKEMON]'s [MOVE] cured its status conditions!",
+		cant: "[POKEMON] can't move due to status conditions!",
+		damage: "  [POKEMON] was hurt by its status conditions!",
+	},
+	all: {
+		start: "  [POKEMON] has every status condition!",
+		alreadyStarted: "  [POKEMON] already has status conditions!",
+		end: "  [POKEMON]'s status conditions have been cured!",
+		endFromItem: "  [POKEMON]'s [ITEM] cured its status conditions!",
+		endFromMove: "  [POKEMON]'s [MOVE] cured its status conditions!",
+		damage: "  [POKEMON] was hurt by its status conditions!",
+	},
 
 	// misc effects
 	confusion: {
@@ -260,6 +284,64 @@ export const DefaultText: {[k: string]: DefaultText} = {
 		end: "  ([POKEMON] returned to normal!)",
 		block: "  The move was blocked by the power of Dynamax!",
 		fail: "  [POKEMON] shook its head. It seems like it can't use this move...",
+	},
+
+	resistnormal: {
+		start: "  [POKEMON] now resists Normal!"
+	},
+	resistfire: {
+		start: "  [POKEMON] now resists Fire!"
+	},
+	resistwater: {
+		start: "  [POKEMON] now resists Water!"
+	},
+	resistelectric: {
+		start: "  [POKEMON] now resists Electric!"
+	},
+	resistgrass: {
+		start: "  [POKEMON] now resists Grass!"
+	},
+	resistice: {
+		start: "  [POKEMON] now resists Ice!"
+	},
+	resistfighting: {
+		start: "  [POKEMON] now resists Fighting!"
+	},
+	resistpoison: {
+		start: "  [POKEMON] now resists Poison!"
+	},
+	resistground: {
+		start: "  [POKEMON] now resists Ground!"
+	},
+	resistflying: {
+		start: "  [POKEMON] now resists Flying!"
+	},
+	resistpsychic: {
+		start: "  [POKEMON] now resists Psychic!"
+	},
+	resistbug: {
+		start: "  [POKEMON] now resists Bug!"
+	},
+	resistrock: {
+		start: "  [POKEMON] now resists Rock!"
+	},
+	resistghost: {
+		start: "  [POKEMON] now resists Ghost!"
+	},
+	resistdragon: {
+		start: "  [POKEMON] now resists Dragon!"
+	},
+	resistdark: {
+		start: "  [POKEMON] now resists Dark!"
+	},
+	resiststeel: {
+		start: "  [POKEMON] now resists Steel!"
+	},
+	resistfairy: {
+		start: "  [POKEMON] now resists Fairy!"
+	},
+	resisttypeless: {
+		start: "  [POKEMON] now resists Typeless!"
 	},
 
 	// weather

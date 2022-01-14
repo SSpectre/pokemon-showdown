@@ -118,6 +118,9 @@ export const ItemsText: {[k: string]: ItemText} = {
 	bindingband: {
 		name: "Binding Band",
 		desc: "Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.",
+		gen7: {
+			desc: "Holder's partial-trapping moves deal up to 1/6 max HP per turn instead of 1/8."
+		},
 	},
 	blackbelt: {
 		name: "Black Belt",
@@ -574,6 +577,9 @@ export const ItemsText: {[k: string]: ItemText} = {
 	focusband: {
 		name: "Focus Band",
 		desc: "Holder has a 10% chance to survive an attack that would KO it with 1 HP.",
+		gen7: {
+			desc: "Direct damage against the holder is reduced by 10%."
+		},
 		gen2: {
 			desc: "Holder has a ~11.7% chance to survive an attack that would KO it with 1 HP.",
 		},
@@ -694,6 +700,9 @@ export const ItemsText: {[k: string]: ItemText} = {
 	gripclaw: {
 		name: "Grip Claw",
 		desc: "Holder's partial-trapping moves always last 7 turns.",
+		gen7: {
+			desc: "Holder's partial-trapping moves last up to 7 turns.",
+		},
 	},
 	griseousorb: {
 		name: "Griseous Orb",
@@ -925,6 +934,9 @@ export const ItemsText: {[k: string]: ItemText} = {
 	lightball: {
 		name: "Light Ball",
 		desc: "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
+		gen4: {
+			desc: "If held by a Pikachu, its attacks have their power doubled.",
+		},
 		gen3: {
 			desc: "If held by a Pikachu, its Special Attack is doubled.",
 		},
@@ -1359,6 +1371,9 @@ export const ItemsText: {[k: string]: ItemText} = {
 	quickclaw: {
 		name: "Quick Claw",
 		desc: "Each turn, holder has a 20% chance to move first in its priority bracket.",
+		gen7: {
+			desc: "The holder will move first in its priority bracket on the first turn it uses a move (once per battle)."
+		},
 		gen2: {
 			desc: "Each turn, holder has a ~23.4% chance to move first in its priority bracket.",
 		},
@@ -1650,6 +1665,9 @@ export const ItemsText: {[k: string]: ItemText} = {
 	starfberry: {
 		name: "Starf Berry",
 		desc: "Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.",
+		gen7: {
+			desc: "Raises all stats (not acc/eva) by 0.4 when at 1/4 max HP or less. Single use."
+		},
 	},
 	starsweet: {
 		name: "Star Sweet",

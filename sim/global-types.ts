@@ -213,6 +213,10 @@ interface BattleScriptsData {
 
 interface ModdedBattleActions {
 	inherit?: true;
+	critStage?: number;
+	finalAccuracy?: number | true;
+	selfSeverity?: number;
+	setDamage?: number | false;
 	afterMoveSecondaryEvent?: (this: BattleActions, targets: Pokemon[], pokemon: Pokemon, move: ActiveMove) => undefined;
 	calcRecoilDamage?: (this: BattleActions, damageDealt: number, move: Move) => number;
 	canMegaEvo?: (this: BattleActions, pokemon: Pokemon) => string | undefined | null;
@@ -290,6 +294,7 @@ interface ModdedBattleActions {
 	getDamage?: (
 		this: BattleActions, pokemon: Pokemon, target: Pokemon, move: string | number | ActiveMove, suppressMessages: boolean
 	) => number | undefined | null | false;
+	getConfusionDamage?: (this: BattleActions, pokemon: Pokemon, basePower: number) => number;
 	modifyDamage?: (
 		this: BattleActions, baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages?: boolean
 	) => void;
@@ -298,18 +303,25 @@ interface ModdedBattleActions {
 	doGetMixedSpecies?: (this: BattleActions, species: Species, deltas: AnyObject) => Species;
 	getMegaDeltas?: (this: BattleActions, megaSpecies: Species) => AnyObject;
 	getMixedSpecies?: (this: BattleActions, originalName: string, megaName: string) => Species;
+	modifySetDamage?: (
+		this: BattleActions, baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages?: boolean
+	) => void;
 }
 
-type ModdedBattleSide = never;
+interface ModdedBattleSide {
+	getRequestData?: (this: Side, forAlly?: boolean) => {name: string, id: ID, pokemon: AnyObject[]};
+}
 
 interface ModdedBattlePokemon {
 	inherit?: true;
 	lostItemForDelibird?: Item | null;
+	severityModifiers?: {name: string, value: number}[];
 	boostBy?: (this: Pokemon, boost: SparseBoostsTable) => boolean | number;
 	calculateStat?: (this: Pokemon, statName: StatIDExceptHP, boost: number, modifier?: number) => number;
 	cureStatus?: (this: Pokemon, silent?: boolean) => boolean;
 	getAbility?: (this: Pokemon) => Ability;
 	getActionSpeed?: (this: Pokemon) => number;
+	getItem?: (this: Pokemon) => Item;
 	getMoveRequestData?: (this: Pokemon) => {
 		moves: {move: string, id: ID, target?: string, disabled?: boolean}[],
 		maybeDisabled?: boolean, trapped?: boolean, maybeTrapped?: boolean,
@@ -320,6 +332,7 @@ interface ModdedBattlePokemon {
 	) => number;
 	getWeight?: (this: Pokemon) => number;
 	hasAbility?: (this: Pokemon, ability: string | string[]) => boolean;
+	hasItem?: (this: Pokemon, item: string | string[]) => boolean;
 	isGrounded?: (this: Pokemon, negateImmunity: boolean | undefined) => boolean | null;
 	modifyStat?: (this: Pokemon, statName: StatIDExceptHP, modifier: number) => void;
 	moveUsed?: (this: Pokemon, move: ActiveMove, targetLoc?: number) => void;
@@ -336,6 +349,11 @@ interface ModdedBattlePokemon {
 	transformInto?: (this: Pokemon, pokemon: Pokemon, effect: Effect | null) => boolean;
 	ignoringAbility?: (this: Pokemon) => boolean;
 	ignoringItem?: (this: Pokemon) => boolean;
+	addVolatile?: (this: Pokemon, status: string | Condition, source: Pokemon | null, sourceEffect: Effect | null, linkedStatus: string | Condition | null
+		) => boolean;
+	trySetStatus?: (this: Pokemon, status: string | Condition, source: Pokemon | null, sourceEffect: Effect | null) => boolean;
+	heal?: (this: Pokemon, d: number, source: Pokemon | null, effect: Effect | null) => number | false;
+	getHealth?: (this: Pokemon) => {side: SideID, secret: string, shared: string};
 
 	// OM
 	getLinkedMoves?: (this: Pokemon, ignoreDisabled?: boolean) => string[];
@@ -357,10 +375,18 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 	queue?: ModdedBattleQueue;
 	field?: ModdedField;
 	side?: ModdedBattleSide;
+	severity?: number;
+	speedTieWinner?: number;
 	boost?: (
 		this: Battle, boost: SparseBoostsTable, target: Pokemon, source?: Pokemon | null,
 		effect?: Effect | string | null, isSecondary?: boolean, isSelf?: boolean
 	) => boolean | null | 0;
+	spreadDamage?: (
+		this: Battle, damage: SpreadMoveDamage, targetArray: (false | Pokemon | null)[] | null,
+		source: Pokemon | null, effect: 'drain' | 'recoil' | Effect | null, instafaint: boolean
+	) => (number | false | undefined)[];
+	directDamage?: (this: Battle, damage: number, target: Pokemon | undefined, source: Pokemon | null, effect: Effect | null) => number;
+	heal?: (this: Battle, damage: number, target: Pokemon | undefined, source: Pokemon | null, effect: 'drain' | Effect | null) => number | false;
 	debug?: (this: Battle, activity: string) => void;
 	getActionSpeed?: (this: Battle, action: AnyObject) => void;
 	init?: (this: ModdedDex) => void;
@@ -372,6 +398,9 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 	win?: (this: Battle, side?: SideID | '' | Side | null) => boolean;
 	faintMessages?: (this: Battle, lastFirst?: boolean) => boolean | undefined;
 	tiebreak?: (this: Battle) => boolean;
+	speedSort?<T> (this: Battle, list: T[], comparator: (a: T, b: T) => number): void;
+	start?: (this: Battle) => void;
+	getRandomSwitchable?: (this: Battle, side: Side) => Pokemon | null;
 }
 
 interface TypeData {

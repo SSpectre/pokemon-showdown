@@ -39,6 +39,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Anger Point",
 		desc: "If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
 		shortDesc: "If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
+		gen7: {
+			desc: "If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 4 stages times the move's critical hit stage.",
+			shortDesc: "When hit, Attack raises 4 stages times the critical hit stage of the incoming move.",
+		},
 		gen4: {
 			desc: "If this Pokemon, or its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
 			shortDesc: "If this Pokemon or its substitute takes a critical hit, its Attack is raised 12 stages.",
@@ -96,6 +100,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Bad Dreams",
 		desc: "Causes adjacent opposing Pokemon to lose 1/8 of their maximum HP, rounded down, at the end of each turn if they are asleep.",
 		shortDesc: "Causes sleeping adjacent foes to lose 1/8 of their max HP at the end of each turn.",
+		gen7: {
+			desc: "Causes sleeping adjacent opposing Pokemon to lose up to 1/8 of their maximum HP, rounded down and scaled with sleep severity, at the end of each turn.",
+			shortDesc: "Sleeping adjacent foes lose 1/8 of their max HP each turn, scaled with sleep severity.",
+		},
 
 		damage: "  [POKEMON] is tormented!",
 	},
@@ -187,6 +195,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Comatose",
 		desc: "This Pokemon cannot be statused, and is considered to be asleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
 		shortDesc: "This Pokemon cannot be statused, and is considered to be asleep.",
+		gen7: {
+			desc: "This Pokemon cannot be statused, and is considered to have 100-severity sleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
+			shortDesc: "This Pokemon cannot be statused, and is considered to have 100-severity sleep.",
+		},
 
 		start: "  [POKEMON] is drowsing!",
 	},
@@ -224,11 +236,19 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Cursed Body",
 		desc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled.",
 		shortDesc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled.",
+		gen7: {
+			desc: "If this Pokemon is hit by an attack, the move will be disabled with 30 severity unless one of the attacker's moves is already disabled.",
+			shortDesc: "If this Pokemon is hit by an attack, the move will be disabled with 30 severity.",
+		}
 	},
 	cutecharm: {
 		name: "Cute Charm",
 		desc: "There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender.",
 		shortDesc: "30% chance of infatuating Pokemon of the opposite gender if they make contact.",
+		gen7: {
+			desc: "A Pokemon making contact with this Pokemon will become infatuated with 30 severity if it is of the opposite gender.",
+			shortDesc: "Pokemon of the opposite gender become infatuated with 30 severity if they make contact.",
+		},
 		gen4: {
 			desc: "There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender. This effect does not happen if this Pokemon did not lose HP from the attack.",
 		},
@@ -337,11 +357,18 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	earlybird: {
 		name: "Early Bird",
 		shortDesc: "This Pokemon's sleep counter drops by 2 instead of 1.",
+		gen7: {
+			shortDesc: "The severity of sleep is halved for this Pokemon.",
+		},
 	},
 	effectspore: {
 		name: "Effect Spore",
 		desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep.",
 		shortDesc: "30% chance of poison/paralysis/sleep on others making contact with this Pokemon.",
+		gen7: {
+			desc: "Pokemon making contact with this Pokemon will be affected with 30 severity, which combines the effects of poison, paralysis, and asleep at 10 severity.",
+			shortDesc: "Affected with 30 severity on others making contact with this Pokemon.",
+		},
 		gen4: {
 			desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep. This effect does not happen if this Pokemon did not lose HP from the attack.",
 		},
@@ -373,6 +400,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	flamebody: {
 		name: "Flame Body",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be burned.",
+		gen7: {
+			shortDesc: "Pokemon making contact with this Pokemon will be burned with 30 severity.",
+		},
 		gen4: {
 			desc: "30% chance a Pokemon making contact with this Pokemon will be burned. This effect does not happen if this Pokemon did not lose HP from the attack.",
 		},
@@ -385,6 +415,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Flare Boost",
 		desc: "While this Pokemon is burned, the power of its special attacks is multiplied by 1.5.",
 		shortDesc: "While this Pokemon is burned, its special attacks have 1.5x power.",
+		gen7: {
+			desc: "While this Pokemon is burned, the power of its special attacks increases, up to 1.5x at 100 severity.",
+			shortDesc: "While this Pokemon is burned, its special attack power increases up to x1.5.",
+		},
 	},
 	flashfire: {
 		name: "Flash Fire",
@@ -505,11 +539,19 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Guts",
 		desc: "If this Pokemon has a non-volatile status condition, its Attack is multiplied by 1.5; burn's physical damage halving is ignored.",
 		shortDesc: "If this Pokemon is statused, its Attack is 1.5x; ignores burn halving physical damage.",
+		gen7: {
+			desc: "If this Pokemon has a non-volatile status condition, its Attack is increased, up to x1.5 at 100 severity; burn's physical damage halving is ignored.",
+			shortDesc: "If this Pokemon is statused, its Attack is up to 1.5x; ignores burn damage reduction.",
+		},
 	},
 	harvest: {
 		name: "Harvest",
 		desc: "If the last item this Pokemon used is a Berry, there is a 50% chance it gets restored at the end of each turn. If Sunny Day is active, this chance is 100%.",
 		shortDesc: "If last item used is a Berry, 50% chance to restore it each end of turn. 100% in Sun.",
+		gen7: {
+			desc: "If the last item this Pokemon used is a Berry, it will be restored at the end of next turn. If Sunny Day is active, it is restored at the end of the current turn.",
+			shortDesc: "If last item used is a Berry, restore it next turn. Restores current turn in Sun.",
+		},
 
 		addItem: "  [POKEMON] harvested one [ITEM]!",
 	},
@@ -768,6 +810,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Marvel Scale",
 		desc: "If this Pokemon has a non-volatile status condition, its Defense is multiplied by 1.5.",
 		shortDesc: "If this Pokemon is statused, its Defense is 1.5x.",
+		gen7: {
+			desc: "If this Pokemon has a non-volatile status condition, its Defense is increased, up to x1.5 at 100 severity.",
+			shortDesc: "If this Pokemon is statused, its Defense is increased, up to x1.5 at 100 severity.",
+		},
 	},
 	megalauncher: {
 		name: "Mega Launcher",
@@ -777,6 +823,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	merciless: {
 		name: "Merciless",
 		shortDesc: "This Pokemon's attacks are critical hits if the target is poisoned.",
+		gen7: {
+			shortDesc: "This Pokemon's critical hit stage increases with the target's poison severity.",
+		},
 	},
 	mimicry: {
 		name: "Mimicry",
@@ -830,8 +879,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		desc: "This Pokemon has a random stat other than accuracy or evasion raised by 2 stages and another stat lowered by 1 stage at the end of each turn.",
 		shortDesc: "Boosts a random stat (except accuracy/evasion) +2 and another stat -1 every turn.",
 		gen7: {
-			desc: "This Pokemon has a random stat raised by 2 stages and another stat lowered by 1 stage at the end of each turn.",
-			shortDesc: "Raises a random stat by 2 and lowers another stat by 1 at the end of each turn.",
+			desc: "This Pokemon has all of its stats raised by 1/7 at the end of each turn.",
+			shortDesc: "This Pokemon has all of its stats raised by 1/7 at the end of each turn.",
+			//desc: "This Pokemon has a random stat raised by 2 stages and another stat lowered by 1 stage at the end of each turn.",
+			//shortDesc: "Raises a random stat by 2 and lowers another stat by 1 at the end of each turn.",
 		},
 	},
 	motordrive: {
@@ -889,6 +940,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	noguard: {
 		name: "No Guard",
 		shortDesc: "Every move used by or against this Pokemon will always hit.",
+		gen7: {
+			shortDesc: "Every move used by or against this Pokemon has perfect accuracy.",
+		}
 	},
 	normalize: {
 		name: "Normalize",
@@ -998,10 +1052,17 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Poison Heal",
 		desc: "If this Pokemon is poisoned, it restores 1/8 of its maximum HP, rounded down, at the end of each turn instead of losing HP.",
 		shortDesc: "This Pokemon is healed by 1/8 of its max HP each turn when poisoned; no HP loss.",
+		gen7: {
+			desc: "If this Pokemon is poisoned, it restores up to 1/8 of its maximum HP, rounded down and scaled with poison severity, at the end of each turn instead of losing HP.",
+			shortDesc: "This Pokemon is healed by up to 1/8 of its max HP each turn when poisoned; no HP loss.",
+		},
 	},
 	poisonpoint: {
 		name: "Poison Point",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be poisoned.",
+		gen7: {
+			shortDesc: "Pokemon making contact with this Pokemon will be poisoned with 30 severity.",
+		},
 		gen4: {
 			desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned. This effect does not happen if this Pokemon did not lose HP from the attack.",
 		},
@@ -1013,6 +1074,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	poisontouch: {
 		name: "Poison Touch",
 		shortDesc: "This Pokemon's contact moves have a 30% chance of poisoning.",
+		gen7: {
+			shortDesc: "This Pokemon's contact moves cause poison with 30 severity.",
+		},
 	},
 	powerconstruct: {
 		name: "Power Construct",
@@ -1103,6 +1167,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Quick Feet",
 		desc: "If this Pokemon has a non-volatile status condition, its Speed is multiplied by 1.5; the Speed drop from paralysis is ignored.",
 		shortDesc: "If this Pokemon is statused, its Speed is 1.5x; ignores Speed drop from paralysis.",
+		gen7: {
+			desc: "If this Pokemon has a non-volatile status condition, its Speed is increased, up to x1.5 at 100 severity.",
+			shortDesc: "If this Pokemon is statused, its Speed is up to x1.5; ignores paralysis Speed drop.",
+		},
 	},
 	raindish: {
 		name: "Rain Dish",
@@ -1238,6 +1306,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	serenegrace: {
 		name: "Serene Grace",
 		shortDesc: "This Pokemon's moves have their secondary effect chance doubled.",
+		gen7: {
+			shortDesc: "This Pokemon's moves have their secondary effect severity doubled.",
+		}
 	},
 	shadowshield: {
 		name: "Shadow Shield",
@@ -1257,6 +1328,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Shed Skin",
 		desc: "This Pokemon has a 33% chance to have its non-volatile status condition cured at the end of each turn.",
 		shortDesc: "This Pokemon has a 33% chance to have its status cured at the end of each turn.",
+		gen7: {
+			desc: "This Pokemon has the severity of its non-volatile status condition reduced by 33 at the end of each turn.",
+			shortDesc: "This Pokemon has the severity of its status reduced by 33 at the end of each turn.",
+		},
 	},
 	sheerforce: {
 		name: "Sheer Force",
@@ -1301,6 +1376,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	skilllink: {
 		name: "Skill Link",
 		shortDesc: "This Pokemon's multi-hit attacks always hit the maximum number of times.",
+		gen7: {
+			shortDesc: "This Pokemon's multi-hit attacks always hit five times.",
+		}
 	},
 	slowstart: {
 		name: "Slow Start",
@@ -1385,6 +1463,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	static: {
 		name: "Static",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+		gen7: {
+			shortDesc: "Pokemon making contact with this Pokemon will be paralyzed with 30 severity.",
+		},
 		gen4: {
 			desc: "30% chance a Pokemon making contact with this Pokemon will be paralyzed. This effect does not happen if this Pokemon did not lose HP from the attack.",
 		},
@@ -1396,6 +1477,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	steadfast: {
 		name: "Steadfast",
 		shortDesc: "If this Pokemon flinches, its Speed is raised by 1 stage.",
+		gen7: {
+			shortDesc: "This Pokemon's Speed is raised by up to 1 stage on flinch, scaled with flinch severity."
+		},
 	},
 	steamengine: {
 		name: "Steam Engine",
@@ -1413,6 +1497,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Stench",
 		desc: "This Pokemon's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch.",
 		shortDesc: "This Pokemon's attacks without a chance to flinch gain a 10% chance to flinch.",
+		gen7: {
+			desc: "This Pokemon's attacks without a flinching effect now cause 10-severity flinch.",
+			shortDesc: "This Pokemon's attacks without a flinching effect now cause 10-severity flinch.",
+		},
 		gen4: {
 			desc: "No competitive use.",
 			shortDesc: "No competitive use.",
@@ -1460,6 +1548,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	superluck: {
 		name: "Super Luck",
 		shortDesc: "This Pokemon's critical hit ratio is raised by 1 stage.",
+		gen7: {
+			shortDesc: "This Pokemon's attacks gain +1 critical hit stage."
+		},
 	},
 	surgesurfer: {
 		name: "Surge Surfer",
@@ -1506,6 +1597,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	tangledfeet: {
 		name: "Tangled Feet",
 		shortDesc: "This Pokemon's evasiveness is doubled as long as it is confused.",
+		gen7: {
+			shortDesc: "If this Pokemon is confused, its evasiveness is increased, up to x2 at 100 severity.",
+		},
 	},
 	tanglinghair: {
 		name: "Tangling Hair",
@@ -1567,6 +1661,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Toxic Boost",
 		desc: "While this Pokemon is poisoned, the power of its physical attacks is multiplied by 1.5.",
 		shortDesc: "While this Pokemon is poisoned, its physical attacks have 1.5x power.",
+		gen7: {
+			desc: "While this Pokemon is poisoned, its Attack increases, up to 1.5x at 100 severity.",
+			shortDesc: "While this Pokemon is poisoned, its Attack increases up to x1.5.",
+		},
 	},
 	trace: {
 		name: "Trace",
