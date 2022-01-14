@@ -1,6 +1,6 @@
 /config/*
 !/config/config.js
-!/config/formats.ts
+!/config/custom-formats.ts
 /logs/*
 /test/modlogs
 /test/replays/*.html
