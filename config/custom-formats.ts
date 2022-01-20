@@ -18,14 +18,14 @@ export const Formats: FormatList = [
 		name: "[Gen 7] Luckless UU",
 
 		mod: 'gen7luckless',
-		ruleset: ['[Gen 7] OU'],
+		ruleset: ['[Gen 7] Luckless OU'],
 		banlist: ['OU', 'UUBL', 'Drizzle', 'Drought', 'Kommonium Z', 'Mewnium Z'],
 	},
 	{
 		name: "[Gen 7] Luckless RU",
 
 		mod: 'gen7luckless',
-		ruleset: ['[Gen 7] UU'],
+		ruleset: ['[Gen 7] Luckless UU'],
 		banlist: ['UU', 'RUBL', 'Mimikyu', 'Aurora Veil'],
 		unbanlist: ['Drought'],
 	},
@@ -33,14 +33,14 @@ export const Formats: FormatList = [
 		name: "[Gen 7] Luckless NU",
 
 		mod: 'gen7luckless',
-		ruleset: ['[Gen 7] RU'],
+		ruleset: ['[Gen 7] Luckless RU'],
 		banlist: ['RU', 'NUBL', 'Drought'],
 	},
 	{
 		name: "[Gen 7] Luckless PU",
 
 		mod: 'gen7luckless',
-		ruleset: ['[Gen 7] NU'],
+		ruleset: ['[Gen 7] Luckless NU'],
 		banlist: ['NU', 'PUBL'],
 	},
 	{
@@ -75,7 +75,7 @@ export const Formats: FormatList = [
 		mod: 'gen7luckless',
 		ruleset: [
 			'Picked Team Size = 1', 'Max Team Size = 3',
-			'Obtainable', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Swagger Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
+			'Luckless', 'Swagger Clause'
 		],
 		banlist: [
 			'Arceus', 'Darkrai', 'Deoxys-Base', 'Deoxys-Attack', 'Deoxys-Defense', 'Dialga', 'Giratina', 'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kangaskhan-Mega',
@@ -101,7 +101,7 @@ export const Formats: FormatList = [
 		name: "[Gen 7] Luckless ZU",
 
 		mod: 'gen7luckless',
-		ruleset: ['[Gen 7] PU'],
+		ruleset: ['[Gen 7] Luckless PU'],
 		banlist: [
 			'PU', 'Carracosta', 'Crabominable', 'Gorebyss', 'Jynx', 'Raticate-Alola',
 			'Shiftry', 'Throh', 'Turtonator', 'Type: Null', 'Ursaring', 'Victreebel',
@@ -129,7 +129,7 @@ export const Formats: FormatList = [
 
 		mod: 'gen7luckless',
 		searchShow: false,
-		ruleset: ['[Gen 7] OU', 'STABmons Move Legality'],
+		ruleset: ['[Gen 7] Luckless OU', 'STABmons Move Legality'],
 		banlist: ['Aerodactyl', 'Aerodactyl-Mega', 'Araquanid', 'Blacephalon', 'Kartana', 'Komala', 'Kyurem-Black', 'Porygon-Z', 'Silvally', 'Tapu Koko', 'Tapu Lele', 'Thundurus', 'Thundurus-Therian', 'King\'s Rock', 'Razor Fang'],
 		restricted: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
 	},

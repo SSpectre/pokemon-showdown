@@ -34,6 +34,7 @@ export const Formats: FormatList = [
 
 		mod: 'gen8',
 		team: 'random',
+		searchShow: false,
 		ruleset: ['PotD', 'Obtainable', 'Species Clause', 'HP Percentage Mod', 'Cancel Mod', 'Sleep Clause Mod'],
 	},
 	{
