@@ -128,7 +128,6 @@ export const Formats: FormatList = [
 		name: "[Gen 7] Luckless STABmons",
 
 		mod: 'gen7luckless',
-		searchShow: false,
 		ruleset: ['[Gen 7] Luckless OU', 'STABmons Move Legality'],
 		banlist: ['Aerodactyl', 'Aerodactyl-Mega', 'Araquanid', 'Blacephalon', 'Kartana', 'Komala', 'Kyurem-Black', 'Porygon-Z', 'Silvally', 'Tapu Koko', 'Tapu Lele', 'Thundurus', 'Thundurus-Therian', 'King\'s Rock', 'Razor Fang'],
 		restricted: ['Acupressure', 'Belly Drum', 'Chatter', 'Extreme Speed', 'Geomancy', 'Lovely Kiss', 'Shell Smash', 'Shift Gear', 'Spore', 'Thousand Arrows'],
