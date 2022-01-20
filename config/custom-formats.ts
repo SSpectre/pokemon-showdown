@@ -98,7 +98,7 @@ export const Formats: FormatList = [
 		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
 	},
 	{
-		name: "[Gen 7] Luckless ZU",
+		name: "[Gen 7] Some Garbage That Needs To Be Very Obvious",
 
 		mod: 'gen7luckless',
 		ruleset: ['[Gen 7] Luckless PU'],
