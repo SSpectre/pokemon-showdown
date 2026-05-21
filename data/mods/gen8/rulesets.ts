@@ -11,7 +11,7 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 	},
 	obtainablemoves: {
 		inherit: true,
-		/* unbanlist: [
+		unbanlist: [
 			// Leaf Blade: Gen 6+ Nuzleaf level-up
 			// Sucker Punch: Gen 4 Shiftry tutor
 			'Shiftry + Leaf Blade + Sucker Punch',
@@ -21,7 +21,7 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 			'Zygarde-10% + Aura Break + Rock Smash',
 			'Zygarde-10% + Aura Break + Secret Power',
 			'Zygarde-10% + Aura Break + Strength',
-		], */
+		],
 	},
 	gravitysleepclause: {
 		effectType: 'ValidatorRule',

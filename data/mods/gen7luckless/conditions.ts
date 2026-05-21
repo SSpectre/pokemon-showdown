@@ -1,5 +1,3 @@
-import {Script} from "vm";
-import {Pokemon} from "../../../sim";
 import {Scripts} from "./scripts";
 
 export const Conditions: {[k: string]: ModdedConditionData} = {

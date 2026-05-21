@@ -1,5 +1,3 @@
-import {Pokemon} from "../../../sim";
-import {SecondaryEffect} from "../../../sim/dex-moves";
 import {Scripts} from "./scripts";
 
 export const Abilities: {[k: string]: ModdedAbilityData} = {
@@ -49,15 +47,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (this.checkMoveMakesContact(move, source, target)) {
 				Scripts.severity = 100 - 100 * Math.pow(0.7, move.hit);
 				source.addVolatile('attract', this.effectState.target);
-			}
-		},
-	},
-	disguise: {
-		inherit: true,
-		onUpdate(pokemon) {
-			if (['mimikyu', 'mimikyutotem'].includes(pokemon.species.id) && this.effectState.busted) {
-				const speciesid = pokemon.species.id === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';
-				pokemon.formeChange(speciesid, this.effect, true);
 			}
 		},
 	},
@@ -130,15 +119,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	innerfocus: {
-		inherit: true,
-		rating: 1,
-		onBoost() {},
-	},
-	intimidate: {
-		inherit: true,
-		rating: 4,
-	},
 	marvelscale: {
 		inherit: true,
 		onModifyDef(def, pokemon) {
@@ -174,14 +154,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				}
 			}
 		},
-	},
-	oblivious: {
-		inherit: true,
-		onBoost() {},
-	},
-	owntempo: {
-		inherit: true,
-		onBoost() {},
 	},
 	poisonheal: {
 		inherit: true,
@@ -237,20 +209,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	rattled: {
-		onDamagingHit(damage, target, source, move) {
-			if (['Dark', 'Bug', 'Ghost'].includes(move.type)) {
-				this.boost({spe: 1});
-			}
-		},
-		name: "Rattled",
-		rating: 1.5,
-		num: 155,
-	},
-	scrappy: {
-		inherit: true,
-		onBoost() {},
-	},
 	shedskin: {
 		inherit: true,
 		onResidual(pokemon) {
@@ -267,15 +225,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 					this.add('-activate', pokemon, 'ability: Shed Skin');
 					pokemon.cureStatus();
 				}
-			}
-		},
-	},
-	soundproof: {
-		inherit: true,
-		onTryHit(target, source, move) {
-			if (move.flags['sound']) {
-				this.add('-immune', target, '[from] ability: Soundproof');
-				return null;
 			}
 		},
 	},
@@ -321,10 +270,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				return this.chainModify(1 - 0.5 * target?.volatiles['confusion'].severity / 100);
 			}
 		},
-	},
-	technician: {
-		inherit: true,
-		onBasePowerPriority: 19,
 	},
 	toxicboost: {
 		inherit: true,
