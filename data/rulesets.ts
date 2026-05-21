@@ -162,7 +162,8 @@ export const Rulesets: {[k: string]: FormatData} = {
 		effectType: 'ValidatorRule',
 		name: 'Obtainable Moves',
 		desc: "Makes sure moves are learnable by the species.",
-		banlist: [
+		//this ban should be in place but it breaks things for some reason
+		/* banlist: [
 			// Leaf Blade: Gen 6+ Nuzleaf level-up
 			// Sucker Punch: Gen 4 Shiftry tutor
 			'Shiftry ++ Leaf Blade ++ Sucker Punch',
@@ -175,7 +176,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		],
 		onBegin() {
 			this.add('rule', 'Obtainable Moves: [Shiftry + Leaf Blade + Sucker Punch] and [(Zygarde-10% + Aura Break) + Rock Smash/Secret Power/Strength] are unobtainable');
-		},
+		}, */
 		// Hardcoded in team-validator.ts
 	},
 	obtainableabilities: {
