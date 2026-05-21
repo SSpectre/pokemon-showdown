@@ -62,7 +62,7 @@ describe(`random teams should be valid (slow)`, () => {
 });
 
 describe('Battle Factory and BSS Factory data should be valid (slow)', () => {
-	for (const filename of ['bss-factory-sets', 'mods/gen7/bss-factory-sets', 'mods/gen7/factory-sets', 'mods/gen6/factory-sets']) {
+	for (const filename of ['bss-factory-sets', 'mods/gen8/bss-factory-sets', 'factory-sets', 'mods/gen6/factory-sets']) {
 		it(`${filename}.json should contain valid sets (slow)`, function () {
 			this.timeout(0);
 			const setsJSON = require(`../../.data-dist/${filename}.json`);
