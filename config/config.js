@@ -86,7 +86,7 @@ Main's SSL deploy script from Let's Encrypt looks like:
  *   know what you are doing
  * @type {false | string[]}.
  */
-exports.proxyip = false;
+exports.proxyip = ["127.0.0.1"];
 
 /**
  * Various debug options
@@ -453,6 +453,8 @@ exports.appealurl = '';
 exports.repl = false;
 exports.replsocketprefix = './logs/repl/';
 exports.replsocketmode = 0o600;
+
+exports.nofswriting = true;
 
 /**
  * disablehotpatchall - disables `/hotpatch all`. Generally speaking, there's a
