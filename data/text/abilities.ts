@@ -239,7 +239,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		gen7: {
 			desc: "If this Pokemon is hit by an attack, the move will be disabled with 30 severity unless one of the attacker's moves is already disabled.",
 			shortDesc: "If this Pokemon is hit by an attack, the move will be disabled with 30 severity.",
-		}
+		},
 	},
 	cutecharm: {
 		name: "Cute Charm",
@@ -881,8 +881,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		gen7: {
 			desc: "This Pokemon has all of its stats raised by 1/7 at the end of each turn.",
 			shortDesc: "This Pokemon has all of its stats raised by 1/7 at the end of each turn.",
-			//desc: "This Pokemon has a random stat raised by 2 stages and another stat lowered by 1 stage at the end of each turn.",
-			//shortDesc: "Raises a random stat by 2 and lowers another stat by 1 at the end of each turn.",
+			// desc: "This Pokemon has a random stat raised by 2 stages and another stat lowered by 1 stage at the end of each turn.",
+			// shortDesc: "Raises a random stat by 2 and lowers another stat by 1 at the end of each turn.",
 		},
 	},
 	motordrive: {
@@ -942,7 +942,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		shortDesc: "Every move used by or against this Pokemon will always hit.",
 		gen7: {
 			shortDesc: "Every move used by or against this Pokemon has perfect accuracy.",
-		}
+		},
 	},
 	normalize: {
 		name: "Normalize",
@@ -1308,7 +1308,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		shortDesc: "This Pokemon's moves have their secondary effect chance doubled.",
 		gen7: {
 			shortDesc: "This Pokemon's moves have their secondary effect severity doubled.",
-		}
+		},
 	},
 	shadowshield: {
 		name: "Shadow Shield",
@@ -1378,7 +1378,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		shortDesc: "This Pokemon's multi-hit attacks always hit the maximum number of times.",
 		gen7: {
 			shortDesc: "This Pokemon's multi-hit attacks always hit five times.",
-		}
+		},
 	},
 	slowstart: {
 		name: "Slow Start",
@@ -1478,7 +1478,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Steadfast",
 		shortDesc: "If this Pokemon flinches, its Speed is raised by 1 stage.",
 		gen7: {
-			shortDesc: "This Pokemon's Speed is raised by up to 1 stage on flinch, scaled with flinch severity."
+			shortDesc: "This Pokemon's Speed is raised by up to 1 stage on flinch, scaled with flinch severity.",
 		},
 	},
 	steamengine: {
@@ -1549,7 +1549,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Super Luck",
 		shortDesc: "This Pokemon's critical hit ratio is raised by 1 stage.",
 		gen7: {
-			shortDesc: "This Pokemon's attacks gain +1 critical hit stage."
+			shortDesc: "This Pokemon's attacks gain +1 critical hit stage.",
 		},
 	},
 	surgesurfer: {

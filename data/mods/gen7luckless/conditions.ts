@@ -1,6 +1,6 @@
-import { Script } from "vm";
-import { Pokemon } from "../../../sim";
-import { Scripts } from "./scripts";
+import {Script} from "vm";
+import {Pokemon} from "../../../sim";
+import {Scripts} from "./scripts";
 
 export const Conditions: {[k: string]: ModdedConditionData} = {
 	brn: {
@@ -35,7 +35,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			} else {
 				this.add('-status', target, 'par', Scripts.severity);
 			}
-			//max 1 turn
+			// max 1 turn
 			this.effectState.time = Math.floor(this.effectState.severity / 100) + 1;
 			this.effectState.severityModifier = 1 - 0.25 * this.effectState.severity / 100;
 		},
@@ -68,7 +68,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			} else {
 				this.add('-status', target, 'slp', Scripts.severity);
 			}
-			//max 2 turns
+			// max 2 turns
 			this.effectState.time = Math.floor(2 * this.effectState.severity / 100) + 1;
 			this.effectState.severityModifier = 1 - ((2 * this.effectState.severity / 100) % 1);
 		},
@@ -80,14 +80,13 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 					return;
 				}
 				return false;
-			}
-			else if ((pokemon.statusState.time === 0 && pokemon.statusState.severityModifier === 1) || pokemon.statusState.time < 0) {
+			} else if ((pokemon.statusState.time === 0 && pokemon.statusState.severityModifier === 1) || pokemon.statusState.time < 0) {
 				pokemon.cureStatus();
 			}
 			return;
 		},
 		onAfterMove(pokemon, target, move) {
-			//to account for severityModifier being changed by Snore or Sleep Talk
+			// to account for severityModifier being changed by Snore or Sleep Talk
 			this.effectState.severityModifier = 1 - ((2 * this.effectState.severity / 100) % 1);
 		},
 	},
@@ -105,7 +104,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			if (target.species.name === 'Shaymin-Sky' && target.baseSpecies.baseSpecies === 'Shaymin') {
 				target.formeChange('Shaymin', this.effect, true);
 			}
-			//max 3 turns
+			// max 3 turns
 			this.effectState.time = Math.floor(3 * this.effectState.severity / 100) + 1;
 			this.effectState.severityModifier = 1 - ((3 * this.effectState.severity / 100) % 1);
 		},
@@ -115,8 +114,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			if (pokemon.statusState.time > 0) {
 				this.add('cant', pokemon, 'frz');
 				return false;
-			}
-			else if ((pokemon.statusState.time === 0 && pokemon.statusState.severityModifier === 1) || pokemon.statusState.time < 0) {
+			} else if ((pokemon.statusState.time === 0 && pokemon.statusState.severityModifier === 1) || pokemon.statusState.time < 0) {
 				pokemon.cureStatus();
 			}
 			return;
@@ -126,9 +124,9 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 				if (Scripts.severity! >= target.statusState.severity) {
 					target.cureStatus();
 				} else {
-					let status = target.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = target.statusState.severity - originalSeverity;
+					const status = target.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = target.statusState.severity - originalSeverity;
 					if (target.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -188,8 +186,8 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			if (target.hasAbility('limber')) {
 				Scripts.severity! *= 0.67;
 				this.effectState.severity *= 0.67;
-			} else if (target.hasAbility('vitalspirit') || target.hasAbility('insomnia') 
-				|| target.hasAbility('sweetveil') || target.allies().some((ally) => ally.hasAbility('sweetveil')) || target.volatiles['uproar']) {
+			} else if (target.hasAbility('vitalspirit') || target.hasAbility('insomnia') ||
+				target.hasAbility('sweetveil') || target.allies().some((ally) => ally.hasAbility('sweetveil')) || target.volatiles['uproar']) {
 				Scripts.severity! *= 0.63;
 				this.effectState.severity *= 0.63;
 			} else if (target.hasAbility('earlybird')) {
@@ -210,23 +208,22 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			}
 
 			this.effectState.severityModifier = 1;
-			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 300; //paralysis
-			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 546)); //sleep
+			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 300; // paralysis
+			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 546)); // sleep
 		},
 		onModifySpe(spe, pokemon) {
-			if (!pokemon.hasAbility('quickfeet'))
-				return this.chainModify(1 - 0.5 * pokemon.statusState.severity / 300);
+			if (!pokemon.hasAbility('quickfeet')) { return this.chainModify(1 - 0.5 * pokemon.statusState.severity / 300); }
 		},
 		onAfterMove(pokemon, target, move) {
-			//to account for severityModifier being changed by Snore or Sleep Talk
+			// to account for severityModifier being changed by Snore or Sleep Talk
 			this.effectState.severityModifier = 1;
-			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 300; //paralysis
-			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 546)); //sleep
+			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 300; // paralysis
+			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 546)); // sleep
 		},
 		onResidualOrder: 9,
 		onResidual(pokemon) {
 			this.damage((pokemon.baseMaxhp / 8) * (pokemon.statusState.severity / 333));
-		}
+		},
 	},
 	tri: {
 		name: 'tri',
@@ -246,15 +243,14 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 				this.add('-status', target, 'tri', Scripts.severity);
 			}
 
-			//max 1 turn
+			// max 1 turn
 			this.effectState.time = Math.floor(this.effectState.severity / 100) + 1;
 			this.effectState.severityModifier = 1;
-			this.effectState.severityModifier = 1 - 0.25 * this.effectState.severity / 300; //paralysis
-			this.effectState.severityModifier = 1 - this.effectState.severity / 300; //freeze
+			this.effectState.severityModifier = 1 - 0.25 * this.effectState.severity / 300; // paralysis
+			this.effectState.severityModifier = 1 - this.effectState.severity / 300; // freeze
 		},
 		onModifySpe(spe, pokemon) {
-			if (!pokemon.hasAbility('quickfeet'))
-				return this.chainModify(1 - 0.5 * pokemon.statusState.severity / 300);
+			if (!pokemon.hasAbility('quickfeet')) { return this.chainModify(1 - 0.5 * pokemon.statusState.severity / 300); }
 		},
 		onBeforeMove(pokemon, target, move) {
 			if (move.flags['defrost']) return;
@@ -273,9 +269,9 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 				if (Scripts.severity! >= target.statusState.severity) {
 					target.cureStatus();
 				} else {
-					let status = target.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = target.statusState.severity - originalSeverity;
+					const status = target.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = target.statusState.severity - originalSeverity;
 					if (target.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -290,9 +286,9 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		name: 'all',
 		effectType: 'Status',
 		onStart(target, source, sourceEffect) {
-			if (target.hasAbility('limber') || target.hasAbility('waterbubble') || target.hasAbility('waterveil') || target.hasAbility('magmaarmor') || target.hasAbility('immunity')
-			|| target.hasAbility('vitalspirit') || target.hasAbility('insomnia') 
-			|| target.hasAbility('sweetveil') || target.allies().some((ally) => ally.hasAbility('sweetveil')) || target.volatiles['uproar']) {
+			if (target.hasAbility('limber') || target.hasAbility('waterbubble') || target.hasAbility('waterveil') || target.hasAbility('magmaarmor') || target.hasAbility('immunity') ||
+			target.hasAbility('vitalspirit') || target.hasAbility('insomnia') ||
+			target.hasAbility('sweetveil') || target.allies().some((ally) => ally.hasAbility('sweetveil')) || target.volatiles['uproar']) {
 				Scripts.severity! *= 0.8;
 				this.effectState.severity *= 0.8;
 			} else if (target.hasAbility('earlybird')) {
@@ -310,20 +306,19 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			}
 
 			this.effectState.severityModifier = 1;
-			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 500; //paralysis
-			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 1000)); //sleep
-			this.effectState.severityModifier = 1 - this.effectState.severity / 500; //freeze
+			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 500; // paralysis
+			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 1000)); // sleep
+			this.effectState.severityModifier = 1 - this.effectState.severity / 500; // freeze
 		},
 		onModifySpe(spe, pokemon) {
-			if (!pokemon.hasAbility('quickfeet'))
-				return this.chainModify(1 - 0.5 * pokemon.statusState.severity / 500);
+			if (!pokemon.hasAbility('quickfeet')) { return this.chainModify(1 - 0.5 * pokemon.statusState.severity / 500); }
 		},
 		onAfterMove(pokemon, target, move) {
-			//to account for severityModifier being changed by Snore or Sleep Talk
+			// to account for severityModifier being changed by Snore or Sleep Talk
 			this.effectState.severityModifier = 1;
-			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 500; //paralysis
-			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 1000)); //sleep
-			this.effectState.severityModifier = 1 - this.effectState.severity / 500; //freeze
+			this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 500; // paralysis
+			this.effectState.severityModifier *= 1 - ((2 * this.effectState.severity / 1000)); // sleep
+			this.effectState.severityModifier = 1 - this.effectState.severity / 500; // freeze
 		},
 		onBeforeMove(pokemon, target, move) {
 			if (move.flags['defrost']) return;
@@ -337,9 +332,9 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 				if (Scripts.severity! >= target.statusState.severity) {
 					target.cureStatus();
 				} else {
-					let status = target.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = target.statusState.severity - originalSeverity;
+					const status = target.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = target.statusState.severity - originalSeverity;
 					if (target.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -359,7 +354,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			} else {
 				this.add('-start', target, 'confusion', '[severity] ' + Scripts.severity);
 			}
-			//max 1 turn
+			// max 1 turn
 			this.effectState.time = Math.floor(this.effectState.severity / 100) + 1;
 			this.effectState.severityModifier = 1 - ((this.effectState.severity / 100) % 1);
 		},
@@ -370,8 +365,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 				return;
 			}
 			this.add('-activate', pokemon, 'confusion');
-			if (pokemon.volatiles['confusion'].time > 0)
-			{
+			if (pokemon.volatiles['confusion'].time > 0) {
 				this.activeTarget = pokemon;
 				const damage = this.actions.getConfusionDamage(pokemon, 40);
 				if (typeof damage !== 'number') throw new Error("Confusion damage not dealt");
@@ -380,7 +374,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 				return false;
 			}
 
-			//deal partial confusion damage and use move with partial severity
+			// deal partial confusion damage and use move with partial severity
 			this.activeTarget = pokemon;
 			const damage = this.actions.getConfusionDamage(pokemon, Math.floor(40 * ((this.effectState.severity / 100) % 1)));
 			if (typeof damage !== 'number') throw new Error("Confusion damage not dealt");
@@ -396,7 +390,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 			this.effectState.severityModifier = 1 - this.effectState.severity / 100;
 		},
 		onBeforeMove(pokemon) {
-			if (this.effectState.severity === 100){
+			if (this.effectState.severity === 100) {
 				this.add('cant', pokemon, 'flinch');
 				this.runEvent('Flinch', pokemon);
 				return false;
@@ -437,7 +431,7 @@ export const Conditions: {[k: string]: ModdedConditionData} = {
 		inherit: true,
 		duration: 2,
 		onStart(target, source, effect) {
-			this.effectState.trueDuration = 2
+			this.effectState.trueDuration = 2;
 			this.effectState.move = effect.id;
 		},
 		onRestart() {

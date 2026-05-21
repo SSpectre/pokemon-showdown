@@ -287,61 +287,61 @@ export const DefaultText: {[k: string]: DefaultText} = {
 	},
 
 	resistnormal: {
-		start: "  [POKEMON] now resists Normal!"
+		start: "  [POKEMON] now resists Normal!",
 	},
 	resistfire: {
-		start: "  [POKEMON] now resists Fire!"
+		start: "  [POKEMON] now resists Fire!",
 	},
 	resistwater: {
-		start: "  [POKEMON] now resists Water!"
+		start: "  [POKEMON] now resists Water!",
 	},
 	resistelectric: {
-		start: "  [POKEMON] now resists Electric!"
+		start: "  [POKEMON] now resists Electric!",
 	},
 	resistgrass: {
-		start: "  [POKEMON] now resists Grass!"
+		start: "  [POKEMON] now resists Grass!",
 	},
 	resistice: {
-		start: "  [POKEMON] now resists Ice!"
+		start: "  [POKEMON] now resists Ice!",
 	},
 	resistfighting: {
-		start: "  [POKEMON] now resists Fighting!"
+		start: "  [POKEMON] now resists Fighting!",
 	},
 	resistpoison: {
-		start: "  [POKEMON] now resists Poison!"
+		start: "  [POKEMON] now resists Poison!",
 	},
 	resistground: {
-		start: "  [POKEMON] now resists Ground!"
+		start: "  [POKEMON] now resists Ground!",
 	},
 	resistflying: {
-		start: "  [POKEMON] now resists Flying!"
+		start: "  [POKEMON] now resists Flying!",
 	},
 	resistpsychic: {
-		start: "  [POKEMON] now resists Psychic!"
+		start: "  [POKEMON] now resists Psychic!",
 	},
 	resistbug: {
-		start: "  [POKEMON] now resists Bug!"
+		start: "  [POKEMON] now resists Bug!",
 	},
 	resistrock: {
-		start: "  [POKEMON] now resists Rock!"
+		start: "  [POKEMON] now resists Rock!",
 	},
 	resistghost: {
-		start: "  [POKEMON] now resists Ghost!"
+		start: "  [POKEMON] now resists Ghost!",
 	},
 	resistdragon: {
-		start: "  [POKEMON] now resists Dragon!"
+		start: "  [POKEMON] now resists Dragon!",
 	},
 	resistdark: {
-		start: "  [POKEMON] now resists Dark!"
+		start: "  [POKEMON] now resists Dark!",
 	},
 	resiststeel: {
-		start: "  [POKEMON] now resists Steel!"
+		start: "  [POKEMON] now resists Steel!",
 	},
 	resistfairy: {
-		start: "  [POKEMON] now resists Fairy!"
+		start: "  [POKEMON] now resists Fairy!",
 	},
 	resisttypeless: {
-		start: "  [POKEMON] now resists Typeless!"
+		start: "  [POKEMON] now resists Typeless!",
 	},
 
 	// weather

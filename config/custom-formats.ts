@@ -75,7 +75,7 @@ export const Formats: FormatList = [
 		mod: 'gen7luckless',
 		ruleset: [
 			'Picked Team Size = 1', 'Max Team Size = 3',
-			'Luckless', 'Swagger Clause'
+			'Luckless', 'Swagger Clause',
 		],
 		banlist: [
 			'Arceus', 'Darkrai', 'Deoxys-Base', 'Deoxys-Attack', 'Deoxys-Defense', 'Dialga', 'Giratina', 'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kangaskhan-Mega',

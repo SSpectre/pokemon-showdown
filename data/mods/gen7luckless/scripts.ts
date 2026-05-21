@@ -1,20 +1,20 @@
-import { Pokemon } from "../../../sim";
+import {Pokemon} from "../../../sim";
 import {Dex, toID} from '../../../sim/dex';
-import { SecondaryEffect } from "../../../sim/dex-moves";
+import {SecondaryEffect} from "../../../sim/dex-moves";
 
 export const Scripts: ModdedBattleScriptsData = {
 	inherit: 'gen7',
 	speedTieWinner: Math.floor(Math.random() * 2),
 	actions: {
 		critStage: 0,
-		//modded to use accuracy as a damage modifier, remove chance-based crits, set power of ohko moves
-		//moves with set damage are affected by accuracy
+		// modded to use accuracy as a damage modifier, remove chance-based crits, set power of ohko moves
+		// moves with set damage are affected by accuracy
 		getDamage(
 			pokemon: Pokemon, target: Pokemon, move: string | number | ActiveMove,
 			suppressMessages = false
 		): number | undefined | null | false {
 			if (typeof move === 'string') move = this.dex.getActiveMove(move);
-	
+
 			if (typeof move === 'number') {
 				const basePower = move;
 				move = new Dex.Move({
@@ -25,13 +25,13 @@ export const Scripts: ModdedBattleScriptsData = {
 				}) as ActiveMove;
 				move.hit = 0;
 			}
-	
+
 			if (!move.ignoreImmunity || (move.ignoreImmunity !== true && !move.ignoreImmunity[move.type])) {
-				if (!target.runImmunity(move.type, !suppressMessages)) { 
+				if (!target.runImmunity(move.type, !suppressMessages)) {
 					return false;
 				}
 			}
-	
+
 			if (move.ohko) { // bypasses accuracy modifiers
 				let damage = 0;
 				if (typeof Scripts.actions?.finalAccuracy === 'number') {
@@ -40,13 +40,13 @@ export const Scripts: ModdedBattleScriptsData = {
 						baseAccuracy = 20;
 					}
 					if (!target.volatiles['dynamax'] && pokemon.level >= target.level && (move.ohko === true || !target.hasType(move.ohko))) {
-						let accuracy = baseAccuracy + pokemon.level - target.level
+						const accuracy = baseAccuracy + pokemon.level - target.level;
 						damage = target.maxhp * accuracy / 100;
 						if (pokemon.volatiles['lockon']) {
 							damage += (target.maxhp - target.maxhp * accuracy / 100) * pokemon.volatiles['lockon'].severity / 100;
 						}
 					}
-				} else damage = target.maxhp;
+				} else { damage = target.maxhp; }
 				return this.modifyDamage(damage, pokemon, target, move, suppressMessages);
 			}
 
@@ -54,7 +54,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (move.damageCallback) Scripts.actions!.setDamage = move.damageCallback.call(this.battle, pokemon, target);
 			else if (move.damage === 'level') Scripts.actions!.setDamage = pokemon.level;
 			else if (move.damage) Scripts.actions!.setDamage = move.damage;
-	
+
 			let basePower: number | false | null = move.basePower;
 			if (move.basePowerCallback) {
 				basePower = move.basePowerCallback.call(this.battle, pokemon, target, move);
@@ -62,17 +62,17 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (!basePower && !Scripts.actions!.setDamage) return basePower === 0 ? undefined : basePower;
 			basePower = this.battle.clampIntRange(basePower, 1);
 
-			//damage modifier from accuracy cannot exceed 100%
+			// damage modifier from accuracy cannot exceed 100%
 			let accuracy: number | true | undefined = Scripts.actions!.finalAccuracy;
 			if (typeof accuracy === 'number') {
-				accuracy = this.battle.clampIntRange(accuracy, 0, 100)
+				accuracy = this.battle.clampIntRange(accuracy, 0, 100);
 				if (Scripts.actions!.setDamage) {
-					let baseDamage = Scripts.actions!.setDamage * accuracy / 100;
+					const baseDamage = Scripts.actions!.setDamage * accuracy / 100;
 					return this.modifyDamage(baseDamage, pokemon, target, move, suppressMessages);
 				}
 				basePower *= accuracy / 100;
-			} else if (Scripts.actions!.setDamage) return this.modifyDamage(Scripts.actions!.setDamage, pokemon, target, move, suppressMessages);
-	
+			} else if (Scripts.actions!.setDamage) { return this.modifyDamage(Scripts.actions!.setDamage, pokemon, target, move, suppressMessages); }
+
 			let critRatio = this.battle.runEvent('ModifyCritRatio', pokemon, target, move, move.critRatio || 0);
 			// if (this.battle.gen <= 5) {
 			// 	critRatio = this.battle.clampIntRange(critRatio, 0, 5);
@@ -88,33 +88,33 @@ export const Scripts: ModdedBattleScriptsData = {
 			critRatio = this.battle.clampIntRange(critRatio, 0, 4);
 			const moveHit = target.getMoveHitData(move);
 			moveHit.crit = move.willCrit || false;
-			
-			//for moves that always crit
+
+			// for moves that always crit
 			if (move.willCrit) critRatio = 4;
-	
-			//override crit if target is immune
+
+			// override crit if target is immune
 			if (critRatio > 0) {
 				moveHit.crit = this.battle.runEvent('CriticalHit', target, null, move);
 			}
 			if (!moveHit.crit) critRatio = 0;
 
-			//max 3, -1 if target is immune
+			// max 3, -1 if target is immune
 			Scripts.actions!.critStage = critRatio - 1;
-	
+
 			// happens after crit calculation
 			basePower = this.battle.runEvent('BasePower', pokemon, target, move, basePower, true);
-	
+
 			if (!basePower) return 0;
 			basePower = this.battle.clampIntRange(basePower, 1);
-	
+
 			const level = pokemon.level;
-	
+
 			const attacker = pokemon;
 			const defender = target;
 			let category = this.battle.getCategory(move);
 			let defensiveCategory = move.defensiveCategory || category;
-			let attack: number[] = [];
-			let defense: number[] = [];
+			const attack: number[] = [];
+			const defense: number[] = [];
 			for (let i = 0; i < 2; i++) {
 				let attackStat: StatIDExceptHP = category === 'Physical' ? 'atk' : 'spa';
 				const defenseStat: StatIDExceptHP = defensiveCategory === 'Physical' ? 'def' : 'spd';
@@ -134,16 +134,16 @@ export const Scripts: ModdedBattleScriptsData = {
 						}
 					}
 				}
-		
+
 				const statTable = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
-		
+
 				let atkBoosts = move.useTargetOffensive ? defender.boosts[attackStat] : attacker.boosts[attackStat];
 				let defBoosts = defender.boosts[defenseStat];
-		
-				let ignoreNegativeOffensive = !!move.ignoreNegativeOffensive;
-				let ignorePositiveDefensive = !!move.ignorePositiveDefensive;
-		
-				let ignoreDivisor = [24, 8, 2, 1];
+
+				const ignoreNegativeOffensive = !!move.ignoreNegativeOffensive;
+				const ignorePositiveDefensive = !!move.ignorePositiveDefensive;
+
+				const ignoreDivisor = [24, 8, 2, 1];
 
 				if (ignoreNegativeOffensive) {
 					this.battle.debug('Negating (sp)atk boost/penalty.');
@@ -157,22 +157,22 @@ export const Scripts: ModdedBattleScriptsData = {
 				} else if (defBoosts > 0 && Scripts.actions!.critStage >= 0 && Scripts.actions!.critStage < ignoreDivisor.length) {
 					defBoosts = defBoosts - defBoosts * (1 / ignoreDivisor[Scripts.actions!.critStage]);
 				}
-		
+
 				if (move.useTargetOffensive) {
 					attack.push(defender.calculateStat(attackStat, atkBoosts));
 				} else {
 					attack.push(attacker.calculateStat(attackStat, atkBoosts));
 				}
-		
+
 				attackStat = (category === 'Physical' ? 'atk' : 'spa');
 				defense.push(defender.calculateStat(defenseStat, defBoosts));
-		
+
 				// Apply Stat Modifiers
-				attack[attack.length-1] = this.battle.runEvent('Modify' + statTable[attackStat], attacker, defender, move, attack[attack.length-1]);
-				defense[defense.length-1] = this.battle.runEvent('Modify' + statTable[defenseStat], defender, attacker, move, defense[defense.length-1]);
-		
+				attack[attack.length - 1] = this.battle.runEvent('Modify' + statTable[attackStat], attacker, defender, move, attack[attack.length - 1]);
+				defense[defense.length - 1] = this.battle.runEvent('Modify' + statTable[defenseStat], defender, attacker, move, defense[defense.length - 1]);
+
 				if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'def') {
-					defense[defense.length-1] = this.battle.clampIntRange(Math.floor(defense[defensiveCategory.length-1] / 2), 1);
+					defense[defense.length - 1] = this.battle.clampIntRange(Math.floor(defense[defensiveCategory.length - 1] / 2), 1);
 				}
 
 				if (move.useAverageStats) {
@@ -180,7 +180,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					else if (category === 'Special') category = 'Physical';
 					if (defensiveCategory === 'Physical') defensiveCategory = 'Special';
 					else if (defensiveCategory === 'Special') defensiveCategory = 'Physical';
-				} else break;
+				} else { break; }
 			}
 
 			let finalAttack = 0;
@@ -193,26 +193,26 @@ export const Scripts: ModdedBattleScriptsData = {
 				finalDefense += stat;
 			}
 			finalDefense /= defense.length;
-	
+
 			const tr = this.battle.trunc;
-	
+
 			// int(int(int(2 * L / 5 + 2) * A * P / D) / 50);
 			const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * finalAttack) / finalDefense) / 50);
-	
+
 			// Calculate damage modifiers separately (order differs between generations)
 			return this.modifyDamage(baseDamage, pokemon, target, move, suppressMessages);
 		},
-		
-		//modded to remove random factor and modify damage based on crit stage
-		//moves with set damage are affected by severity modifiers
+
+		// modded to remove random factor and modify damage based on crit stage
+		// moves with set damage are affected by severity modifiers
 		modifyDamage(baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages = false) {
 			const tr = this.battle.trunc;
 			if (!Scripts.actions!.setDamage && !move.ohko) {
 				if (!move.type) move.type = '???';
 				const type = move.type;
-		
+
 				baseDamage += 2;
-		
+
 				if (move.spreadHit) {
 					// multi-target modifier (doubles only)
 					const spreadModifier = move.spreadModifier || (this.battle.gameType === 'freeforall' ? 0.5 : 0.75);
@@ -224,25 +224,25 @@ export const Scripts: ModdedBattleScriptsData = {
 					this.battle.debug(`Parental Bond modifier: ${bondModifier}`);
 					baseDamage = this.battle.modify(baseDamage, bondModifier);
 				}
-		
+
 				// weather modifier
 				baseDamage = this.battle.runEvent('WeatherModifyDamage', pokemon, target, move, baseDamage);
-		
+
 				// crit - not a modifier
 				const isCrit = target.getMoveHitData(move).crit;
 				if (isCrit) {
-					let bonusDivisor = [24, 8, 2, 1];
-					//critStage should be -1 if target is immune
+					const bonusDivisor = [24, 8, 2, 1];
+					// critStage should be -1 if target is immune
 					let bonus = 0;
 					if (Scripts.actions!.critStage! >= 0 && Scripts.actions!.critStage! < bonusDivisor.length) {
 						bonus = 1 / (bonusDivisor[Scripts.actions!.critStage!] * 2);
 					}
 					baseDamage = tr(baseDamage * (move.critModifier || 1 + bonus));
 				}
-		
+
 				// replaces random factor
 				baseDamage *= 0.925;
-		
+
 				// STAB
 				if (move.forceSTAB || (type !== '???' && pokemon.hasType(type))) {
 					// The "???" type never gets STAB
@@ -257,21 +257,21 @@ export const Scripts: ModdedBattleScriptsData = {
 				target.getMoveHitData(move).typeMod = typeMod;
 				if (typeMod > 0) {
 					if (!suppressMessages) this.battle.add('-supereffective', target);
-		
+
 					for (let i = 0; i < typeMod; i++) {
 						baseDamage *= 2;
 					}
 				}
 				if (typeMod < 0) {
 					if (!suppressMessages) this.battle.add('-resisted', target);
-		
+
 					for (let i = 0; i > typeMod; i--) {
 						baseDamage = tr(baseDamage / 2);
 					}
 				}
-		
+
 				if (Scripts.actions!.critStage! > 0 && !suppressMessages) this.battle.add('message', 'A stage ' + Scripts.actions!.critStage + ' critical hit!');
-		
+
 				if (move.category === 'Physical' && !pokemon.hasAbility('guts') && (this.battle.gen < 6 || move.id !== 'facade')) {
 					if (pokemon.status === 'brn') {
 						baseDamage = this.battle.modify(baseDamage, 1 - 0.5 * pokemon.statusState.severity / 100);
@@ -290,7 +290,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					baseDamage = this.battle.modify(baseDamage, pokemon.volatiles[i].severityModifier);
 				}
 			}
-			
+
 			if (target.volatiles['foresight'] && target.hasType('Ghost') && ['Normal', 'Fighting'].includes(move.type)) {
 				baseDamage = this.battle.modify(baseDamage, target.volatiles['foresight'].incomingSeverityModifier);
 			}
@@ -300,17 +300,17 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			// Generation 5, but nothing later, sets damage to 1 before the final damage modifiers
 			if (this.battle.gen === 5 && !baseDamage) baseDamage = 1;
-	
+
 			// Final modifier. Modifiers that modify damage after min damage check, such as Life Orb.
 			if (!Scripts.actions!.setDamage) baseDamage = this.battle.runEvent('ModifyDamage', pokemon, target, move, baseDamage);
-	
+
 			let protectionSeverity = 0;
-			if (target.volatiles['protect']) protectionSeverity =  target.volatiles['protect'].severity;
-			if (target.volatiles['kingsshield']) protectionSeverity =  target.volatiles['kingsshield'].severity;
-			if (target.volatiles['spikyshield']) protectionSeverity =  target.volatiles['spikyshield'].severity;
-			if (target.volatiles['banefulbunker']) protectionSeverity =  target.volatiles['banefulbunker'].severity;
-			if (target.volatiles['quickguard'] && move.priority > 0.1) protectionSeverity =  target.volatiles['quickguard'].severity;
-			if (target.volatiles['wideguard'] && (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes')) protectionSeverity =  target.volatiles['wideguard'].severity;
+			if (target.volatiles['protect']) protectionSeverity = target.volatiles['protect'].severity;
+			if (target.volatiles['kingsshield']) protectionSeverity = target.volatiles['kingsshield'].severity;
+			if (target.volatiles['spikyshield']) protectionSeverity = target.volatiles['spikyshield'].severity;
+			if (target.volatiles['banefulbunker']) protectionSeverity = target.volatiles['banefulbunker'].severity;
+			if (target.volatiles['quickguard'] && move.priority > 0.1) protectionSeverity = target.volatiles['quickguard'].severity;
+			if (target.volatiles['wideguard'] && (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes')) protectionSeverity = target.volatiles['wideguard'].severity;
 
 			if (move.isZOrMaxPowered && target.getMoveHitData(move).zBrokeProtect) {
 				baseDamage = this.battle.modify(baseDamage, 1 - 0.75 * protectionSeverity / 100);
@@ -318,14 +318,14 @@ export const Scripts: ModdedBattleScriptsData = {
 			} else {
 				baseDamage = this.battle.modify(baseDamage, 1 - protectionSeverity / 100);
 			}
-	
+
 			// Generation 6-7 moves the check for minimum 1 damage after the final modifier...
 			if (this.battle.gen !== 5 && !baseDamage) return 1;
-	
+
 			// ...but 16-bit truncation happens even later, and can truncate to 0
 			return tr(baseDamage, 16);
 		},
-		//modded to determine effect severity
+		// modded to determine effect severity
 		runMoveEffects(
 			damage: SpreadMoveDamage, targets: SpreadMoveTargets, source: Pokemon,
 			move: ActiveMove, moveData: ActiveMove, isSecondary?: boolean, isSelf?: boolean
@@ -336,18 +336,17 @@ export const Scripts: ModdedBattleScriptsData = {
 				let hitResult;
 				let didSomething: number | boolean | null | undefined = undefined;
 
-				//this function is run once for the move's primary effect and for each of its secondary effects
-				//when isSecondary is true, moveData is an object containing the properties of the secondary effect
+				// this function is run once for the move's primary effect and for each of its secondary effects
+				// when isSecondary is true, moveData is an object containing the properties of the secondary effect
 				if (isSecondary && isSelf) {
 					Scripts.severity = Scripts.actions?.selfSeverity;
-				}
-				else if (isSecondary) {
+				} else if (isSecondary) {
 					if (moveData) Scripts.severity = (moveData as SecondaryEffect).chance;
 					else Scripts.severity = 100;
 					if (typeof Scripts.actions!.finalAccuracy === 'number') Scripts.severity! *= Scripts.actions!.finalAccuracy / 100;
-					
+
 					if (source.statusState.severityModifier) {
-						Scripts.severity = this.battle.modify(Scripts.severity!, source.statusState.severityModifier)
+						Scripts.severity = this.battle.modify(Scripts.severity!, source.statusState.severityModifier);
 					}
 					for (const j in source.volatiles) {
 						if (source.volatiles[j].severityModifier) {
@@ -368,22 +367,20 @@ export const Scripts: ModdedBattleScriptsData = {
 						if (target.volatiles['spikyshield']) Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['spikyshield'].incomingSeverityModifier);
 						if (target.volatiles['banefulbunker']) Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['banefulbunker'].incomingSeverityModifier);
 						if (target.volatiles['quickguard'] && move.priority > 0.1) Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['quickguard'].incomingSeverityModifier);
-						if (target.volatiles['wideguard'] && (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes'))
-							Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['wideguard'].incomingSeverityModifier);
+						if (target.volatiles['wideguard'] && (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes')) { Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['wideguard'].incomingSeverityModifier); }
 					}
 
-					//severity of secondary effect cannot exceed its original chance
+					// severity of secondary effect cannot exceed its original chance
 					Scripts.severity = this.battle.clampIntRange(Scripts.severity, 0, (moveData as SecondaryEffect).chance);
 
 					Scripts.actions!.selfSeverity = Scripts.severity;
-				}
-				else {
+				} else {
 					Scripts.severity = 100;
 					if ((moveData as SecondaryEffect).chance) Scripts.severity = (moveData as SecondaryEffect).chance;
 					if (typeof Scripts.actions!.finalAccuracy === 'number')	Scripts.severity! *= Scripts.actions!.finalAccuracy / 100;
 
 					if (source.statusState.severityModifier) {
-						Scripts.severity = this.battle.modify(Scripts.severity!, source.statusState.severityModifier)
+						Scripts.severity = this.battle.modify(Scripts.severity!, source.statusState.severityModifier);
 					}
 					for (const j in source.volatiles) {
 						if (source.volatiles[j].severityModifier) {
@@ -404,12 +401,11 @@ export const Scripts: ModdedBattleScriptsData = {
 						if (target.volatiles['spikyshield']) Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['spikyshield'].incomingSeverityModifier);
 						if (target.volatiles['banefulbunker']) Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['banefulbunker'].incomingSeverityModifier);
 						if (target.volatiles['quickguard'] && move.priority > 0.1) Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['quickguard'].incomingSeverityModifier);
-						if (target.volatiles['wideguard'] && (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes'))
-							Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['wideguard'].incomingSeverityModifier);
+						if (target.volatiles['wideguard'] && (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes')) { Scripts.severity = this.battle.modify(Scripts.severity!, target.volatiles['wideguard'].incomingSeverityModifier); }
 					}
 
-					//severity cannot exceed 100
-					Scripts.severity = this.battle.clampIntRange(Scripts.severity, 0, 100)
+					// severity cannot exceed 100
+					Scripts.severity = this.battle.clampIntRange(Scripts.severity, 0, 100);
 				}
 
 				if (moveData.flags['binary'] && Scripts.severity! < 50) {
@@ -417,7 +413,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					this.battle.attrLastMove('[still]');
 					continue;
 				}
-	
+
 				if (target) {
 					if (moveData.boosts && !target.fainted) {
 						hitResult = this.battle.boost(moveData.boosts, target, source, move, isSecondary, isSelf);
@@ -522,8 +518,8 @@ export const Scripts: ModdedBattleScriptsData = {
 				damage[i] = this.combineResults(damage[i], didSomething === null ? false : didSomething);
 				didAnything = this.combineResults(didAnything, didSomething);
 			}
-	
-	
+
+
 			if (!didAnything && didAnything !== 0 && !moveData.self && !moveData.selfdestruct) {
 				if (!isSelf && !isSecondary) {
 					if (didAnything === false) {
@@ -535,27 +531,27 @@ export const Scripts: ModdedBattleScriptsData = {
 			} else if (move.selfSwitch && source.hp) {
 				source.switchFlag = move.id;
 			}
-	
-			//revert severity and finalAccuracy to default 100 value
+
+			// revert severity and finalAccuracy to default 100 value
 			Scripts.severity = 100;
 			Scripts.actions!.finalAccuracy = 100;
 			return damage;
 		},
-		//modded to remove random factor
+		// modded to remove random factor
 		getConfusionDamage(pokemon: Pokemon, basePower: number) {
 			const tr = this.battle.trunc;
-	
+
 			const attack = pokemon.calculateStat('atk', pokemon.boosts['atk']);
 			const defense = pokemon.calculateStat('def', pokemon.boosts['def']);
 			const level = pokemon.level;
 			const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * attack) / defense) / 50) + 2;
-	
+
 			// Damage is 16-bit context in self-hit confusion damage
 			let damage = tr(baseDamage, 16);
 			damage *= 0.925;
 			return Math.max(1, damage);
 		},
-		//modded to remove accuracy-based misses
+		// modded to remove accuracy-based misses
 		hitStepAccuracy(targets: Pokemon[], pokemon: Pokemon, move: ActiveMove) {
 			const hitResults = [];
 			for (const [i, target] of targets.entries()) {
@@ -609,7 +605,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					continue;
 				} */
 
-				//to be applied to move's base power
+				// to be applied to move's base power
 				Scripts.actions!.finalAccuracy = accuracy;
 				hitResults[i] = true;
 			}
@@ -635,7 +631,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			let moveDamage: (number | boolean | undefined)[] = [];
 			// There is no need to recursively check the ´sleepUsable´ flag as Sleep Talk can only be used while asleep.
 			const isSleepUsable = move.sleepUsable || this.dex.moves.get(move.sourceEffect).sleepUsable;
-	
+
 			let targetsCopy: (Pokemon | false | null)[] = targets.slice(0);
 			let hit: number;
 			for (hit = 1; hit <= targetHits; hit++) {
@@ -656,7 +652,7 @@ export const Scripts: ModdedBattleScriptsData = {
 						this.battle.retargetLastMove(target);
 					}
 				}
-	
+
 				// like this (Triple Kick)
 				if (target && move.multiaccuracy && hit > 1) {
 					let accuracy = move.accuracy;
@@ -686,16 +682,16 @@ export const Scripts: ModdedBattleScriptsData = {
 						accuracy = this.battle.runEvent('Accuracy', target, pokemon, move, accuracy);
 					}
 				}
-	
+
 				const moveData = move;
 				if (!moveData.flags) moveData.flags = {};
-	
+
 				// Modifies targetsCopy (which is why it's a copy)
 				[moveDamage, targetsCopy] = this.spreadMoveHit(targetsCopy, pokemon, move, moveData);
-	
+
 				if (!moveDamage.some(val => val !== false)) break;
 				nullDamage = false;
-	
+
 				for (const [i, md] of moveDamage.entries()) {
 					// Damage from each hit is individually counted for the
 					// purposes of Counter, Metal Burst, and Mirror Coat.
@@ -720,11 +716,11 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (move.multihit && typeof move.smartTarget !== 'boolean') {
 				this.battle.add('-hitcount', targets[0], hit - 1);
 			}
-	
+
 			if (move.recoil && move.totalDamage) {
 				this.battle.damage(this.calcRecoilDamage(move.totalDamage, move), pokemon, pokemon, 'recoil');
 			}
-	
+
 			if (move.struggleRecoil) {
 				let recoilDamage;
 				if (this.dex.gen >= 5) {
@@ -734,24 +730,24 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 				this.battle.directDamage(recoilDamage, pokemon, pokemon, {id: 'strugglerecoil'} as Condition);
 			}
-	
+
 			// smartTarget messes up targetsCopy, but smartTarget should in theory ensure that targets will never fail, anyway
 			if (move.smartTarget) targetsCopy = targets.slice(0);
-	
+
 			for (const [i, target] of targetsCopy.entries()) {
 				if (target && pokemon !== target) {
 					target.gotAttacked(move, moveDamage[i] as number | false | undefined, pokemon);
 				}
 			}
-	
+
 			if (move.ohko && !targets[0].hp) this.battle.add('-ohko');
-	
+
 			if (!damage.some(val => !!val || val === 0)) return damage;
-	
+
 			this.battle.eachEvent('Update');
-	
+
 			this.afterMoveSecondaryEvent(targetsCopy.filter(val => !!val) as Pokemon[], pokemon, move);
-	
+
 			if (!move.negateSecondary && !(move.hasSheerForce && pokemon.hasAbility('sheerforce'))) {
 				for (const [i, d] of damage.entries()) {
 					// There are no multihit spread moves, so it's safe to use move.totalDamage for multihit moves
@@ -765,10 +761,10 @@ export const Scripts: ModdedBattleScriptsData = {
 					}
 				}
 			}
-	
+
 			return damage;
 		},
-		//modded to remove chance-based secondary effects
+		// modded to remove chance-based secondary effects
 		secondaries(targets: SpreadMoveTargets, source: Pokemon, move: ActiveMove, moveData: ActiveMove, isSelf?: boolean) {
 			if (!moveData.secondaries) return;
 			for (const target of targets) {
@@ -780,7 +776,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 		},
-		//modded to remove chance-based self drops
+		// modded to remove chance-based self drops
 		selfDrops(
 			targets: SpreadMoveTargets, source: Pokemon,
 			move: ActiveMove, moveData: ActiveMove, isSecondary?: boolean
@@ -812,7 +808,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (!sourceEffect) sourceEffect = this.battle.effect;
 			}
 			if (!source) source = this;
-	
+
 			if (this.volatiles[status.id]) {
 				if (Scripts.severity! <= this.volatiles[status.id].severity) {
 					return false;
@@ -864,15 +860,15 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 			return true;
 		},
-		//modded to calculate boost based on severity, rather than table
+		// modded to calculate boost based on severity, rather than table
 		calculateStat(statName: StatIDExceptHP, boost: number, modifier?: number) {
 			statName = toID(statName) as StatIDExceptHP;
 			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
 			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
-	
+
 			// base stat
 			let stat = this.storedStats[statName];
-	
+
 			// Wonder Room swaps defenses before calculating anything else
 			if ('wonderroom' in this.battle.field.pseudoWeather) {
 				if (statName === 'def') {
@@ -881,7 +877,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					stat = this.storedStats['def'];
 				}
 			}
-	
+
 			// stat boosts
 			let boosts: SparseBoostsTable = {};
 			const boostName = statName as BoostID;
@@ -891,10 +887,10 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (boost > 6) boost = 6;
 			if (boost < -6) boost = -6;
 			if (boost >= 0) {
-				//positive boosts increase numerator of multiplier
+				// positive boosts increase numerator of multiplier
 				boost = (boost + 2) / 2;
 			} else {
-				//negative boosts increase denominator of multiplier
+				// negative boosts increase denominator of multiplier
 				boost = 2 / (Math.abs(boost) + 2);
 			}
 			stat = Math.floor(stat * boost);
@@ -902,15 +898,15 @@ export const Scripts: ModdedBattleScriptsData = {
 			// stat modifier
 			return this.battle.modify(stat, (modifier || 1));
 		},
-		//modded to get boost based on severity, rather than table
+		// modded to get boost based on severity, rather than table
 		getStat(statName: StatIDExceptHP, unboosted?: boolean, unmodified?: boolean) {
 			statName = toID(statName) as StatIDExceptHP;
 			// @ts-ignore - type checking prevents 'hp' from being passed, but we're paranoid
 			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
-	
+
 			// base stat
 			let stat = this.storedStats[statName];
-	
+
 			// Download ignores Wonder Room's effect, but this results in
 			// stat stages being calculated on the opposite defensive stat
 			if (unmodified && 'wonderroom' in this.battle.field.pseudoWeather) {
@@ -920,7 +916,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					statName = 'def';
 				}
 			}
-	
+
 			// stat boosts
 			if (!unboosted) {
 				const boosts = this.battle.runEvent('ModifyBoost', this, null, null, {...this.boosts});
@@ -928,29 +924,29 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (boost > 6) boost = 6;
 				if (boost < -6) boost = -6;
 				if (boost >= 0) {
-					//positive boosts increase numerator of multiplier
+					// positive boosts increase numerator of multiplier
 					boost = (boost + 2) / 2;
 				} else {
-					//negative boosts increase denominator of multiplier
+					// negative boosts increase denominator of multiplier
 					boost = 2 / (Math.abs(boost) + 2);
 				}
 				stat = Math.floor(stat * boost);
 			}
-	
+
 			// stat modifier effects
 			if (!unmodified) {
 				const statTable: {[s in StatIDExceptHP]: string} = {atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
 				stat = this.battle.runEvent('Modify' + statTable[statName], this, null, null, stat);
 			}
-	
+
 			if (statName === 'spe' && stat > 10000) stat = 10000;
 			return stat;
 		},
-		//modded to always pass new status
+		// modded to always pass new status
 		trySetStatus(status: string | Condition, source: Pokemon | null = null, sourceEffect: Effect | null = null) {
 			return this.setStatus(status, source, sourceEffect);
 		},
-		//modded to set status severity and overwrite lower-severity status
+		// modded to set status severity and overwrite lower-severity status
 		setStatus(
 			status: string | Condition,
 			source: Pokemon | null = null,
@@ -969,7 +965,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.battle.add('-fail', this, this.status);
 				return false;
 			}
-	
+
 			// if (this.status === status.id) {
 			// 	if ((sourceEffect as Move)?.status === this.status) {
 			// 		this.battle.add('-fail', this, this.status);
@@ -979,7 +975,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			// 	}
 			// 	return false;
 			// }
-	
+
 			if (!ignoreImmunities && status.id &&
 					!(source?.hasAbility('corrosion') && ['tox', 'psn'].includes(status.id))) {
 				// the game currently never ignores immunities
@@ -1000,7 +996,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					return result;
 				}
 			}
-	
+
 			this.status = status.id;
 			this.statusState = {id: status.id, target: this, stage: prevStatusState.stage};
 			if (source) this.statusState.source = source;
@@ -1009,14 +1005,13 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.statusState.duration = status.durationCallback.call(this.battle, this, source, sourceEffect);
 			}
 
-			//status is being cured
+			// status is being cured
 			if (this.status === '') {
 				this.statusState.severity = 0;
 				this.statusState.severityModifier = 1;
 				if (sourceEffect?.effectType === 'Move' ? !sourceEffect.flags.lesser : sourceEffect?.id !== 'shedskin') this.statusState.stage = 0;
-			}
-			else this.statusState.severity = Scripts.severity;
-	
+			} else { this.statusState.severity = Scripts.severity; }
+
 			if (status.id && !this.battle.singleEvent('Start', status, this.statusState, this, source, sourceEffect)) {
 				this.battle.debug('status start [' + status.id + '] interrupted');
 				// cancel the setstatus
@@ -1029,7 +1024,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 			return true;
 		},
-		//modded to account for heal block with severity % 1 > 0
+		// modded to account for heal block with severity % 1 > 0
 		heal(d: number, source: Pokemon | null = null, effect: Effect | null = null) {
 			if (!this.hp) return false;
 			d = this.battle.trunc(d);
@@ -1086,9 +1081,9 @@ export const Scripts: ModdedBattleScriptsData = {
 			if ('magnetrise' in this.volatiles) return false;
 			if ('telekinesis' in this.volatiles && this.volatiles['telekinesis'].time > 0) return false;
 			return item !== 'airballoon';
-		}
+		},
 	},
-	//modded to have stat boosts based on severity
+	// modded to have stat boosts based on severity
 	boost(
 		boost: SparseBoostsTable, target: Pokemon | null = null, source: Pokemon | null = null,
 		effect: Effect | null = null, isSecondary = false, isSelf = false
@@ -1116,7 +1111,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				[boostName]: boost[boostName],
 			};
 			if (currentBoost[boostName] && typeof Scripts.severity === 'number') currentBoost[boostName]! *= Scripts.severity / 100;
-			
+
 			let boostBy = target.boostBy(currentBoost);
 			let msg = '-boost';
 			if (boost[boostName]! < 0) {
@@ -1160,8 +1155,8 @@ export const Scripts: ModdedBattleScriptsData = {
 		}
 		this.runEvent('AfterBoost', target, source, effect, boost);
 		if (success) {
-			if (Object.values(boost).some(x => x! > 0)) target.statsRaisedThisTurn = true;
-			if (Object.values(boost).some(x => x! < 0)) target.statsLoweredThisTurn = true;
+			if (Object.values(boost).some(x => x > 0)) target.statsRaisedThisTurn = true;
+			if (Object.values(boost).some(x => x < 0)) target.statsLoweredThisTurn = true;
 		}
 
 		return success;
@@ -1363,7 +1358,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.runEvent('Heal', target, source, effect, finalDamage);
 		return finalDamage;
 	},
-	//modded to resolve speed ties based on alternating variable
+	// modded to resolve speed ties based on alternating variable
 	speedSort<T>(this: Battle, list: T[], comparator: (a: T, b: T) => number = this.comparePriority) {
 		if (list.length < 2) return;
 		let sorted = 0;
@@ -1379,7 +1374,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				const delta = comparator(list[nextIndexes[0]], list[i]);
 				if (delta < 0) continue;
 				if (delta > 0) nextIndexes = [i];
-				//speed tie
+				// speed tie
 				if (delta === 0) {
 					let p;
 					if (list[nextIndexes[0]] instanceof Pokemon) p = (list[nextIndexes[0]] as any) as Pokemon;
@@ -1395,14 +1390,14 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (index !== sorted + i) {
 					// nextIndexes is guaranteed to be in order, so it will never have
 					// been disturbed by an earlier swap
-					
+
 					[list[sorted + i], list[index]] = [list[index], list[sorted + i]];
 				}
 			}
 			sorted += nextIndexes.length;
 		}
 	},
-	//modded to account for speed ties when releasing leads
+	// modded to account for speed ties when releasing leads
 	start() {
 		// Deserialized games should use restart()
 		if (this.deserialized) return;
@@ -1470,14 +1465,14 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (subFormat.onTeamPreview) subFormat.onTeamPreview.call(this);
 		}
 
-		//order Pokemon are released in is based on speed and subject to speed ties
+		// order Pokemon are released in is based on speed and subject to speed ties
 		this.add('message', this.sides[Scripts.speedTieWinner!].name + ' will win speed ties when releasing lead Pokémon.');
 
 		this.queue.addChoice({choice: 'start'});
 		this.midTurn = true;
 		if (!this.requestState) this.go();
 	},
-	//modded to alternate and announce speed tie winner each turn
+	// modded to alternate and announce speed tie winner each turn
 	nextTurn() {
 		this.turn++;
 		this.lastSuccessfulMoveThisTurn = null;
@@ -1616,13 +1611,13 @@ export const Scripts: ModdedBattleScriptsData = {
 
 		this.makeRequest('move');
 	},
-	//modded to select next Pokemon on team
+	// modded to select next Pokemon on team
 	getRandomSwitchable(side: Side) {
 		if (!side.pokemonLeft) return null;
 		let toSwitch: Pokemon | null = null;
 		let i = 0;
 		while (!toSwitch) {
-			let possibleSwitch = side.pokemon[side.active.length + i];
+			const possibleSwitch = side.pokemon[side.active.length + i];
 			if (!possibleSwitch.fainted) toSwitch = possibleSwitch;
 			i++;
 		}

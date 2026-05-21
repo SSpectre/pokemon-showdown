@@ -648,7 +648,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 				}
 			}
 			if (stats.length) {
-				for (let i of stats) {
+				for (const i of stats) {
 					const boost: SparseBoostsTable = {};
 					boost[i] = 0.4;
 					this.boost(boost);

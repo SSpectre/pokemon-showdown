@@ -350,7 +350,7 @@ interface ModdedBattlePokemon {
 	ignoringAbility?: (this: Pokemon) => boolean;
 	ignoringItem?: (this: Pokemon) => boolean;
 	addVolatile?: (this: Pokemon, status: string | Condition, source: Pokemon | null, sourceEffect: Effect | null, linkedStatus: string | Condition | null
-		) => boolean;
+	) => boolean;
 	trySetStatus?: (this: Pokemon, status: string | Condition, source: Pokemon | null, sourceEffect: Effect | null) => boolean;
 	heal?: (this: Pokemon, d: number, source: Pokemon | null, effect: Effect | null) => number | false;
 	getHealth?: (this: Pokemon) => {side: SideID, secret: string, shared: string};

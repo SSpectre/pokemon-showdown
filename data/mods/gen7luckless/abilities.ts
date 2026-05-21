@@ -1,6 +1,6 @@
-import { Pokemon } from "../../../sim";
-import { SecondaryEffect } from "../../../sim/dex-moves";
-import { Scripts } from "./scripts";
+import {Pokemon} from "../../../sim";
+import {SecondaryEffect} from "../../../sim/dex-moves";
+import {Scripts} from "./scripts";
 
 export const Abilities: {[k: string]: ModdedAbilityData} = {
 	angerpoint: {
@@ -158,8 +158,8 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	moody: {
 		inherit: true,
 		onResidual(pokemon) {
-			let stats: BoostID[] = [];
-			
+			const stats: BoostID[] = [];
+
 			let statPlus: BoostID;
 			for (statPlus in pokemon.boosts) {
 				if (pokemon.boosts[statPlus] < 6) {
@@ -167,7 +167,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				}
 			}
 			if (stats.length) {
-				for (let i of stats) {
+				for (const i of stats) {
 					const boost: SparseBoostsTable = {};
 					boost[i] = 0.14;
 					this.boost(boost);
@@ -215,7 +215,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 			for (const secondary of move.secondaries) {
 				if (secondary.status === 'psn') {
-					if (typeof secondary.chance === 'number') secondary.chance = secondary.chance + 30 * (100 - secondary.chance)
+					if (typeof secondary.chance === 'number') secondary.chance = secondary.chance + 30 * (100 - secondary.chance);
 					return;
 				}
 			}
@@ -256,10 +256,10 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onResidual(pokemon) {
 			if (pokemon.hp && pokemon.status) {
 				this.debug('shed skin');
-				
+
 				if (pokemon.statusState.severity > 33) {
-					let status = pokemon.getStatus();
-					let severity = pokemon.statusState.severity - 33;
+					const status = pokemon.getStatus();
+					const severity = pokemon.statusState.severity - 33;
 					pokemon.clearStatus();
 					Scripts.severity = severity;
 					pokemon.setStatus(status);
@@ -292,7 +292,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		onTryAddVolatile(target, source, move) {
 			if (target.name === 'flinch') {
-				//don't need to multiply by severity of flinch because boost() multiplies by severity already
+				// don't need to multiply by severity of flinch because boost() multiplies by severity already
 				this.boost({spe: 1});
 			}
 		},
@@ -331,11 +331,11 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.category === 'Physical') {
 				if (attacker.status === 'psn' || attacker.status === 'tox') {
-					return this.chainModify(1 +  0.5 *attacker.statusState.severity / 100);
+					return this.chainModify(1 + 0.5 * attacker.statusState.severity / 100);
 				} else if (attacker.status === 'aff') {
-					return this.chainModify(1 +  0.5 *attacker.statusState.severity / 333);
+					return this.chainModify(1 + 0.5 * attacker.statusState.severity / 333);
 				} else if (attacker.status === 'all') {
-					return this.chainModify(1 +  0.5 *attacker.statusState.severity / 500);
+					return this.chainModify(1 + 0.5 * attacker.statusState.severity / 500);
 				}
 			}
 		},

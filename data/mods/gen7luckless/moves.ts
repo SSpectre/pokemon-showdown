@@ -1,7 +1,7 @@
-import { battlemodchat } from "../../../config/config-example";
-import { nameList } from "../../../server/chat-plugins/usersearch";
-import { Pokemon } from "../../../sim";
-import { Scripts } from "./scripts";
+import {battlemodchat} from "../../../config/config-example";
+import {nameList} from "../../../server/chat-plugins/usersearch";
+import {Pokemon} from "../../../sim";
+import {Scripts} from "./scripts";
 
 export const Moves: {[k: string]: ModdedMoveData} = {
 	"10000000voltthunderbolt": {
@@ -23,7 +23,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			}
 			if (stats.length) {
-				for (let i of stats) {
+				for (const i of stats) {
 					const boost: SparseBoostsTable = {};
 					boost[i] = 0.29;
 					this.boost(boost);
@@ -72,9 +72,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (Scripts.severity! >= ally.statusState.severity) {
 					if (ally.cureStatus()) success = true;
 				} else {
-					let status = ally.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = ally.statusState.severity - originalSeverity;
+					const status = ally.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = ally.statusState.severity - originalSeverity;
 					if (ally.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -90,7 +90,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	assist: {
 		inherit: true,
 		isNonstandard: null,
-		
+
 		category: "Special",
 		useAverageStats: true,
 		flags: {protect: 1, mirror: 1},
@@ -125,7 +125,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (typeof m.basePower === 'number') totalPower += m.basePower;
 				if (typeof m.accuracy === 'number') totalAccuracy += m.accuracy;
 				else totalAccuracy += 100;
-				
+
 				let highSeverity;
 				if (m.status || m.volatileStatus || m.boosts && m.target !== 'self') {
 					if (typeof m.accuracy === 'number') {
@@ -157,7 +157,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 						else if (m.secondary.boosts) move.secondary.boosts = m.secondary.boosts;
 					}
 				}
-				
+
 				let highSelf;
 				if (m.self && (m.self.status || m.self.volatileStatus || m.self.boosts) || m.boosts && m.target === 'self') {
 					if (typeof m.accuracy === 'number') {
@@ -169,12 +169,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					}
 					if (highSelf > highestSelf) {
 						highestSelf = highSelf;
-						
+
 						if (m.self) {
 							if (m.self.status) move.self.status = m.self.status;
 							else if (m.self.volatileStatus) move.self.volatileStatus = m.self.volatileStatus;
 							else if (m.self.boosts) move.self.boosts = m.self.boosts;
-						} else move.self.boosts = m.boosts;
+						} else { move.self.boosts = m.boosts; }
 					}
 				} else if (m.secondary && m.secondary.self && (m.secondary.self.status || m.secondary.self.volatileStatus || m.secondary.self.boosts)) {
 					if (typeof m.secondary.chance === 'number') {
@@ -227,7 +227,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					this.add('-start', pokemon, 'Attract', '[severity] ' + Scripts.severity);
 				}
 
-				//max 2 turns
+				// max 2 turns
 				this.effectState.time = Math.floor(2 * this.effectState.severity / 100) + 1;
 				this.effectState.severityModifier = 1 - 0.5 * this.effectState.severity / 100;
 			},
@@ -273,8 +273,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (target.volatiles['stall']) {
 					this.add('-singleturn', target, 'Protect', '[severity] ' + target.volatiles['stall'].severity * Scripts.severity! / 100);
 					this.effectState.severity = target.volatiles['stall'].severity;
-				}
-				else this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity);
+				} else { this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity); }
 
 				this.effectState.incomingSeverityModifier = 1 - this.effectState.severity / 100;
 			},
@@ -331,7 +330,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	beatup: {
 		inherit: true,
 		basePowerCallback(pokemon, target, move) {
-			let ally = move.allies!.shift()!;
+			const ally = move.allies!.shift()!;
 			let power;
 			if (ally.status) power = Math.floor((5 + Math.floor(ally.species.baseStats.atk / 10)) * (1 - ally.statusState.severity / 100));
 			else power = 5 + Math.floor(ally.species.baseStats.atk / 10);
@@ -508,9 +507,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 			let attackType = target.lastMoveUsed.type;
 			if (attackType === '???') attackType = 'typeless';
-			let condition = 'resist' + attackType.toLowerCase()
+			const condition = 'resist' + attackType.toLowerCase();
 			if (source.volatiles[condition]) return false;
-			let resistances = ['resistnormal', 'resistfire', 'resistwater', 'resistelectric', 'resistgrass', 'resistice', 'resistfighting', 'resistpoison', 'resistground', 'resistflying', 'resistpsychic', 'resistbug', 'resistrock', 'resistghost', 'resistdragon', 'resistdark', 'resiststeel', 'resistfairy', 'resisttypeless']
+			const resistances = ['resistnormal', 'resistfire', 'resistwater', 'resistelectric', 'resistgrass', 'resistice', 'resistfighting', 'resistpoison', 'resistground', 'resistflying', 'resistpsychic', 'resistbug', 'resistrock', 'resistghost', 'resistdragon', 'resistdark', 'resiststeel', 'resistfairy', 'resisttypeless'];
 			for (const resistance of resistances) {
 				if (source.volatiles[resistance]) {
 					source.removeVolatile(resistance);
@@ -519,7 +518,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 			source.addVolatile(condition);
 			this.add('-start', source, condition);
-		}
+		},
 	},
 	corkscrewcrash: {
 		inherit: true,
@@ -668,10 +667,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				} else {
 					this.add('-start', pokemon, 'Disable', pokemon.lastMove.name, '[severity] ' + Scripts.severity);
 				}
-				
-				//max 4 turns
-				//time is used for finding last turn with decreased severityModifier
-				//duration is used for ending status
+
+				// max 4 turns
+				// time is used for finding last turn with decreased severityModifier
+				// duration is used for ending status
 				this.effectState.time = Math.floor(5 * this.effectState.severity / 100);
 				this.effectState.duration = Math.floor(5 * this.effectState.severity / 100) + 1;
 				if (this.effectState.severity === 100) this.effectState.duration--;
@@ -697,8 +696,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onBeforeMovePriority: 7,
 			onBeforeMove(attacker, defender, move) {
 				if (!move.isZ && move.id === this.effectState.move) {
-					if (this.effectState.time > 0)
-					{
+					if (this.effectState.time > 0) {
 						this.add('cant', attacker, 'Disable', move);
 						return false;
 					}
@@ -813,7 +811,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onEnd(pokemon) {
 				this.add('-end', pokemon, 'Embargo');
 			},
-		}
+		},
 	},
 	encore: {
 		inherit: true,
@@ -836,9 +834,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.effectState.move = move.id;
 				this.add('-start', target, 'Encore', '[severity] ' + Scripts.severity);
 
-				//max 3 turns
-				//time is used for finding last turn with decreased severityModifier
-				//duration is used for ending status
+				// max 3 turns
+				// time is used for finding last turn with decreased severityModifier
+				// duration is used for ending status
 				this.effectState.time = Math.floor(3 * this.effectState.severity / 100);
 				this.effectState.duration = Math.floor(3 * this.effectState.severity / 100) + 1;
 				if (this.effectState.severity === 100) this.effectState.duration--;
@@ -875,7 +873,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onBeforeMovePriority: 5,
 			onBeforeMove(attacker, defender, move) {
 				if (move.id !== this.effectState.move) this.effectState.severityModifier = 1 - (3 * this.effectState.severity / 100) % 1;
-			}
+			},
 		},
 	},
 	endure: {
@@ -886,12 +884,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (target.volatiles['stall']) {
 					this.add('-singleturn', target, 'move: Endure', '[severity] ' + target.volatiles['stall'].severity);
 					this.effectState.severity = target.volatiles['stall'].severity;
-				}
-				else this.add('-singleturn', target, 'move: Endure', '[severity] ' + Scripts.severity);
+				} else { this.add('-singleturn', target, 'move: Endure', '[severity] ' + Scripts.severity); }
 			},
 			onDamagePriority: -10,
 			onDamage(damage, target, source, effect) {
-				let hpResult = target.maxhp - target.maxhp * this.effectState.severity / 100 + 1;
+				const hpResult = target.maxhp - target.maxhp * this.effectState.severity / 100 + 1;
 				if (effect?.effectType === 'Move' && target.hp >= hpResult && damage >= target.hp - hpResult) {
 					this.add('-activate', target, 'move: Endure');
 					return target.hp - hpResult;
@@ -1141,8 +1138,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (const pokemon of this.getAllActive()) {
 				const newBoosts: SparseBoostsTable = {};
 				let i: BoostID;
-				for (i in pokemon.boosts)
-				{
+				for (i in pokemon.boosts) {
 					newBoosts[i] = pokemon.boosts[i] - pokemon.boosts[i] * Scripts.severity! / 100;
 				}
 
@@ -1158,13 +1154,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			let success = false;
 			for (const ally of side.pokemon) {
 				if (ally.hasAbility('soundproof')) continue;
-				
+
 				if (Scripts.severity! >= ally.statusState.severity) {
 					if (ally.cureStatus()) success = true;
 				} else {
-					let status = ally.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = ally.statusState.severity - originalSeverity;
+					const status = ally.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = ally.statusState.severity - originalSeverity;
 					if (ally.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -1191,7 +1187,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onStart(pokemon, source) {
 				this.add('-start', pokemon, 'move: Heal Block', '[severity] ' + Scripts.severity);
-				//max 5 turns
+				// max 5 turns
 				this.effectState.time = Math.floor(5 * this.effectState.severity / 100) + 1;
 				source.moveThisTurnResult = true;
 			},
@@ -1367,8 +1363,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (typeof modifiedAccuracy === 'number') {
 				modifiedAccuracy = this.clampIntRange(modifiedAccuracy, 0, 100);
 				modifiedDamage = move.basePower * modifiedAccuracy / 100;
-			}
-			else modifiedDamage = move.basePower;
+			} else { modifiedDamage = move.basePower; }
 			this.damage(Math.round(source.maxhp / 2) * (1 - modifiedDamage / move.basePower), source, source, move);
 		},
 	},
@@ -1445,7 +1440,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 						attacker.addVolatile('imprisoned');
 					}
 				}
-			}
+			},
 		},
 	},
 	incinerate: {
@@ -1500,11 +1495,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (typeof modifiedAccuracy === 'number') {
 				modifiedAccuracy = this.clampIntRange(modifiedAccuracy, 0, 100);
 				modifiedDamage = move.basePower * modifiedAccuracy / 100;
-			} else modifiedDamage = move.basePower;
+			} else { modifiedDamage = move.basePower; }
 			this.damage(Math.round(source.maxhp / 2) * (1 - modifiedDamage / move.basePower), source, source, move);
 		},
 	},
-	
+
 	karatechop: {
 		inherit: true,
 		isNonstandard: null,
@@ -1517,8 +1512,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (target.volatiles['stall']) {
 					this.add('-singleturn', target, 'Protect', '[severity] ' + target.volatiles['stall'].severity * Scripts.severity! / 100);
 					this.effectState.severity = target.volatiles['stall'].severity;
-				}
-				else this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity);
+				} else { this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity); }
 
 				this.effectState.incomingSeverityModifier = 1 - this.effectState.severity / 100;
 			},
@@ -1566,7 +1560,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 		onAfterHit(target, source) {
-			if (source.hp && Scripts.severity! >= 50 ) {
+			if (source.hp && Scripts.severity! >= 50) {
 				const item = target.takeItem();
 				if (item) {
 					this.add('-enditem', target, item.name, '[from] move: Knock Off', '[of] ' + source);
@@ -1647,8 +1641,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onSourceAccuracy(accuracy, target, source, move) {
 				if (move && source === this.effectState.target && target === this.effectState.source) {
-					if (accuracy === 100) return 100;
-					else if (typeof accuracy === 'number') {
+					if (accuracy === 100) { return 100; } else if (typeof accuracy === 'number') {
 						return accuracy + (100 - accuracy) * this.effectState.severity / 100;
 					}
 				}
@@ -1717,7 +1710,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				newMove.hasBounced = true;
 				newMove.pranksterBoosted = false;
 				this.actions.useMove(newMove, this.effectState.target, source);
-				
+
 				Scripts.severity = this.effectState.severity;
 				source.addVolatile('movestolen');
 			},
@@ -1743,7 +1736,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onStart(target) {
 				this.add('-start', target, 'Magnet Rise', '[severity] ' + Scripts.severity);
 
-				//max 5 turns
+				// max 5 turns
 				this.effectState.duration = Math.round(5 * this.effectState.severity / 100);
 			},
 			onImmunity(type) {
@@ -2046,14 +2039,14 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			duration: 1,
 			onStart(target) {
 				this.add('-singleturn', target, 'Powder', '[severity] ' + Scripts.severity);
-				this.effectState.severityModifier = 1 - this.effectState.severity / 100; 
+				this.effectState.severityModifier = 1 - this.effectState.severity / 100;
 			},
 			onTryMovePriority: -1,
 			onTryMove(pokemon, target, move) {
 				if (move.type === 'Fire') {
 					this.add('-activate', pokemon, 'move: Powder');
 					this.damage(this.clampIntRange(Math.round(pokemon.maxhp * this.effectState.severity / 400), 1));
-					return this.effectState.severity < 100
+					return this.effectState.severity < 100;
 				}
 			},
 		},
@@ -2105,8 +2098,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (target.volatiles['stall']) {
 					this.add('-singleturn', target, 'Protect', '[severity] ' + target.volatiles['stall'].severity * Scripts.severity! / 100);
 					this.effectState.severity = target.volatiles['stall'].severity;
-				}
-				else this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity);
+				} else { this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity); }
 
 				this.effectState.incomingSeverityModifier = 1 - this.effectState.severity / 100;
 			},
@@ -2189,9 +2181,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (Scripts.severity! >= pokemon.statusState.severity) {
 					pokemon.cureStatus();
 				} else {
-					let status = pokemon.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = pokemon.statusState.severity - originalSeverity;
+					const status = pokemon.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = pokemon.statusState.severity - originalSeverity;
 					if (pokemon.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -2209,9 +2201,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			for (i in target.boosts) {
 				source.boosts[i] = source.boosts[i] - (source.boosts[i] - target.boosts[i]) * Scripts.severity! / 100;
 			}
-			
+
 			const volatilesToCopy = ['focusenergy', 'gmaxchistrike', 'laserfocus'];
-			let originalSeverity = Scripts.severity!;
+			const originalSeverity = Scripts.severity!;
 			for (const volatile of volatilesToCopy) {
 				if (target.volatiles[volatile]) {
 					Scripts.severity = target.volatiles[volatile].severity * originalSeverity / 100;
@@ -2253,20 +2245,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source, move) {
 			let success = false;
 			if (Scripts.severity! >= target.statusState.severity) {
-				let statusSeverity = target.statusState.severity;
+				const statusSeverity = target.statusState.severity;
 				if (target.cureStatus()) {
 					this.heal(Math.ceil(source.maxhp * 0.5 * statusSeverity * Scripts.severity! / 10000), source);
 					success = true;
 				}
 			} else {
-				let status = target.getStatus();
-				let originalSeverity = Scripts.severity!;
-				let severity = target.statusState.severity - originalSeverity;
+				const status = target.getStatus();
+				const originalSeverity = Scripts.severity!;
+				const severity = target.statusState.severity - originalSeverity;
 				if (target.clearStatus()) {
 					Scripts.severity = severity;
 					move.flags.lesser = 1;
 					target.setStatus(status, source, move);
-					this.heal(Math.ceil(source.maxhp * 0.5 * originalSeverity * Scripts.severity! / 10000), source);
+					this.heal(Math.ceil(source.maxhp * 0.5 * originalSeverity * Scripts.severity / 10000), source);
 					Scripts.severity = originalSeverity;
 					success = true;
 				}
@@ -2304,8 +2296,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (source.volatiles['stall']) {
 					this.add('-singleturn', source, 'Quick Guard', '[severity] ' + source.volatiles['stall'].severity * Scripts.severity! / 100);
 					this.effectState.severity = source.volatiles['stall'].severity;
-				}
-				else this.add('-singleturn', source, 'Quick Guard', '[severity] ' + Scripts.severity);
+				} else { this.add('-singleturn', source, 'Quick Guard', '[severity] ' + Scripts.severity); }
 
 				this.effectState.incomingSeverityModifier = 1 - this.effectState.severity / 100;
 			},
@@ -2376,14 +2367,14 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 		onHit(target, source, move) {
-			let originalSeverity = Scripts.severity!;
+			const originalSeverity = Scripts.severity!;
 			let severity = originalSeverity;
 			if (Scripts.severity! < target.statusState.severity) severity = target.statusState.severity;
 			target.clearStatus();
 			Scripts.severity = severity;
 			if (!target.setStatus('slp', source, move)) return false;
 			Scripts.severity = originalSeverity;
-			this.heal(target.maxhp * Scripts.severity! / 100);
+			this.heal(target.maxhp * Scripts.severity / 100);
 		},
 	},
 	return: {
@@ -2433,7 +2424,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source, move) {
 			if (Scripts.severity! >= 50) move.self!.volatileStatus = 'roost';
 			else move.self!.volatileStatus = undefined;
-		}
+		},
 	},
 	rototiller: {
 		inherit: true,
@@ -2544,7 +2535,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (typeof m.basePower === 'number') totalPower += m.basePower;
 				if (typeof m.accuracy === 'number') totalAccuracy += m.accuracy;
 				else totalAccuracy += 100;
-				
+
 				let highSeverity;
 				if (m.status || m.volatileStatus || m.boosts && m.target !== 'self') {
 					if (typeof m.accuracy === 'number') {
@@ -2576,7 +2567,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 						else if (m.secondary.boosts) move.secondary.boosts = m.secondary.boosts;
 					}
 				}
-				
+
 				let highSelf;
 				if (m.self && (m.self.status || m.self.volatileStatus || m.self.boosts) || m.boosts && m.target === 'self') {
 					if (typeof m.accuracy === 'number') {
@@ -2588,12 +2579,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					}
 					if (highSelf > highestSelf) {
 						highestSelf = highSelf;
-						
+
 						if (m.self) {
 							if (m.self.status) move.self.status = m.self.status;
 							else if (m.self.volatileStatus) move.self.volatileStatus = m.self.volatileStatus;
 							else if (m.self.boosts) move.self.boosts = m.self.boosts;
-						} else move.self.boosts = m.boosts;
+						} else { move.self.boosts = m.boosts; }
 					}
 				} else if (m.secondary && m.secondary.self && (m.secondary.self.status || m.secondary.self.volatileStatus || m.secondary.self.boosts)) {
 					if (typeof m.secondary.chance === 'number') {
@@ -2621,17 +2612,17 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				pokemon.statusState.severityModifier = 1;
 				move.accuracy *= (2 * pokemon.statusState.severity / 100) % 1;
 			} else if (pokemon.status === 'aff') {
-				//remove the sleep part of the severity modifier
+				// remove the sleep part of the severity modifier
 				this.effectState.severityModifier = 1;
 				this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 300;
 				move.accuracy *= pokemon.statusState.severity / 273;
 			} else if (pokemon.status === 'all') {
-				//remove the sleep part of the severity modifier
+				// remove the sleep part of the severity modifier
 				this.effectState.severityModifier = 1;
 				this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 500;
 				move.accuracy *= pokemon.statusState.severity / 500;
 			}
-			
+
 			move.secondaries.push(move.secondary);
 		},
 		onModifyMove(move, pokemon, target) {
@@ -2679,7 +2670,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		isNonstandard: null,
 		basePowerCallback(pokemon, target, move) {
-			let severity = Scripts.severity! >= target.statusState.severity ? target.statusState.severity : Scripts.severity!;
+			const severity = Scripts.severity! >= target.statusState.severity ? target.statusState.severity : Scripts.severity!;
 			if (target.status === 'par') return move.basePower * (1 + severity / 100);
 			if (target.status === 'aff' || target.status === 'tri') return move.basePower * (1 + severity / 300);
 			if (target.status === 'all') return move.basePower * (1 + severity / 500);
@@ -2690,9 +2681,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (Scripts.severity! >= target.statusState.severity) {
 					target.cureStatus();
 				} else {
-					let status = target.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = target.statusState.severity - originalSeverity;
+					const status = target.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = target.statusState.severity - originalSeverity;
 					if (target.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -2737,12 +2728,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				pokemon.statusState.severityModifier = 1;
 				return move.basePower * (2 * pokemon.statusState.severity / 100) % 1;
 			} else if (pokemon.status === 'aff') {
-				//remove the sleep part of the severity modifier
+				// remove the sleep part of the severity modifier
 				this.effectState.severityModifier = 1;
 				this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 300;
 				return move.basePower * pokemon.statusState.severity / 273;
 			} else if (pokemon.status === 'all') {
-				//remove the sleep part of the severity modifier
+				// remove the sleep part of the severity modifier
 				this.effectState.severityModifier = 1;
 				this.effectState.severityModifier *= 1 - 0.25 * this.effectState.severity / 500;
 				return move.basePower * pokemon.statusState.severity / 500;
@@ -2772,9 +2763,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					if (Scripts.severity! >= target.statusState.severity) {
 						target.cureStatus();
 					} else {
-						let status = target.getStatus();
-						let originalSeverity = Scripts.severity!;
-						let severity = target.statusState.severity - originalSeverity;
+						const status = target.getStatus();
+						const originalSeverity = Scripts.severity!;
+						const severity = target.statusState.severity - originalSeverity;
 						if (target.clearStatus()) {
 							Scripts.severity = severity;
 							move.flags.lesser = 1;
@@ -2795,8 +2786,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	speedswap: {
 		inherit: true,
 		onHit(target, source) {
-			let newTargetSpeed = target.storedStats.spe - (target.storedStats.spe - source.storedStats.spe) * Scripts.severity! / 100;
-			let newSourceSpeed = source.storedStats.spe - (source.storedStats.spe - target.storedStats.spe) * Scripts.severity! / 100;
+			const newTargetSpeed = target.storedStats.spe - (target.storedStats.spe - source.storedStats.spe) * Scripts.severity! / 100;
+			const newSourceSpeed = source.storedStats.spe - (source.storedStats.spe - target.storedStats.spe) * Scripts.severity! / 100;
 
 			target.storedStats.spe = newTargetSpeed;
 			source.storedStats.spe = newSourceSpeed;
@@ -2827,8 +2818,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (target.volatiles['stall']) {
 					this.add('-singleturn', target, 'Protect', '[severity] ' + target.volatiles['stall'].severity * Scripts.severity! / 100);
 					this.effectState.severity = target.volatiles['stall'].severity;
-				}
-				else this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity);
+				} else { this.add('-singleturn', target, 'Protect', '[severity] ' + Scripts.severity); }
 
 				this.effectState.incomingSeverityModifier = 1 - this.effectState.severity / 100;
 			},
@@ -2973,9 +2963,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			duration: 3,
 			onStart(target) {
 				this.add('-start', target, 'move: Taunt', '[severity] ' + Scripts.severity);
-				//max 3 turns
-				//time is used for finding last turn with decreased severityModifier
-				//duration is used for ending status
+				// max 3 turns
+				// time is used for finding last turn with decreased severityModifier
+				// duration is used for ending status
 				this.effectState.time = Math.floor(3 * this.effectState.severity / 100);
 				this.effectState.duration = Math.floor(3 * this.effectState.severity / 100) + 1;
 				if (this.effectState.severity === 100) this.effectState.duration--;
@@ -3031,9 +3021,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (target.volatiles['smackdown'] || target.volatiles['ingrain'] && target.volatiles['ingrain'].severity >= 50) return false;
 				this.add('-start', target, 'Telekinesis', '[severity] ' + Scripts.severity);
 
-				//max 3 turns
-				//time is used for finding last turn with perfect accuracy
-				//duration is used for ending status
+				// max 3 turns
+				// time is used for finding last turn with perfect accuracy
+				// duration is used for ending status
 				this.effectState.time = Math.floor(3 * this.effectState.severity / 100);
 				this.effectState.duration = Math.floor(3 * this.effectState.severity / 100) + 1;
 				if (this.effectState.severity === 100) this.effectState.duration--;
@@ -3046,8 +3036,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			onAccuracy(accuracy, target, source, move) {
 				if (move && !move.ohko) {
 					if (this.effectState.time > 0) return true;
-					if (accuracy === 100) return 100;
-					else if (typeof accuracy === 'number') {
+					if (accuracy === 100) { return 100; } else if (typeof accuracy === 'number') {
 						return accuracy + (100 - accuracy) * ((3 * this.effectState.severity / 100) % 1);
 					}
 				}
@@ -3119,7 +3108,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					return false;
 				} else if (!move.isZ && !move.isMax && move.flags['sound'] && this.effectState.severity < 100) {
 					this.effectState.severityModifier = 1 - this.effectState.severity / 100;
-				} else this.effectState.severityModifier = 1;
+				} else { this.effectState.severityModifier = 1; }
 			},
 			onModifyMove(move, pokemon, target) {
 				if (!move.isZ && !move.isMax && move.flags['sound'] && this.effectState.severity === 100) {
@@ -3127,7 +3116,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					return false;
 				} else if (!move.isZ && !move.isMax && move.flags['sound'] && this.effectState.severity < 100) {
 					this.effectState.severityModifier = 1 - this.effectState.severity / 100;
-				} else this.effectState.severityModifier = 1;
+				} else { this.effectState.severityModifier = 1; }
 			},
 			onResidualOrder: 22,
 			onEnd(target) {
@@ -3172,7 +3161,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					if (move.id === attacker.lastMove.id) this.effectState.severityModifier = 1 - this.effectState.severity / 100;
 					else this.effectState.severityModifier = 1;
 				}
-			}
+			},
 		},
 	},
 	toxic: {
@@ -3279,9 +3268,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					if (Scripts.severity! >= allyActive.statusState.severity) {
 						allyActive.cureStatus();
 					} else {
-						let status = allyActive.getStatus();
-						let originalSeverity = Scripts.severity!;
-						let severity = allyActive.statusState.severity - originalSeverity;
+						const status = allyActive.getStatus();
+						const originalSeverity = Scripts.severity!;
+						const severity = allyActive.statusState.severity - originalSeverity;
 						if (allyActive.clearStatus()) {
 							Scripts.severity = severity;
 							move.flags.lesser = 1;
@@ -3295,9 +3284,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 					if (Scripts.severity! >= foeActive.statusState.severity) {
 						foeActive.cureStatus();
 					} else {
-						let status = foeActive.getStatus();
-						let originalSeverity = Scripts.severity!;
-						let severity = foeActive.statusState.severity - originalSeverity;
+						const status = foeActive.getStatus();
+						const originalSeverity = Scripts.severity!;
+						const severity = foeActive.statusState.severity - originalSeverity;
 						if (foeActive.clearStatus()) {
 							Scripts.severity = severity;
 							move.flags.lesser = 1;
@@ -3313,19 +3302,19 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		onHit(target, source, move) {
 			move.selfSwitch = (Scripts.severity! >= 50);
-		}
+		},
 	},
 	venomdrench: {
 		inherit: true,
 		onHit(target, source, move) {
 			if (target.status === 'psn' || target.status === 'tox') {
-				let severity = target.statusState.severity / 100;
+				const severity = target.statusState.severity / 100;
 				return !!this.boost({atk: -severity, spa: -severity, spe: -severity}, target, source, move);
 			} else if (target.status === 'aff') {
-				let severity = target.statusState.severity / 333
+				const severity = target.statusState.severity / 333;
 				return !!this.boost({atk: -severity, spa: -severity, spe: -severity}, target, source, move);
 			} else if (target.status === 'all') {
-				let severity = target.statusState.severity / 500
+				const severity = target.statusState.severity / 500;
 				return !!this.boost({atk: -severity, spa: -severity, spe: -severity}, target, source, move);
 			}
 			return false;
@@ -3347,7 +3336,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		onHit(target, source, move) {
 			move.selfSwitch = (Scripts.severity! >= 50);
-		}
+		},
 	},
 	wakeupslap: {
 		inherit: true,
@@ -3355,7 +3344,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		basePowerCallback(pokemon, target, move) {
 			if (target.hasAbility('comatose')) return move.basePower * 2;
 
-			let severity = Scripts.severity! >= target.statusState.severity ? target.statusState.severity : Scripts.severity!;
+			const severity = Scripts.severity! >= target.statusState.severity ? target.statusState.severity : Scripts.severity!;
 			if (target.status === 'slp') return move.basePower * (1 + severity / 100);
 			if (target.status === 'aff') return move.basePower * (1 + severity / 273);
 			if (target.status === 'all') return move.basePower * (1 + severity / 500);
@@ -3366,9 +3355,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (Scripts.severity! >= target.statusState.severity) {
 					target.cureStatus();
 				} else {
-					let status = target.getStatus();
-					let originalSeverity = Scripts.severity!;
-					let severity = target.statusState.severity - originalSeverity;
+					const status = target.getStatus();
+					const originalSeverity = Scripts.severity!;
+					const severity = target.statusState.severity - originalSeverity;
 					if (target.clearStatus()) {
 						Scripts.severity = severity;
 						move.flags.lesser = 1;
@@ -3395,8 +3384,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (source.volatiles['stall']) {
 					this.add('-singleturn', source, 'Wide Guard', '[severity] ' + source.volatiles['stall'].severity * Scripts.severity! / 100);
 					this.effectState.severity = source.volatiles['stall'].severity;
-				}
-				else this.add('-singleturn', source, 'Wide Guard', '[severity] ' + Scripts.severity);
+				} else { this.add('-singleturn', source, 'Wide Guard', '[severity] ' + Scripts.severity); }
 
 				this.effectState.incomingSeverityModifier = 1 - this.effectState.severity / 100;
 			},

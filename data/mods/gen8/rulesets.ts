@@ -6,7 +6,7 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 	standarddoubles: {
 		inherit: true,
 		ruleset: [
-			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'
+			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
 		],
 	},
 	obtainablemoves: {
@@ -62,4 +62,4 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 			this.makeRequest('teampreview');
 		},
 	},
-}
+};
