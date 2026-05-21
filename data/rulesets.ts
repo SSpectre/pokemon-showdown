@@ -162,19 +162,18 @@ export const Rulesets: {[k: string]: FormatData} = {
 		effectType: 'ValidatorRule',
 		name: 'Obtainable Moves',
 		desc: "Makes sure moves are learnable by the species.",
-		//this ban should be in place but it breaks things for some reason
-		/* banlist: [
+		banlist: [
 			// Leaf Blade: Gen 6+ Nuzleaf level-up
 			// Sucker Punch: Gen 4 Shiftry tutor
-			'Shiftry ++ Leaf Blade ++ Sucker Punch',
+			'Shiftry + Leaf Blade + Sucker Punch',
 
 			// Aura Break Zygarde can't be changed to 10% forme in gen 7
 			// making moves only obtainable from gen 6 illegal
-			'Zygarde-10% ++ Aura Break ++ Rock Smash',
-			'Zygarde-10% ++ Aura Break ++ Secret Power',
-			'Zygarde-10% ++ Aura Break ++ Strength',
+			'Zygarde-10% + Aura Break + Rock Smash',
+			'Zygarde-10% + Aura Break + Secret Power',
+			'Zygarde-10% + Aura Break + Strength',
 		],
-		onBegin() {
+		/* onBegin() {
 			this.add('rule', 'Obtainable Moves: [Shiftry + Leaf Blade + Sucker Punch] and [(Zygarde-10% + Aura Break) + Rock Smash/Secret Power/Strength] are unobtainable');
 		}, */
 		// Hardcoded in team-validator.ts

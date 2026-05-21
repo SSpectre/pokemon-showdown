@@ -9,6 +9,20 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'
 		],
 	},
+	obtainablemoves: {
+		inherit: true,
+		unbanlist: [
+			// Leaf Blade: Gen 6+ Nuzleaf level-up
+			// Sucker Punch: Gen 4 Shiftry tutor
+			'Shiftry + Leaf Blade + Sucker Punch',
+
+			// Aura Break Zygarde can't be changed to 10% forme in gen 7
+			// making moves only obtainable from gen 6 illegal
+			'Zygarde-10% + Aura Break + Rock Smash',
+			'Zygarde-10% + Aura Break + Secret Power',
+			'Zygarde-10% + Aura Break + Strength',
+		],
+	},
 	gravitysleepclause: {
 		effectType: 'ValidatorRule',
 		name: 'Gravity Sleep Clause',
