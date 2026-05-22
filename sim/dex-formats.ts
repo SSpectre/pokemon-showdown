@@ -823,7 +823,6 @@ export class DexFormats {
 	}
 
 	validateRule(rule: string, format: Format | null = null) {
-		console.log(format + ": " + rule);
 		if (rule !== rule.trim()) throw new Error(`Rule "${rule}" should be trimmed`);
 		switch (rule.charAt(0)) {
 		case '-':
@@ -874,9 +873,7 @@ export class DexFormats {
 	}
 
 	validateBanRule(rule: string) {
-		console.log(rule);
 		let id = toID(rule);
-		console.log(id);
 		if (id === 'unreleased') return 'unreleased';
 		if (id === 'nonexistent') return 'nonexistent';
 		const matches = [];
