@@ -39,7 +39,7 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 				if (!hasOrbeetle && species.name === "Orbeetle-Gmax") hasOrbeetle = true;
 				for (const moveid of set.moves) {
 					const move = this.dex.moves.get(moveid);
-					if (move.status && move.status === 'slp' && move.accuracy < 100) hasSleepMove = true;
+					if (move.status && move.status === 'slp' && (move.accuracy === true || move.accuracy < 100)) hasSleepMove = true;
 				}
 			}
 			if (hasOrbeetle && hasSleepMove) {
