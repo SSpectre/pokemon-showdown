@@ -1,3 +1,3 @@
-export const Scripts: ModdedBattleScriptsData = {
+export const Scripts: BattleScriptsData = {
 	gen: 7,
 };
