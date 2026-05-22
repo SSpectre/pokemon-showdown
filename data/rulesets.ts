@@ -173,9 +173,6 @@ export const Rulesets: {[k: string]: FormatData} = {
 			'Zygarde-10% + Aura Break + Secret Power',
 			'Zygarde-10% + Aura Break + Strength',
 		],
-		onBegin() {
-			this.add('rule', 'Obtainable Moves: [Shiftry + Leaf Blade + Sucker Punch] and [(Zygarde-10% + Aura Break) + Rock Smash/Secret Power/Strength] are unobtainable');
-		},
 		// Hardcoded in team-validator.ts
 	},
 	obtainableabilities: {
