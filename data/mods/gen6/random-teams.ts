@@ -1,10 +1,9 @@
-import {MoveCounter, TeamData} from '../../random-teams';
-import RandomGen7Teams from '../gen7/random-teams';
+import {MoveCounter, RandomTeams, TeamData} from '../../random-teams';
 import {PRNG, PRNGSeed} from '../../../sim/prng';
 import {Utils} from '../../../lib';
 import {toID} from '../../../sim/dex';
 
-export class RandomGen6Teams extends RandomGen7Teams {
+export class RandomGen6Teams extends RandomTeams {
 	constructor(format: Format | string, prng: PRNG | PRNGSeed | null) {
 		super(format, prng);
 		this.noStab = [...this.noStab, 'aquajet', 'fakeout', 'iceshard', 'machpunch', 'quickattack', 'vacuumwave'];
