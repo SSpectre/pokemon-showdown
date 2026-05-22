@@ -1893,6 +1893,7 @@ export const Chat = new class {
 		return commandTable;
 	}
 	loadPluginData(plugin: AnyObject, name: string) {
+		plugin = { ...plugin };
 		if (plugin.commands) {
 			Object.assign(Chat.commands, this.annotateCommands(plugin.commands));
 		}
