@@ -4,14 +4,6 @@ import {Pokemon} from "../../../sim";
 import {Scripts} from "./scripts";
 
 export const Moves: {[k: string]: ModdedMoveData} = {
-	"10000000voltthunderbolt": {
-		inherit: true,
-		isNonstandard: null,
-	},
-	aciddownpour: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	acupressure: {
 		inherit: true,
 		onHit(target) {
@@ -32,10 +24,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				return false;
 			}
 		},
-	},
-	alloutpummeling: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	anchorshot: {
 		inherit: true,
@@ -89,8 +77,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	assist: {
 		inherit: true,
-		isNonstandard: null,
-
 		category: "Special",
 		useAverageStats: true,
 		flags: {protect: 1, mirror: 1},
@@ -260,11 +246,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
-	baddybad: {
-		inherit: true,
-		accuracy: 100,
-		basePower: 90,
-	},
 	banefulbunker: {
 		inherit: true,
 		condition: {
@@ -311,21 +292,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	barrage: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	barrier: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	batonpass: {
 		inherit: true,
 		flags: {binary: 1},
-	},
-	beakblast: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	beatup: {
 		inherit: true,
@@ -354,52 +323,14 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	bestow: {
 		inherit: true,
-		isNonstandard: null,
 		flags: {mirror: 1, authentic: 1, allyanim: 1, binary: 1},
-	},
-	bide: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	blackholeeclipse: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	block: {
 		inherit: true,
 		flags: {reflectable: 1, mirror: 1, binary: 1},
 	},
-	bloomdoom: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	boneclub: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	bouncybubble: {
-		inherit: true,
-		basePower: 90,
-		pp: 15,
-	},
-	breakneckblitz: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	bubble: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	bugbite: {
 		inherit: true,
-		num: 450,
-		accuracy: 100,
-		basePower: 60,
-		category: "Physical",
-		name: "Bug Bite",
-		pp: 20,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
 		onHit(target, source) {
 			const item = target.getItem();
 			if (source.hp && item.isBerry && Scripts.severity! >= 50 && target.takeItem(source)) {
@@ -411,32 +342,14 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (item.onEat) source.ateBerry = true;
 			}
 		},
-		secondary: null,
-		target: "normal",
-		type: "Bug",
-		contestType: "Cute",
 	},
 	burnup: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, defrost: 1, binary: 1},
 	},
-	buzzybuzz: {
-		inherit: true,
-		basePower: 90,
-		pp: 15,
-	},
 	camouflage: {
 		inherit: true,
-		isNonstandard: null,
 		flags: {snatch: 1, binary: 1},
-	},
-	captivate: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	catastropika: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	charge: {
 		inherit: true,
@@ -460,39 +373,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	chatter: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	chipaway: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	circlethrow: {
 		inherit: true,
 		onHit(target, source, move) {
 			if (source.isActive && Scripts.severity! >= 50) move.forceSwitch = false;
 		},
-	},
-	clamp: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	clangoroussoulblaze: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	cometpunch: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	constrict: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	continentalcrush: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	conversion: {
 		inherit: true,
@@ -519,10 +404,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			source.addVolatile(condition);
 			this.add('-start', source, condition);
 		},
-	},
-	corkscrewcrash: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	counter: {
 		inherit: true,
@@ -581,36 +462,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.damage(pokemon.baseMaxhp * this.effectState.severity / 400);
 			},
 		},
-		target: "normal",
-	},
-	darkvoid: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	defog: {
-		inherit: true,
-		onHit(target, source, move) {
-			let success = false;
-			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
-			const removeTarget = [
-				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb',
-			];
-			const removeAll = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
-			for (const targetCondition of removeTarget) {
-				if (target.side.removeSideCondition(targetCondition)) {
-					if (!removeAll.includes(targetCondition)) continue;
-					this.add('-sideend', target.side, this.dex.conditions.get(targetCondition).name, '[from] move: Defog', '[of] ' + source);
-					success = true;
-				}
-			}
-			for (const sideCondition of removeAll) {
-				if (source.side.removeSideCondition(sideCondition)) {
-					this.add('-sideend', source.side, this.dex.conditions.get(sideCondition).name, '[from] move: Defog', '[of] ' + source);
-					success = true;
-				}
-			}
-			return success;
-		},
 	},
 	destinybond: {
 		inherit: true,
@@ -639,10 +490,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				pokemon.removeVolatile('destinybond');
 			},
 		},
-	},
-	devastatingdrake: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	disable: {
 		inherit: true,
@@ -714,22 +561,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	dizzypunch: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	doubleironbash: {
-		inherit: true,
-		isNonstandard: "LGPE",
-	},
-	doubleslap: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	dragonrage: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	dragontail: {
 		inherit: true,
 		onHit(target, source, move) {
@@ -748,58 +579,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			return move.basePower;
 		},
 	},
-	eggbomb: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	electricterrain: {
-		inherit: true,
-		condition: {
-			duration: 5,
-			durationCallback(source, effect) {
-				if (source?.hasItem('terrainextender')) {
-					return 8;
-				}
-				return 5;
-			},
-			onSetStatus(status, target, source, effect) {
-				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
-					if (effect.id === 'yawn' || (effect.effectType === 'Move' && !effect.secondaries)) {
-						this.add('-activate', target, 'move: Electric Terrain');
-					}
-					return false;
-				}
-			},
-			onTryAddVolatile(status, target) {
-				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
-				if (status.id === 'yawn') {
-					this.add('-activate', target, 'move: Electric Terrain');
-					return null;
-				}
-			},
-			onBasePower(basePower, attacker, defender, move) {
-				if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
-					this.debug('electric terrain boost');
-					return this.chainModify(1.5);
-				}
-			},
-			onFieldStart(field, source, effect) {
-				if (effect && effect.effectType === 'Ability') {
-					this.add('-fieldstart', 'move: Electric Terrain', '[from] ability: ' + effect, '[of] ' + source);
-				} else {
-					this.add('-fieldstart', 'move: Electric Terrain');
-				}
-			},
-			onFieldResidualOrder: 21,
-			onFieldResidualSubOrder: 2,
-			onFieldEnd() {
-				this.add('-fieldend', 'move: Electric Terrain');
-			},
-		},
-	},
 	embargo: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			duration: 5,
 			onStart(pokemon) {
@@ -900,10 +681,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
 	},
-	extremeevoboost: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	facade: {
 		inherit: true,
 		onBasePower(basePower, pokemon) {
@@ -920,18 +697,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {mirror: 1, authentic: 1, binary: 1},
 	},
-	feintattack: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	flameburst: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	flash: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	fling: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, allyanim: 1, binary: 1},
@@ -942,7 +707,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	foresight: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			noCopy: true,
 			onStart(pokemon) {
@@ -965,110 +729,14 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
 	},
-	freezyfrost: {
-		inherit: true,
-		accuracy: 100,
-		basePower: 90,
-		pp: 15,
-	},
-	frustration: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	futuresight: {
-		inherit: true,
-		isFutureMove: true,
-		onTry(source, target) {
-			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
-			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-				duration: 3,
-				move: 'futuresight',
-				source: source,
-				moveData: {
-					id: 'futuresight',
-					name: "Future Sight",
-					accuracy: 100,
-					basePower: 120,
-					category: "Special",
-					priority: 0,
-					flags: {},
-					ignoreImmunity: false,
-					effectType: 'Move',
-					isFutureMove: true,
-					type: 'Psychic',
-				},
-			});
-			this.add('-start', source, 'move: Future Sight');
-			return this.NOT_FAIL;
-		},
-	},
 	gastroacid: {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
-	},
-	genesissupernova: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	gigavolthavoc: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	glitzyglow: {
 		inherit: true,
 		accuracy: 100,
 		basePower: 90,
-	},
-	grassknot: {
-		inherit: true,
-		onTryHit() {},
-	},
-	grasswhistle: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	grassyterrain: {
-		inherit: true,
-		condition: {
-			duration: 5,
-			durationCallback(source, effect) {
-				if (source?.hasItem('terrainextender')) {
-					return 8;
-				}
-				return 5;
-			},
-			onBasePower(basePower, attacker, defender, move) {
-				const weakenedMoves = ['earthquake', 'bulldoze', 'magnitude'];
-				if (weakenedMoves.includes(move.id) && defender.isGrounded() && !defender.isSemiInvulnerable()) {
-					this.debug('move weakened by grassy terrain');
-					return this.chainModify(0.5);
-				}
-				if (move.type === 'Grass' && attacker.isGrounded()) {
-					this.debug('grassy terrain boost');
-					return this.chainModify(1.5);
-				}
-			},
-			onFieldStart(field, source, effect) {
-				if (effect && effect.effectType === 'Ability') {
-					this.add('-fieldstart', 'move: Grassy Terrain', '[from] ability: ' + effect, '[of] ' + source);
-				} else {
-					this.add('-fieldstart', 'move: Grassy Terrain');
-				}
-			},
-			onResidualOrder: 5,
-			onResidual(pokemon) {
-				if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
-					this.heal(pokemon.baseMaxhp / 16, pokemon, pokemon);
-				} else {
-					this.debug(`Pokemon semi-invuln or not grounded; Grassy Terrain skipped`);
-				}
-			},
-			onFieldResidualOrder: 21,
-			onFieldResidualSubOrder: 3,
-			onFieldEnd() {
-				this.add('-fieldend', 'move: Grassy Terrain');
-			},
-		},
 	},
 	grudge: {
 		inherit: true,
@@ -1096,10 +764,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				pokemon.removeVolatile('grudge');
 			},
 		},
-	},
-	guardianofalola: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	guardsplit: {
 		inherit: true,
@@ -1175,7 +839,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	healblock: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			duration: 5,
 			durationCallback(target, source, effect) {
@@ -1230,32 +893,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	healingwish: {
-		inherit: true,
-		condition: {
-			duration: 2,
-			onSwitchInPriority: 1,
-			onSwitchIn(target) {
-				if (!target.fainted) {
-					target.heal(target.maxhp);
-					target.setStatus('');
-					this.add('-heal', target, target.getHealth.bind(target), '[from] move: Healing Wish');
-					target.side.removeSlotCondition(target, 'healingwish');
-				}
-			},
-		},
-	},
-	healorder: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	heartstamp: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	heartswap: {
 		inherit: true,
-		isNonstandard: null,
 		onHit(target, source) {
 			const newTargetBoosts: SparseBoostsTable = {};
 			const newSourceBoosts: SparseBoostsTable = {};
@@ -1272,88 +911,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.add('-swapboost', source, target, '[from] move: Heart Swap');
 		},
 	},
-	heatcrash: {
-		inherit: true,
-		onTryHit() {},
-	},
-	heavyslam: {
-		inherit: true,
-		onTryHit() {},
-	},
 	hex: {
 		inherit: true,
 		basePowerCallback(pokemon, target, move) {
 			if (target.status || target.hasAbility('comatose')) return move.basePower * (1 + target.statusState.severity / 100);
 			return move.basePower;
 		},
-	},
-	hiddenpower: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerbug: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerdark: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerdragon: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerelectric: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerfighting: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerfire: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerflying: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerghost: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowergrass: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerground: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerice: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerpoison: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerpsychic: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerrock: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowersteel: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hiddenpowerwater: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	highjumpkick: {
 		inherit: true,
@@ -1366,53 +929,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			} else { modifiedDamage = move.basePower; }
 			this.damage(Math.round(source.maxhp / 2) * (1 - modifiedDamage / move.basePower), source, source, move);
 		},
-	},
-	howl: {
-		inherit: true,
-		flags: {snatch: 1},
-		boosts: {
-			atk: 1,
-		},
-		target: "self",
-	},
-	hydrovortex: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hyperfang: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hyperspacefury: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hyperspacehole: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	iceball: {
-		inherit: true,
-		isNonstandard: null,
-		basePowerCallback(pokemon, target, move) {
-			let bp = move.basePower;
-			if (pokemon.volatiles['iceball'] && pokemon.volatiles['iceball'].hitCount) {
-				bp *= Math.pow(2, pokemon.volatiles['iceball'].hitCount);
-				if (typeof move.accuracy === 'number') {
-					bp *= Math.pow(move.accuracy / 100, pokemon.volatiles['iceball'].hitCount);
-				}
-			}
-			if (pokemon.status !== 'slp') pokemon.addVolatile('iceball');
-			if (pokemon.volatiles['defensecurl']) {
-				bp *= 2;
-			}
-			this.debug("Ice Ball bp: " + bp);
-			return bp;
-		},
-	},
-	icehammer: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	imprison: {
 		inherit: true,
@@ -1452,10 +968,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
-	infernooverdrive: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	ingrain: {
 		inherit: true,
 		condition: {
@@ -1478,17 +990,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	iondeluge: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	judgment: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	jumpkick: {
 		inherit: true,
-		isNonstandard: null,
 		onAfterHit(target, source, move) {
 			let modifiedAccuracy = Scripts.actions!.finalAccuracy;
 			let modifiedDamage;
@@ -1498,11 +1001,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			} else { modifiedDamage = move.basePower; }
 			this.damage(Math.round(source.maxhp / 2) * (1 - modifiedDamage / move.basePower), source, source, move);
 		},
-	},
-
-	karatechop: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	kingsshield: {
 		inherit: true,
@@ -1611,23 +1109,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	letssnuggleforever: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	lightofruin: {
-		inherit: true,
-		isNonstandard: "Unobtainable",
-	},
-	lightthatburnsthesky: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	lockon: {
 		inherit: true,
-		onTryHit(target, source) {
-			if (source.volatiles['lockon']) return false;
-		},
 		onHit(target, source) {
 			source.addVolatile('lockon', target);
 			this.add('-start', source, 'Lock-On', '[of] ' + target, '[severity] ' + Scripts.severity);
@@ -1648,32 +1131,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 			onEnd(source) {
 				this.add('-end', source, 'Lock-On', '[silent]');
-			},
-		},
-	},
-	lowkick: {
-		inherit: true,
-		onTryHit() {},
-	},
-	luckychant: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	lunardance: {
-		inherit: true,
-		condition: {
-			duration: 2,
-			onSwitchInPriority: 1,
-			onSwitchIn(target) {
-				if (!target.fainted) {
-					target.heal(target.maxhp);
-					target.setStatus('');
-					for (const moveSlot of target.moveSlots) {
-						moveSlot.pp = moveSlot.maxpp;
-					}
-					this.add('-heal', target, target.getHealth.bind(target), '[from] move: Lunar Dance');
-					target.side.removeSlotCondition(target, 'lunardance');
-				}
 			},
 		},
 	},
@@ -1716,10 +1173,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	magnetbomb: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	magnetrise: {
 		inherit: true,
 		onTry(source, target, move) {
@@ -1750,26 +1203,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	magnitude: {
 		inherit: true,
-		isNonstandard: null,
 		basePower: 71,
 		onModifyMove(move, pokemon) {},
 		onUseMoveMessage(pokemon, target, move) {},
-	},
-	maliciousmoonsault: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	meditate: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	mefirst: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	menacingmoonrazemaelstrom: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	metronome: {
 		inherit: true,
@@ -1820,9 +1256,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	mindreader: {
 		inherit: true,
-		onTryHit(target, source) {
-			if (source.volatiles['lockon']) return false;
-		},
 		onHit(target, source) {
 			source.addVolatile('lockon', target);
 			this.add('-start', source, 'Lock-On', '[of] ' + target, '[severity] ' + Scripts.severity);
@@ -1858,7 +1291,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	miracleeye: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			noCopy: true,
 			onStart(pokemon) {
@@ -1898,42 +1330,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	mirrormove: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	mirrorshot: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	mudbomb: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	mudsport: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	multiattack: {
-		inherit: true,
-		basePower: 90,
-	},
 	naturalgift: {
 		inherit: true,
-		isNonstandard: null,
 		flags: {protect: 1, mirror: 1, binary: 1},
-	},
-	needlearm: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	neverendingnightmare: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	nightmare: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			noCopy: true,
 			onStart(pokemon) {
@@ -1955,18 +1357,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 		},
-	},
-	oceanicoperetta: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	odorsleuth: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	ominouswind: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	painsplit: {
 		inherit: true,
@@ -2034,7 +1424,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	powder: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			duration: 1,
 			onStart(target) {
@@ -2081,10 +1470,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.add('-swapboost', source, target, 'atk, spa', '[from] move: Power Swap');
 		},
 	},
-	precipiceblades: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	present: {
 		inherit: true,
 		basePower: 49,
@@ -2125,49 +1510,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				else return;
 			},
 		},
-	},
-	psychicterrain: {
-		inherit: true,
-		condition: {
-			duration: 5,
-			durationCallback(source, effect) {
-				if (source?.hasItem('terrainextender')) {
-					return 8;
-				}
-				return 5;
-			},
-			onTryHitPriority: 4,
-			onTryHit(target, source, effect) {
-				if (!target.isGrounded() || target.isSemiInvulnerable() || target.isAlly(source)) return;
-				if (effect && (effect.priority <= 0.1 || effect.target === 'self')) {
-					return;
-				}
-				this.add('-activate', target, 'move: Psychic Terrain');
-				return null;
-			},
-			onBasePower(basePower, attacker, defender, move) {
-				if (move.type === 'Psychic' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
-					this.debug('psychic terrain boost');
-					return this.chainModify(1.5);
-				}
-			},
-			onFieldStart(field, source, effect) {
-				if (effect && effect.effectType === 'Ability') {
-					this.add('-fieldstart', 'move: Psychic Terrain', '[from] ability: ' + effect, '[of] ' + source);
-				} else {
-					this.add('-fieldstart', 'move: Psychic Terrain');
-				}
-			},
-			onFieldResidualOrder: 21,
-			onFieldResidualSubOrder: 2,
-			onFieldEnd() {
-				this.add('-fieldend', 'move: Psychic Terrain');
-			},
-		},
-	},
-	psychoboost: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	psychoshift: {
 		inherit: true,
@@ -2217,28 +1559,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 	},
 	psywave: {
-		isNonstandard: null,
-		num: 149,
-		accuracy: 100,
-		basePower: 0,
 		damage: 'level',
-		category: "Special",
-		name: "Psywave",
-		pp: 15,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		secondary: null,
-		target: "normal",
-		type: "Psychic",
-		contestType: "Clever",
-	},
-	pulverizingpancake: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	punishment: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	purify: {
 		inherit: true,
@@ -2264,28 +1585,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			}
 			return success;
-		},
-	},
-	pursuit: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	quash: {
-		inherit: true,
-		onHit(target) {
-			if (this.activePerHalf === 1) return false; // fails in singles
-			const action = this.queue.willMove(target);
-			if (!action) return false;
-
-			action.priority = -7.1;
-			this.queue.cancelMove(target);
-			for (let i = this.queue.list.length - 1; i >= 0; i--) {
-				if (this.queue.list[i].choice === 'residual') {
-					this.queue.list.splice(i, 0, action);
-					break;
-				}
-			}
-			this.add('-activate', target, 'move: Quash');
 		},
 	},
 	quickguard: {
@@ -2323,19 +1622,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	rage: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	rapidspin: {
-		inherit: true,
-		basePower: 20,
-		secondary: null,
-	},
-	razorwind: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	recycle: {
 		inherit: true,
 		flags: {snatch: 1, binary: 1},
@@ -2343,14 +1629,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	reflecttype: {
 		inherit: true,
 		flags: {protect: 1, authentic: 1, allyanim: 1, binary: 1},
-	},
-	refresh: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	relicsong: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	rest: {
 		inherit: true,
@@ -2377,47 +1655,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.heal(target.maxhp * Scripts.severity / 100);
 		},
 	},
-	return: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	revelationdance: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	roar: {
 		inherit: true,
 		flags: {reflectable: 1, mirror: 1, sound: 1, authentic: 1, allyanim: 1, binary: 1},
 	},
-	rockclimb: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	roleplay: {
 		inherit: true,
 		flags: {authentic: 1, allyanim: 1, binary: 1},
-	},
-	rollingkick: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	rollout: {
-		inherit: true,
-		basePowerCallback(pokemon, target, move) {
-			let bp = move.basePower;
-			if (pokemon.volatiles['rollout'] && pokemon.volatiles['rollout'].hitCount) {
-				bp *= Math.pow(2, pokemon.volatiles['rollout'].hitCount);
-				if (typeof move.accuracy === 'number') {
-					bp *= Math.pow(move.accuracy / 100, pokemon.volatiles['rollout'].hitCount);
-				}
-			}
-			if (pokemon.status !== 'slp') pokemon.addVolatile('rollout');
-			if (pokemon.volatiles['defensecurl']) {
-				bp *= 2;
-			}
-			this.debug("Rollout bp: " + bp);
-			return bp;
-		},
 	},
 	roost: {
 		inherit: true,
@@ -2426,77 +1670,17 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			else move.self!.volatileStatus = undefined;
 		},
 	},
-	rototiller: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	sappyseed: {
-		inherit: true,
-		accuracy: 100,
-		basePower: 90,
-		pp: 15,
-	},
-	savagespinout: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	searingsunrazesmash: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	secretpower: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	seedflare: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	sharpen: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	shatteredpsyche: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	signalbeam: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	silverwind: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	simplebeam: {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
 	},
-	sinisterarrowraid: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	sizzlyslide: {
-		inherit: true,
-		basePower: 90,
-		pp: 15,
-	},
 	sketch: {
 		inherit: true,
-		isNonstandard: null,
 		flags: {authentic: 1, allyanim: 1, binary: 1},
 	},
 	skillswap: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, authentic: 1, allyanim: 1, binary: 1},
-	},
-	skydrop: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	skyuppercut: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	sleeptalk: {
 		inherit: true,
@@ -2628,7 +1812,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onModifyMove(move, pokemon, target) {
 			move.type = '???';
 		},
-		onHit(target) {		},
+		onHit(target) {},
 		target: "normal",
 	},
 	smackdown: {
@@ -2668,7 +1852,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	smellingsalts: {
 		inherit: true,
-		isNonstandard: null,
 		basePowerCallback(pokemon, target, move) {
 			const severity = Scripts.severity! >= target.statusState.severity ? target.statusState.severity : Scripts.severity!;
 			if (target.status === 'par') return move.basePower * (1 + severity / 100);
@@ -2696,7 +1879,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	},
 	snatch: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			duration: 1,
 			onStart(pokemon) {
@@ -2745,14 +1927,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
 	},
-	sonicboom: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	soulstealing7starstrike: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	sparklingaria: {
 		inherit: true,
 		secondary: {
@@ -2798,13 +1972,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 	},
 	spiderweb: {
-		inherit: true,
-		isNonstandard: null,
+		inherit: true
 		flags: {protect: 1, reflectable: 1, mirror: 1, binary: 1},
-	},
-	spikecannon: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	spikes: {
 		inherit: true,
@@ -2875,21 +2044,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.add("-activate", target, 'move: Spite', move.name, ppDeducted);
 		},
 	},
-	splinteredstormshards: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	spotlight: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	stealthrock: {
 		inherit: true,
 		flags: {reflectable: 1, binary: 1},
-	},
-	steamroller: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	stickyweb: {
 		inherit: true,
@@ -2899,63 +2056,13 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {snatch: 1, binary: 1},
 	},
-	stokedsparksurfer: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	substitute: {
 		inherit: true,
 		flags: {snatch: 1, nonsky: 1, binary: 1},
 	},
-	subzeroslammer: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	supersonicskystrike: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	switcheroo: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, allyanim: 1, binary: 1},
-		onHit(target, source, move) {
-			const yourItem = target.takeItem(source);
-			const myItem = source.takeItem();
-			if (target.item || source.item || (!yourItem && !myItem)) {
-				if (yourItem) target.item = yourItem.id;
-				if (myItem) source.item = myItem.id;
-				return false;
-			}
-			if (
-				(myItem && !this.singleEvent('TakeItem', myItem, source.itemState, target, source, move, myItem)) ||
-				(yourItem && !this.singleEvent('TakeItem', yourItem, target.itemState, source, target, move, yourItem))
-			) {
-				if (yourItem) target.item = yourItem.id;
-				if (myItem) source.item = myItem.id;
-				return false;
-			}
-			this.add('-activate', source, 'move: Trick', '[of] ' + target);
-			if (myItem) {
-				target.setItem(myItem);
-				this.add('-item', target, myItem, '[from] move: Switcheroo');
-			} else {
-				this.add('-enditem', target, yourItem, '[silent]', '[from] move: Switcheroo');
-			}
-			if (yourItem) {
-				source.setItem(yourItem);
-				this.add('-item', source, yourItem, '[from] move: Switcheroo');
-			} else {
-				this.add('-enditem', source, myItem, '[silent]', '[from] move: Switcheroo');
-			}
-		},
-	},
-	synchronoise: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	tailglow: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	taunt: {
 		inherit: true,
@@ -3003,13 +2110,8 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	tectonicrage: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	telekinesis: {
 		inherit: true,
-		isNonstandard: null,
 		condition: {
 			duration: 3,
 			onStart(target) {
@@ -3055,12 +2157,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-end', target, 'Telekinesis');
 			},
 		},
-	},
-	teleport: {
-		inherit: true,
-		priority: 0,
-		selfSwitch: false,
-		onTry: false,
 	},
 	thief: {
 		inherit: true,
@@ -3164,30 +2260,9 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
-	toxic: {
-		inherit: true,
-		onPrepareHit(target, source, move) {
-			if (source.hasType('Poison')) source.addVolatile('toxic');
-		},
-		condition: {
-			noCopy: true,
-			duration: 1,
-			onSourceInvulnerabilityPriority: 1,
-			onSourceInvulnerability(target, source, move) {
-				if (move && source === this.effectState.target) return 0;
-			},
-			onSourceAccuracy(accuracy, target, source, move) {
-				if (move && source === this.effectState.target) return true;
-			},
-		},
-	},
 	toxicspikes: {
 		inherit: true,
 		flags: {reflectable: 1, nonsky: 1, binary: 1},
-	},
-	toxicthread: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	transform: {
 		inherit: true,
@@ -3204,36 +2279,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	trick: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, allyanim: 1, binary: 1},
-		onHit(target, source, move) {
-			const yourItem = target.takeItem(source);
-			const myItem = source.takeItem();
-			if (target.item || source.item || (!yourItem && !myItem)) {
-				if (yourItem) target.item = yourItem.id;
-				if (myItem) source.item = myItem.id;
-				return false;
-			}
-			if (
-				(myItem && !this.singleEvent('TakeItem', myItem, source.itemState, target, source, move, myItem)) ||
-				(yourItem && !this.singleEvent('TakeItem', yourItem, target.itemState, source, target, move, yourItem))
-			) {
-				if (yourItem) target.item = yourItem.id;
-				if (myItem) source.item = myItem.id;
-				return false;
-			}
-			this.add('-activate', source, 'move: Trick', '[of] ' + target);
-			if (myItem) {
-				target.setItem(myItem);
-				this.add('-item', target, myItem, '[from] move: Trick');
-			} else {
-				this.add('-enditem', target, yourItem, '[silent]', '[from] move: Trick');
-			}
-			if (yourItem) {
-				source.setItem(yourItem);
-				this.add('-item', source, yourItem, '[from] move: Trick');
-			} else {
-				this.add('-enditem', source, myItem, '[silent]', '[from] move: Trick');
-			}
-		},
 	},
 	trickortreat: {
 		inherit: true,
@@ -3245,18 +2290,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (pokemon.hasAbility('skilllink') || move.accuracy) return 10 * move.hit;
 			return 10 * move.hit * move.accuracy;
 		},
-	},
-	trumpcard: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	twineedle: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	twinkletackle: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	uproar: {
 		inherit: true,
@@ -3368,10 +2401,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
-	watersport: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	whirlwind: {
 		inherit: true,
 		flags: {reflectable: 1, mirror: 1, authentic: 1, allyanim: 1, binary: 1},
@@ -3445,10 +2474,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			return false;
 		},
 	},
-	wringout: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	yawn: {
 		inherit: true,
 		onTryHit(target) {
@@ -3469,12 +2494,5 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				target.trySetStatus('slp', this.effectState.source);
 			},
 		},
-	},
-	zippyzap: {
-		inherit: true,
-		basePower: 50,
-		pp: 15,
-		willCrit: true,
-		secondary: null,
 	},
 };
