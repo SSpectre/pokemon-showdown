@@ -379,7 +379,7 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 	speedTieWinner?: number;
 	boost?: (
 		this: Battle, boost: SparseBoostsTable, target: Pokemon, source?: Pokemon | null,
-		effect?: Effect | string | null, isSecondary?: boolean, isSelf?: boolean
+		effect?: Effect | null, isSecondary?: boolean, isSelf?: boolean
 	) => boolean | null | 0;
 	spreadDamage?: (
 		this: Battle, damage: SpreadMoveDamage, targetArray: (false | Pokemon | null)[] | null,
@@ -398,7 +398,7 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 	win?: (this: Battle, side?: SideID | '' | Side | null) => boolean;
 	faintMessages?: (this: Battle, lastFirst?: boolean) => boolean | undefined;
 	tiebreak?: (this: Battle) => boolean;
-	speedSort?<T> (this: Battle, list: T[], comparator: (a: T, b: T) => number): void;
+	speedSort?<T extends AnyObject> (this: Battle, list: T[], comparator: (a: T, b: T) => number): void;
 	start?: (this: Battle) => void;
 	getRandomSwitchable?: (this: Battle, side: Side) => Pokemon | null;
 }

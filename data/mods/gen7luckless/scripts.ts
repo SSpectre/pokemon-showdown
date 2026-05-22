@@ -3,7 +3,6 @@ import {Dex, toID} from '../../../sim/dex';
 import {SecondaryEffect} from "../../../sim/dex-moves";
 
 export const Scripts: ModdedBattleScriptsData = {
-	inherit: 'gen7',
 	speedTieWinner: Math.floor(Math.random() * 2),
 	actions: {
 		critStage: 0,
@@ -1359,7 +1358,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		return finalDamage;
 	},
 	// modded to resolve speed ties based on alternating variable
-	speedSort<T>(this: Battle, list: T[], comparator: (a: T, b: T) => number = this.comparePriority) {
+	speedSort<T extends AnyObject>(this: Battle, list: T[], comparator: (a: T, b: T) => number = this.comparePriority) {
 		if (list.length < 2) return;
 		let sorted = 0;
 		// This is a Selection Sort - not the fastest sort in general, but
