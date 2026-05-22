@@ -1559,6 +1559,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 	},
 	psywave: {
+		inherit: true,
 		damage: 'level',
 	},
 	purify: {
@@ -1972,7 +1973,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		},
 	},
 	spiderweb: {
-		inherit: true
+		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, binary: 1},
 	},
 	spikes: {
