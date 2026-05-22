@@ -39,7 +39,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Anger Point",
 		desc: "If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 12 stages.",
 		shortDesc: "If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon, but not its substitute, is struck by a critical hit, its Attack is raised by 4 stages times the move's critical hit stage.",
 			shortDesc: "When hit, Attack raises 4 stages times the critical hit stage of the incoming move.",
 		},
@@ -100,7 +100,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Bad Dreams",
 		desc: "Causes adjacent opposing Pokemon to lose 1/8 of their maximum HP, rounded down, at the end of each turn if they are asleep.",
 		shortDesc: "Causes sleeping adjacent foes to lose 1/8 of their max HP at the end of each turn.",
-		gen7: {
+		gen7luckless: {
 			desc: "Causes sleeping adjacent opposing Pokemon to lose up to 1/8 of their maximum HP, rounded down and scaled with sleep severity, at the end of each turn.",
 			shortDesc: "Sleeping adjacent foes lose 1/8 of their max HP each turn, scaled with sleep severity.",
 		},
@@ -169,7 +169,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Chlorophyll",
 		desc: "If Sunny Day is active and this Pokemon is not holding Utility Umbrella, this Pokemon's Speed is doubled.",
 		shortDesc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
-		gen7: {
+		gen7luckless: {
 			desc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
 		},
 	},
@@ -195,7 +195,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Comatose",
 		desc: "This Pokemon cannot be statused, and is considered to be asleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
 		shortDesc: "This Pokemon cannot be statused, and is considered to be asleep.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon cannot be statused, and is considered to have 100-severity sleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
 			shortDesc: "This Pokemon cannot be statused, and is considered to have 100-severity sleep.",
 		},
@@ -236,7 +236,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Cursed Body",
 		desc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled.",
 		shortDesc: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon is hit by an attack, the move will be disabled with 30 severity unless one of the attacker's moves is already disabled.",
 			shortDesc: "If this Pokemon is hit by an attack, the move will be disabled with 30 severity.",
 		},
@@ -245,7 +245,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Cute Charm",
 		desc: "There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender.",
 		shortDesc: "30% chance of infatuating Pokemon of the opposite gender if they make contact.",
-		gen7: {
+		gen7luckless: {
 			desc: "A Pokemon making contact with this Pokemon will become infatuated with 30 severity if it is of the opposite gender.",
 			shortDesc: "Pokemon of the opposite gender become infatuated with 30 severity if they make contact.",
 		},
@@ -261,7 +261,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Damp",
 		desc: "While this Pokemon is active, Explosion, Mind Blown, Misty Explosion, Self-Destruct, and the Aftermath Ability are prevented from having an effect.",
 		shortDesc: "Prevents Explosion/Mind Blown/Misty Explosion/Self-Destruct/Aftermath while active.",
-		gen7: {
+		gen7luckless: {
 			desc: "While this Pokemon is active, Explosion, Mind Blown, Self-Destruct, and the Aftermath Ability are prevented from having an effect.",
 			shortDesc: "Prevents Explosion/Mind Blown/Self-Destruct/Aftermath while this Pokemon is active.",
 		},
@@ -319,7 +319,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Disguise",
 		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, and it loses 1/8 of its max HP. Confusion damage also breaks the disguise.",
 		shortDesc: "(Mimikyu only) The first hit it takes is blocked, and it takes 1/8 HP damage instead.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken and it changes to Busted Form. Confusion damage also breaks the disguise.",
 			shortDesc: "(Mimikyu only) First hit deals 0 damage, breaks disguise.",
 		},
@@ -348,7 +348,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Dry Skin",
 		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum HP, rounded down, if the weather is Sunny Day. If this Pokemon is holding Utility Umbrella, the effects of weather are nullified.",
 		shortDesc: "This Pokemon is healed 1/4 by Water, 1/8 by Rain; is hurt 1.25x by Fire, 1/8 by Sun.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum HP, rounded down, if the weather is Sunny Day.",
 		},
 
@@ -357,7 +357,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	earlybird: {
 		name: "Early Bird",
 		shortDesc: "This Pokemon's sleep counter drops by 2 instead of 1.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "The severity of sleep is halved for this Pokemon.",
 		},
 	},
@@ -365,7 +365,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Effect Spore",
 		desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep.",
 		shortDesc: "30% chance of poison/paralysis/sleep on others making contact with this Pokemon.",
-		gen7: {
+		gen7luckless: {
 			desc: "Pokemon making contact with this Pokemon will be affected with 30 severity, which combines the effects of poison, paralysis, and asleep at 10 severity.",
 			shortDesc: "Affected with 30 severity on others making contact with this Pokemon.",
 		},
@@ -400,7 +400,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	flamebody: {
 		name: "Flame Body",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be burned.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "Pokemon making contact with this Pokemon will be burned with 30 severity.",
 		},
 		gen4: {
@@ -415,7 +415,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Flare Boost",
 		desc: "While this Pokemon is burned, the power of its special attacks is multiplied by 1.5.",
 		shortDesc: "While this Pokemon is burned, its special attacks have 1.5x power.",
-		gen7: {
+		gen7luckless: {
 			desc: "While this Pokemon is burned, the power of its special attacks increases, up to 1.5x at 100 severity.",
 			shortDesc: "While this Pokemon is burned, its special attack power increases up to x1.5.",
 		},
@@ -434,7 +434,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Flower Gift",
 		desc: "If this Pokemon is a Cherrim and Sunny Day is active, it changes to Sunshine Form and the Attack and Special Defense of it and its allies are multiplied by 1.5. If this Pokemon is a Cherrim and it is holding Utility Umbrella, it remains in its regular form and the Attack and Special Defense stats of it and its allies are not boosted. If this Pokemon is a Cherrim in its Sunshine form and is given Utility Umbrella, it will immediately switch back to its regular form. If this Pokemon is a Cherrim holding Utility Umbrella and its item is removed while Sunny Day is active, it will transform into its Sunshine Form. If an ally is holding Utility Umbrella while Cherrim is in its Sunshine Form, they will not receive the Attack and Special Defense boosts.",
 		shortDesc: "If user is Cherrim and Sunny Day is active, it and allies' Attack and Sp. Def are 1.5x.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon is a Cherrim and Sunny Day is active, it changes to Sunshine Form and the Attack and Special Defense of it and its allies are multiplied by 1.5.",
 		},
 		gen4: {
@@ -458,7 +458,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Forecast",
 		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm. If this Pokemon is holding Utility Umbrella and the weather condition is Sunny Day, Desolate Land, Rain Dance, or Primordial Sea, it will not change types.",
 		shortDesc: "Castform's type changes to the current weather condition's type, except Sandstorm.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
 		},
 	},
@@ -539,7 +539,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Guts",
 		desc: "If this Pokemon has a non-volatile status condition, its Attack is multiplied by 1.5; burn's physical damage halving is ignored.",
 		shortDesc: "If this Pokemon is statused, its Attack is 1.5x; ignores burn halving physical damage.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon has a non-volatile status condition, its Attack is increased, up to x1.5 at 100 severity; burn's physical damage halving is ignored.",
 			shortDesc: "If this Pokemon is statused, its Attack is up to 1.5x; ignores burn damage reduction.",
 		},
@@ -548,7 +548,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Harvest",
 		desc: "If the last item this Pokemon used is a Berry, there is a 50% chance it gets restored at the end of each turn. If Sunny Day is active, this chance is 100%.",
 		shortDesc: "If last item used is a Berry, 50% chance to restore it each end of turn. 100% in Sun.",
-		gen7: {
+		gen7luckless: {
 			desc: "If the last item this Pokemon used is a Berry, it will be restored at the end of next turn. If Sunny Day is active, it is restored at the end of the current turn.",
 			shortDesc: "If last item used is a Berry, restore it next turn. Restores current turn in Sun.",
 		},
@@ -590,7 +590,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Hydration",
 		desc: "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. If this Pokemon is holding Utility Umbrella, its non-volatile status condition will not be cured.",
 		shortDesc: "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active.",
 		},
 	},
@@ -655,7 +655,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	innerfocus: {
 		name: "Inner Focus",
 		shortDesc: "This Pokemon cannot be made to flinch. Immune to Intimidate.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "This Pokemon cannot be made to flinch.",
 		},
 	},
@@ -667,7 +667,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Intimidate",
 		desc: "On switch-in, this Pokemon lowers the Attack of adjacent opposing Pokemon by 1 stage. Inner Focus, Oblivious, Own Tempo, Scrappy, and Pokemon behind a substitute are immune.",
 		shortDesc: "On switch-in, this Pokemon lowers the Attack of adjacent opponents by 1 stage.",
-		gen7: {
+		gen7luckless: {
 			desc: "On switch-in, this Pokemon lowers the Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
 		},
 	},
@@ -709,7 +709,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Leaf Guard",
 		desc: "If Sunny Day is active and this Pokemon is not holding Utility Umbrella, this Pokemon cannot gain a non-volatile status condition and Rest will fail for it.",
 		shortDesc: "If Sunny Day is active, this Pokemon cannot be statused and Rest will fail for it.",
-		gen7: {
+		gen7luckless: {
 			desc: "If Sunny Day is active, this Pokemon cannot gain a non-volatile status condition and Rest will fail for it.",
 		},
 		gen4: {
@@ -810,7 +810,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Marvel Scale",
 		desc: "If this Pokemon has a non-volatile status condition, its Defense is multiplied by 1.5.",
 		shortDesc: "If this Pokemon is statused, its Defense is 1.5x.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon has a non-volatile status condition, its Defense is increased, up to x1.5 at 100 severity.",
 			shortDesc: "If this Pokemon is statused, its Defense is increased, up to x1.5 at 100 severity.",
 		},
@@ -823,7 +823,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	merciless: {
 		name: "Merciless",
 		shortDesc: "This Pokemon's attacks are critical hits if the target is poisoned.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "This Pokemon's critical hit stage increases with the target's poison severity.",
 		},
 	},
@@ -859,7 +859,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Mold Breaker",
 		desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
 		shortDesc: "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
 		},
 		gen6: {
@@ -878,7 +878,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Moody",
 		desc: "This Pokemon has a random stat other than accuracy or evasion raised by 2 stages and another stat lowered by 1 stage at the end of each turn.",
 		shortDesc: "Boosts a random stat (except accuracy/evasion) +2 and another stat -1 every turn.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon has all of its stats raised by 1/7 at the end of each turn.",
 			shortDesc: "This Pokemon has all of its stats raised by 1/7 at the end of each turn.",
 			// desc: "This Pokemon has a random stat raised by 2 stages and another stat lowered by 1 stage at the end of each turn.",
@@ -910,7 +910,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Mummy",
 		desc: "Pokemon making contact with this Pokemon have their Ability changed to Mummy. Does not affect a Pokemon which already has Mummy or the Abilities As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, and Zen Mode.",
 		shortDesc: "Pokemon making contact with this Pokemon have their Ability changed to Mummy.",
-		gen7: {
+		gen7luckless: {
 			desc: "Pokemon making contact with this Pokemon have their Ability changed to Mummy. Does not affect a Pokemon which already has Mummy or the Abilities Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, and Zen Mode.",
 		},
 		gen6: {
@@ -940,7 +940,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	noguard: {
 		name: "No Guard",
 		shortDesc: "Every move used by or against this Pokemon will always hit.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "Every move used by or against this Pokemon has perfect accuracy.",
 		},
 	},
@@ -957,7 +957,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Oblivious",
 		desc: "This Pokemon cannot be infatuated or taunted. Gaining this Ability while affected cures it. Immune to Intimidate.",
 		shortDesc: "This Pokemon cannot be infatuated or taunted. Immune to Intimidate.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon cannot be infatuated or taunted. Gaining this Ability while affected cures it.",
 			shortDesc: "This Pokemon cannot be infatuated or taunted.",
 		},
@@ -986,7 +986,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Own Tempo",
 		desc: "This Pokemon cannot be confused. Gaining this Ability while confused cures it. Immune to Intimidate.",
 		shortDesc: "This Pokemon cannot be confused. Immune to Intimidate.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon cannot be confused. Gaining this Ability while confused cures it.",
 			shortDesc: "This Pokemon cannot be confused.",
 		},
@@ -1052,7 +1052,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Poison Heal",
 		desc: "If this Pokemon is poisoned, it restores 1/8 of its maximum HP, rounded down, at the end of each turn instead of losing HP.",
 		shortDesc: "This Pokemon is healed by 1/8 of its max HP each turn when poisoned; no HP loss.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon is poisoned, it restores up to 1/8 of its maximum HP, rounded down and scaled with poison severity, at the end of each turn instead of losing HP.",
 			shortDesc: "This Pokemon is healed by up to 1/8 of its max HP each turn when poisoned; no HP loss.",
 		},
@@ -1060,7 +1060,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	poisonpoint: {
 		name: "Poison Point",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be poisoned.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "Pokemon making contact with this Pokemon will be poisoned with 30 severity.",
 		},
 		gen4: {
@@ -1074,7 +1074,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	poisontouch: {
 		name: "Poison Touch",
 		shortDesc: "This Pokemon's contact moves have a 30% chance of poisoning.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "This Pokemon's contact moves cause poison with 30 severity.",
 		},
 	},
@@ -1090,7 +1090,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Power of Alchemy",
 		desc: "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are \"No Ability\", As One, Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Gulp Missile, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, and Zen Mode.",
 		shortDesc: "This Pokemon copies the Ability of an ally that faints.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are \"No Ability\", Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, and Zen Mode.",
 		},
 
@@ -1167,7 +1167,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Quick Feet",
 		desc: "If this Pokemon has a non-volatile status condition, its Speed is multiplied by 1.5; the Speed drop from paralysis is ignored.",
 		shortDesc: "If this Pokemon is statused, its Speed is 1.5x; ignores Speed drop from paralysis.",
-		gen7: {
+		gen7luckless: {
 			desc: "If this Pokemon has a non-volatile status condition, its Speed is increased, up to x1.5 at 100 severity.",
 			shortDesc: "If this Pokemon is statused, its Speed is up to x1.5; ignores paralysis Speed drop.",
 		},
@@ -1176,7 +1176,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Rain Dish",
 		desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn. If this Pokemon is holding Utility Umbrella, its HP does not get restored.",
 		shortDesc: "If Rain Dance is active, this Pokemon heals 1/16 of its max HP each turn.",
-		gen7: {
+		gen7luckless: {
 			desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn.",
 		},
 	},
@@ -1184,7 +1184,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Rattled",
 		desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or Intimidate.",
 		shortDesc: "Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or Intimidated.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
 			shortDesc: "This Pokemon's Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
 		},
@@ -1193,7 +1193,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Receiver",
 		desc: "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are \"No Ability\", As One, Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Gulp Missile, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, and Zen Mode.",
 		shortDesc: "This Pokemon copies the Ability of an ally that faints.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are \"No Ability\", Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, and Zen Mode.",
 		},
 
@@ -1294,7 +1294,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Scrappy",
 		desc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves. Immune to Intimidate.",
 		shortDesc: "Fighting, Normal moves hit Ghost. Immune to Intimidate.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves.",
 			shortDesc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves.",
 		},
@@ -1306,7 +1306,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	serenegrace: {
 		name: "Serene Grace",
 		shortDesc: "This Pokemon's moves have their secondary effect chance doubled.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "This Pokemon's moves have their secondary effect severity doubled.",
 		},
 	},
@@ -1328,7 +1328,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Shed Skin",
 		desc: "This Pokemon has a 33% chance to have its non-volatile status condition cured at the end of each turn.",
 		shortDesc: "This Pokemon has a 33% chance to have its status cured at the end of each turn.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon has the severity of its non-volatile status condition reduced by 33 at the end of each turn.",
 			shortDesc: "This Pokemon has the severity of its status reduced by 33 at the end of each turn.",
 		},
@@ -1376,7 +1376,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	skilllink: {
 		name: "Skill Link",
 		shortDesc: "This Pokemon's multi-hit attacks always hit the maximum number of times.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "This Pokemon's multi-hit attacks always hit five times.",
 		},
 	},
@@ -1408,7 +1408,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Solar Power",
 		desc: "If Sunny Day is active, this Pokemon's Special Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn. If this Pokemon is holding Utility Umbrella, its Special Attack remains the same and it does not lose any HP.",
 		shortDesc: "If Sunny Day is active, this Pokemon's Sp. Atk is 1.5x; loses 1/8 max HP per turn.",
-		gen7: {
+		gen7luckless: {
 			desc: "If Sunny Day is active, this Pokemon's Special Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn.",
 		},
 	},
@@ -1463,7 +1463,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	static: {
 		name: "Static",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "Pokemon making contact with this Pokemon will be paralyzed with 30 severity.",
 		},
 		gen4: {
@@ -1477,7 +1477,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	steadfast: {
 		name: "Steadfast",
 		shortDesc: "If this Pokemon flinches, its Speed is raised by 1 stage.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "This Pokemon's Speed is raised by up to 1 stage on flinch, scaled with flinch severity.",
 		},
 	},
@@ -1497,7 +1497,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Stench",
 		desc: "This Pokemon's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch.",
 		shortDesc: "This Pokemon's attacks without a chance to flinch gain a 10% chance to flinch.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon's attacks without a flinching effect now cause 10-severity flinch.",
 			shortDesc: "This Pokemon's attacks without a flinching effect now cause 10-severity flinch.",
 		},
@@ -1548,7 +1548,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	superluck: {
 		name: "Super Luck",
 		shortDesc: "This Pokemon's critical hit ratio is raised by 1 stage.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "This Pokemon's attacks gain +1 critical hit stage.",
 		},
 	},
@@ -1575,7 +1575,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Swift Swim",
 		desc: "If Rain Dance is active and this Pokemon is not holding Utility Umbrella, this Pokemon's Speed is doubled.",
 		shortDesc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
-		gen7: {
+		gen7luckless: {
 			desc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
 		},
 	},
@@ -1597,7 +1597,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	tangledfeet: {
 		name: "Tangled Feet",
 		shortDesc: "This Pokemon's evasiveness is doubled as long as it is confused.",
-		gen7: {
+		gen7luckless: {
 			shortDesc: "If this Pokemon is confused, its evasiveness is increased, up to x2 at 100 severity.",
 		},
 	},
@@ -1620,7 +1620,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Teravolt",
 		desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
 		shortDesc: "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
 		},
 		gen6: {
@@ -1661,7 +1661,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Toxic Boost",
 		desc: "While this Pokemon is poisoned, the power of its physical attacks is multiplied by 1.5.",
 		shortDesc: "While this Pokemon is poisoned, its physical attacks have 1.5x power.",
-		gen7: {
+		gen7luckless: {
 			desc: "While this Pokemon is poisoned, its Attack increases, up to 1.5x at 100 severity.",
 			shortDesc: "While this Pokemon is poisoned, its Attack increases up to x1.5.",
 		},
@@ -1670,7 +1670,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Trace",
 		desc: "On switch-in, or when this Pokemon acquires this ability, this Pokemon copies a random adjacent opposing Pokemon's Ability. However, if one or more adjacent Pokemon has the Ability \"No Ability\", Trace won't copy anything even if there is another valid Ability it could normally copy. Otherwise, if there is no Ability that can be copied at that time, this Ability will activate as soon as an Ability can be copied. Abilities that cannot be copied are the previously mentioned \"No Ability\", as well as As One, Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Gulp Missile, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, and Zen Mode.",
 		shortDesc: "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
-		gen7: {
+		gen7luckless: {
 			desc: "On switch-in, or when this Pokemon acquires this ability, this Pokemon copies a random adjacent opposing Pokemon's Ability. However, if one or more adjacent Pokemon has the Ability \"No Ability\", Trace won't copy anything even if there is another valid Ability it could normally copy. Otherwise, if there is no Ability that can be copied at that time, this Ability will activate as soon as an Ability can be copied. Abilities that cannot be copied are the previously mentioned \"No Ability\", as well as Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, and Zen Mode.",
 		},
 
@@ -1694,7 +1694,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Turboblaze",
 		desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
 		shortDesc: "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
-		gen7: {
+		gen7luckless: {
 			desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
 		},
 		gen6: {
