@@ -254,6 +254,7 @@ export type ModdedMoveData = MoveData | Partial<Omit<MoveData, 'name'>> & {
 	bodyofwaterBoosted?: boolean,
 	longWhipBoost?: boolean,
 	gen?: number,
+	start?: string,
 };
 
 export interface Move extends Readonly<BasicEffect & MoveData> {

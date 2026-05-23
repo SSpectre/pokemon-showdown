@@ -12,6 +12,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 			}
 		},
 	},
+	bindingband: {
+		inherit: true,
+		desc: "Holder's partial-trapping moves deal up to 1/6 max HP per turn instead of 1/8.",
+	},
 	cheriberry: {
 		inherit: true,
 		onUpdate(pokemon) {
@@ -40,10 +44,15 @@ export const Items: {[k: string]: ModdedItemData} = {
 	},
 	focusband: {
 		inherit: true,
+		desc: "Direct damage against the holder is reduced by 10%.",
 		onSourceModifyDamage(damage, source, target, move) {
 			return this.chainModify(0.9);
 		},
 		onDamage(damage, target, source, effect) {},
+	},
+	gripclaw: {
+		inherit: true,
+		desc: "Holder's partial-trapping moves last up to 7 turns.",
 	},
 	ironball: {
 		inherit: true,
@@ -68,6 +77,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 	},
 	quickclaw: {
 		inherit: true,
+		desc: "The holder will move first in its priority bracket on the first turn it uses a move (once per battle).",
 		onFractionalPriority(priority, pokemon) {
 			if (priority <= 0 && !pokemon.itemState.used) {
 				this.add('-activate', pokemon, 'item: Quick Claw');
@@ -91,6 +101,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 	},
 	starfberry: {
 		inherit: true,
+		desc: "Raises all stats (not acc/eva) by 0.4 when at 1/4 max HP or less. Single use.",
 		onEat(pokemon) {
 			const stats: BoostID[] = [];
 			let stat: BoostID;

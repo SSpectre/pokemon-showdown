@@ -30,7 +30,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	aguavberry: {
 		name: "Aguav Berry",
 		desc: "Restores 33% max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
-		gen7luckless: {
+		gen7: {
 			desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
 		},
 		gen6: {
@@ -118,9 +118,6 @@ export const ItemsText: {[k: string]: ItemText} = {
 	bindingband: {
 		name: "Binding Band",
 		desc: "Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.",
-		gen7luckless: {
-			desc: "Holder's partial-trapping moves deal up to 1/6 max HP per turn instead of 1/8.",
-		},
 	},
 	blackbelt: {
 		name: "Black Belt",
@@ -394,7 +391,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	dreamball: {
 		name: "Dream Ball",
 		desc: "A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.",
-		gen7luckless: {
+		gen7: {
 			desc: "A special Poke Ball that appears out of nowhere in a bag at the Entree Forest.",
 		},
 	},
@@ -512,7 +509,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	figyberry: {
 		name: "Figy Berry",
 		desc: "Restores 33% max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
-		gen7luckless: {
+		gen7: {
 			desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
 		},
 		gen6: {
@@ -577,9 +574,6 @@ export const ItemsText: {[k: string]: ItemText} = {
 	focusband: {
 		name: "Focus Band",
 		desc: "Holder has a 10% chance to survive an attack that would KO it with 1 HP.",
-		gen7luckless: {
-			desc: "Direct damage against the holder is reduced by 10%.",
-		},
 		gen2: {
 			desc: "Holder has a ~11.7% chance to survive an attack that would KO it with 1 HP.",
 		},
@@ -700,9 +694,6 @@ export const ItemsText: {[k: string]: ItemText} = {
 	gripclaw: {
 		name: "Grip Claw",
 		desc: "Holder's partial-trapping moves always last 7 turns.",
-		gen7luckless: {
-			desc: "Holder's partial-trapping moves last up to 7 turns.",
-		},
 	},
 	griseousorb: {
 		name: "Griseous Orb",
@@ -776,7 +767,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	iapapaberry: {
 		name: "Iapapa Berry",
 		desc: "Restores 33% max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
-		gen7luckless: {
+		gen7: {
 			desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
 		},
 		gen6: {
@@ -798,7 +789,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Ice Stone",
 		desc: "Evolves Alolan Sandshrew into Alolan Sandslash, Alolan Vulpix into Alolan Ninetales, Eevee into Glaceon, and Galarian Darumaka into Galarian Darmanitan when used.",
 		shortDesc: "Evolves certain species of Pokemon when used.",
-		gen7luckless: {
+		gen7: {
 			desc: "Evolves Alolan Sandshrew into Alolan Sandslash and Alolan Vulpix into Alolan Ninetales when used.",
 		},
 	},
@@ -897,7 +888,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Leaf Stone",
 		desc: "Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Eevee into Leafeon, Nuzleaf into Shiftry, and Pansage into Simisage when used.",
 		shortDesc: "Evolves certain species of Pokemon when used.",
-		gen7luckless: {
+		gen7: {
 			desc: "Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Nuzleaf into Shiftry, and Pansage into Simisage when used.",
 		},
 	},
@@ -1017,7 +1008,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	magoberry: {
 		name: "Mago Berry",
 		desc: "Restores 33% max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
-		gen7luckless: {
+		gen7: {
 			desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
 		},
 		gen6: {
@@ -1371,9 +1362,6 @@ export const ItemsText: {[k: string]: ItemText} = {
 	quickclaw: {
 		name: "Quick Claw",
 		desc: "Each turn, holder has a 20% chance to move first in its priority bracket.",
-		gen7luckless: {
-			desc: "The holder will move first in its priority bracket on the first turn it uses a move (once per battle).",
-		},
 		gen2: {
 			desc: "Each turn, holder has a ~23.4% chance to move first in its priority bracket.",
 		},
@@ -1665,9 +1653,6 @@ export const ItemsText: {[k: string]: ItemText} = {
 	starfberry: {
 		name: "Starf Berry",
 		desc: "Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.",
-		gen7luckless: {
-			desc: "Raises all stats (not acc/eva) by 0.4 when at 1/4 max HP or less. Single use.",
-		},
 	},
 	starsweet: {
 		name: "Star Sweet",
@@ -1756,7 +1741,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Thunder Stone",
 		desc: "Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, Eelektrik into Eelektross, and Charjabug into Vikavolt when used.",
 		shortDesc: "Evolves certain species of Pokemon when used.",
-		gen7luckless: {
+		gen7: {
 			desc: "Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, and Eelektrik into Eelektross when used.",
 		},
 	},
@@ -2264,7 +2249,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	wikiberry: {
 		name: "Wiki Berry",
 		desc: "Restores 33% max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
-		gen7luckless: {
+		gen7: {
 			desc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
 		},
 		gen6: {
