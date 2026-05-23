@@ -450,7 +450,6 @@ interface TextFile extends TextObject {
 	gen5?: ModdedTextObject;
 	gen6?: ModdedTextObject;
 	gen7?: ModdedTextObject;
-	gen7luckless?: ModdedTextObject;
 }
 
 interface MovePlines extends Plines {
