@@ -65,6 +65,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	ancientpower: {
+		inherit: true,
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 0.1",
+		shortDesc: "Raises all stats by 0.1 (not acc/eva).",
+	},
 	aquaring: {
 		inherit: true,
 		desc: "The user has up to 1/16 of its maximum HP, rounded down, restored at the end of each turn while it remains active. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. If the user uses Baton Pass, the replacement will receive the healing effect.",
@@ -78,6 +83,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.heal(pokemon.baseMaxhp * this.effectState.severity / 1600);
 			},
 		},
+	},
+	armthrust: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
 	},
 	aromatherapy: {
 		inherit: true,
@@ -228,6 +238,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target) {},
 		target: "normal",
 	},
+	astonish: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch",
+	},
+	attackorder: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
 	attract: {
 		inherit: true,
 		desc: "Causes the target to become infatuated. Fails if both the user and the target are the same gender, if either is genderless, or if the target is already infatuated. The effect ends when either the user or the target is no longer active. Pokemon with the Oblivious Ability or protected by the Aroma Veil Ability are immune.",
@@ -274,6 +294,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-end', pokemon, 'Attract', '[silent]');
 			},
 		},
+	},
+	aurorabeam: {
+		inherit: true,
+		desc: "Lowers the target's Attack by 0.1.",
+		shortDesc: "Lowers the target's Attack by 0.1.",
 	},
 	autotomize: {
 		inherit: true,
@@ -334,6 +359,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	barrage: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
 	batonpass: {
 		inherit: true,
 		flags: {binary: 1},
@@ -370,10 +400,78 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {mirror: 1, authentic: 1, allyanim: 1, binary: 1},
 	},
+	bind: {
+		inherit: true,
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	},
+	blastburn: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge on the following turn and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
+	},
+	blazekick: {
+		inherit: true,
+		desc: "+1 critical hit stage. Causes 10-severity burn.",
+		shortDesc: "+1 critical hit stage. Causes 10-severity burn.",
+	},
+	blizzard: {
+		inherit: true,
+		desc: "Causes 10-severity freeze. If the weather is Hail, this move does not check accuracy.",
+		shortDesc: "Causes 10-severity freeze. Can't miss in hail.",
+	},
 	block: {
 		inherit: true,
 		desc: "Prevents the target from switching out. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement will remain trapped. The effect ends if the user leaves the field.",
 		flags: {reflectable: 1, mirror: 1, binary: 1},
+	},
+	blueflare: {
+		inherit: true,
+		desc: "Causes 20-severity burn.",
+		shortDesc: "Causes 20-severity burn.",
+	},
+	bodyslam: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+		shortDesc: "Causes 30-severity paralysis.",
+	},
+	boltstrike: {
+		inherit: true,
+		desc: "Causes 20-severity paralysis.",
+		shortDesc: "Causes 20-severity paralysis.",
+	},
+	boneclub: {
+		inherit: true,
+		desc: "Causes 10-severity flinch.",
+		shortDesc: "Causes 10-severity flinch.",
+	},
+	bonerush: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
+	bounce: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thousand Arrows, Thunder, and Twister, and Gust and Twister have doubled power when used against it. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Bounces, then hits turn 2. 30-severity paralysis.",
+	},
+	breakingswipe: {
+		inherit: true,
+		desc: "Lowers the target's Attack by 1.",
+		shortDesc: "Lowers the target's Attack by 1.",
+	},
+	brickbreak: {
+		inherit: true,
+		desc: "If this attack is successful, the effects of Reflect, Light Screen, and Aurora Veil end for the target's side of the field before damage is calculated.",
+	},
+	bubble: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 0.1.",
+		shortDesc: "Lowers the target's Speed by 0.1.",
+	},
+	bubblebeam: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 0.1.",
+		shortDesc: "Lowers the target's Speed by 0.1.",
 	},
 	bugbite: {
 		inherit: true,
@@ -390,6 +488,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (item.onEat) source.ateBerry = true;
 			}
 		},
+	},
+	bugbuzz: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.1.",
+		shortDesc: "Lowers the target's Sp.Def by 0.1.",
+	},
+	bulldoze: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 1.",
+		shortDesc: "Lowers adjacent Pokemon's Speed by 1.",
+	},
+	bulletseed: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
 	},
 	burnup: {
 		inherit: true,
@@ -423,6 +536,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	chargebeam: {
+		inherit: true,
+		desc: "Raises the user's Special Attack by 0.7.",
+		shortDesc: "Raises the user's Sp. Atk by 0.7.",
+	},
+	chatter: {
+		inherit: true,
+		desc: "Causes 100-severity confusion.",
+		shortDesc: "Causes 100-severity confusion.",
+	},
 	circlethrow: {
 		inherit: true,
 		desc: "If both the user and the target have not fainted and if accuracy is greater than 50%, the target is forced to switch out and be replaced with their next unfainted ally. This effect fails if the target used Ingrain previously, has the Suction Cups Ability, or this move hit a substitute.",
@@ -430,6 +553,27 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source, move) {
 			if (source.isActive && Scripts.severity! >= 50) move.forceSwitch = false;
 		},
+	},
+	clamp: {
+		inherit: true,
+		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps and damages target for up to 4 turns.",
+		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	},
+	cometpunch: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
+	confusion: {
+		inherit: true,
+		desc: "Causes 10-severity burn.",
+		shortDesc: "Causes 10-severity burn.",
+	},
+	constrict: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 0.1.",
+		shortDesc: "Lowers the target's Speed by 0.1.",
 	},
 	conversion: {
 		inherit: true,
@@ -458,6 +602,14 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			source.addVolatile(condition);
 			this.add('-start', source, condition);
 		},
+	},
+	copycat: {
+		inherit: true,
+		desc: "The user uses the last move used by any Pokemon, including itself. Fails if no move has been used, or if the last move used was Assist, Baneful Bunker, Beak Blast, Belch, Bestow, Celebrate, Chatter, Circle Throw, Copycat, Counter, Covet, Crafty Shield, Destiny Bond, Detect, Dragon Tail, Endure, Feint, Focus Punch, Follow Me, Helping Hand, Hold Hands, King's Shield, Mat Block, Me First, Metronome, Mimic, Mirror Coat, Mirror Move, Nature Power, Protect, Rage Powder, Roar, Shell Trap, Sketch, Sleep Talk, Snatch, Spiky Shield, Spotlight, Struggle, Switcheroo, Thief, Transform, Trick, Whirlwind, or any Z-Move.",
+	},
+	coreenforcer: {
+		inherit: true,
+		desc: "If the user moves after the target, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode, this effect does not happen, and receiving the effect through Baton Pass ends the effect immediately.",
 	},
 	counter: {
 		inherit: true,
@@ -504,6 +656,31 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.add('-item', source, yourItem, '[from] move: Covet', '[of] ' + target);
 		},
 	},
+	crabhammer: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	crosschop: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	crosspoison: {
+		inherit: true,
+		desc: "+1 critical hit stage. Causes 10-severity poison.",
+		shortDesc: "+1 critical hit stage. Causes 10-severity poison.",
+	},
+	crunch: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.2.",
+		shortDesc: "Lowers the target's Defense by 0.2.",
+	},
+	crushclaw: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.5.",
+		shortDesc: "Lowers the target's Defense by 0.5.",
+	},
 	curse: {
 		inherit: true,
 		desc: "If the user is not a Ghost type, lowers the user's Speed by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses up to 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing up to 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected.",
@@ -519,6 +696,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.damage(pokemon.baseMaxhp * this.effectState.severity / 400);
 			},
 		},
+	},
+	darkpulse: {
+		inherit: true,
+		desc: "Causes 20-severity flinch.",
+		shortDesc: "Causes 20-severity flinch.",
+	},
+	defog: {
+		inherit: true,
+		desc: "Lowers the target's evasiveness by 1 stage. If this move is successful and whether or not the target's evasiveness was affected, the effects of Reflect, Light Screen, Aurora Veil, Safeguard, Mist, Spikes, Toxic Spikes, Stealth Rock, and Sticky Web end for the target's side, and the effects of Spikes, Toxic Spikes, Stealth Rock, and Sticky Web end for the user's side. Ignores a target's substitute, although a substitute will still block the lowering of evasiveness.",
+		shortDesc: "-1 evasion; clears user and target side's hazards.",
 	},
 	destinybond: {
 		inherit: true,
@@ -549,6 +736,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				pokemon.removeVolatile('destinybond');
 			},
 		},
+	},
+	detect: {
+		inherit: true,
+		desc: "The user is protected from most attacks made by other Pokemon during this turn. This protection has 100/X severity, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		// desc: "The user is protected from most attacks made by other Pokemon during this turn. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+	},
+	diamondstorm: {
+		inherit: true,
+		desc: "Raises the user's Defense by 1.",
+		shortDesc: "Raises the user's Defense by 1.",
 	},
 	disable: {
 		inherit: true,
@@ -623,6 +820,31 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	discharge: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis.",
+		shortDesc: "Causes 30-severity paralysis.",
+	},
+	dizzypunch: {
+		inherit: true,
+		desc: "Causes 20-severity confusion.",
+		shortDesc: "Causes 20-severity confusion.",
+	},
+	doubleslap: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
+	dragonbreath: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis.",
+		shortDesc: "Causes 30-severity paralysis.",
+	},
+	dragonrush: {
+		inherit: true,
+		desc: "Causes 20-severity flinch. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+		shortDesc: "Causes 20-severity flinch.",
+	},
 	dragontail: {
 		inherit: true,
 		desc: "If both the user and the target have not fainted and if accuracy is greater than 50%, the target is forced to switch out and be replaced with their next unfainted ally. This effect fails if the target used Ingrain previously, has the Suction Cups Ability, or this move hit a substitute.",
@@ -645,6 +867,31 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			return move.basePower;
 		},
 	},
+	drillrun: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	dynamicpunch: {
+		inherit: true,
+		desc: "Causes 100-severity confusion.",
+		shortDesc: "Causes 100-severity confusion.",
+	},
+	earthpower: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.1.",
+		shortDesc: "Lowers the target's Sp. Def by 0.1.",
+	},
+	electricterrain: {
+		inherit: true,
+		desc: "For 5 turns, the terrain becomes Electric Terrain. During the effect, the power of Electric-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Grounded Pokemon cannot become affected by Yawn or fall asleep from its effect. Camouflage transforms the user into an Electric type, Nature Power becomes Thunderbolt, and Secret Power causes 30-severity paralysis. Fails if the current terrain is Electric Terrain.",
+		// desc: "For 5 turns, the terrain becomes Electric Terrain. During the effect, the power of Electric-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Grounded Pokemon cannot become affected by Yawn or fall asleep from its effect. Camouflage transforms the user into an Electric type, Nature Power becomes Thunderbolt, and Secret Power has a 30% chance to cause paralysis. Fails if the current terrain is Electric Terrain.",
+	},
+	electroweb: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 1.",
+		shortDesc: "Lowers the target's Speed by 1.",
+	},
 	embargo: {
 		inherit: true,
 		desc: "For up to 5 turns, the target's held item has no effect. An item's effect of causing forme changes is unaffected, but any other effects from such items are negated. During the effect, Fling and Natural Gift are prevented from being used by the target. Items thrown at the target with Fling will still activate for it. If the target uses Baton Pass, the replacement will remain unable to use items.",
@@ -661,6 +908,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-end', pokemon, 'Embargo');
 			},
 		},
+	},
+	ember: {
+		inherit: true,
+		desc: "Causes 10-severity burn.",
+		shortDesc: "Causes 10-severity burn.",
 	},
 	encore: {
 		inherit: true,
@@ -751,10 +1003,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	energyball: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.1.",
+		shortDesc: "Lowers the target's Sp. Def by 0.1.",
+	},
 	entrainment: {
 		inherit: true,
 		desc: "Causes the target's Ability to become the same as the user's. Fails if the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Truant, or Zen Mode, or the same Ability as the user, or if the user's Ability is Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, or Zen Mode.",
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
+	},
+	extrasensory: {
+		inherit: true,
+		desc: "Causes 10-severity flinch.",
+		shortDesc: "Causes 10-severity flinch.",
 	},
 	facade: {
 		inherit: true,
@@ -775,15 +1037,91 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		desc: "Prevents all active Pokemon from switching next turn. A Pokemon can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. Fails if the effect is already active.",
 		flags: {mirror: 1, authentic: 1, binary: 1},
 	},
+	fakeout: {
+		inherit: true,
+		desc: "Causes 100-severity flinch. Fails unless it is the user's first turn on the field.",
+		shortDesc: "Hits first. First turn only. 100-severity flinch.",
+	},
+	fierydance: {
+		inherit: true,
+		desc: "Raises the user's Special Attack by 0.5.",
+		shortDesc: "Raises the user's Sp. Atk by 0.5.",
+	},
+	fireblast: {
+		inherit: true,
+		desc: "Causes 10-severity burn.",
+		shortDesc: "Causes 10-severity burn.",
+	},
+	firefang: {
+		inherit: true,
+		desc: "Causes 10-severity burn and 10-severity flinch.",
+		shortDesc: "Causes 10-severity burn and 10-severity flinch.",
+	},
+	firelash: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 1.",
+		shortDesc: "Lowers the target's Defense by 1.",
+	},
+	firepunch: {
+		inherit: true,
+		desc: "Causes 10-severity burn.",
+		shortDesc: "Causes 10-severity burn.",
+	},
+	firespin: {
+		inherit: true,
+		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps and damages target for up to 4 turns.",
+		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	},
+	fissure: {
+		inherit: true,
+		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+		shortDesc: "Deals % damage from accuracy. Higher level only.",
+	},
+	flamecharge: {
+		inherit: true,
+		desc: "Raises the user's Speed by 1.",
+		shortDesc: "Raises the user's Speed by 1.",
+	},
+	flamewheel: {
+		inherit: true,
+		desc: "Causes 10-severity burn.",
+		shortDesc: "Causes 10-severity burn. Thaws user.",
+	},
+	flamethrower: {
+		inherit: true,
+		desc: "Causes 10-severity burn.",
+		shortDesc: "Causes 10-severity burn.",
+	},
+	flareblitz: {
+		inherit: true,
+		desc: "Causes 10-severity burn. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		shortDesc: "33% recoil. Causes 10-severity burn. Thaws user.",
+	},
+	flashcannon: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.1.",
+		shortDesc: "Lowers the target's Sp. Def by 0.1.",
+	},
 	fling: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, allyanim: 1, binary: 1},
+	},
+	focusblast: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.1.",
+		shortDesc: "Lowers the target's Sp. Def by 0.1.",
 	},
 	focusenergy: {
 		inherit: true,
 		desc: "Raises the user's critical hit stage by 2. Fails if the user already has the effect. Baton Pass can be used to transfer this effect to an ally.",
 		shortDesc: "Raises the user's critical hit stage by 2.",
 		flags: {snatch: 1, binary: 1},
+	},
+	forcepalm: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis.",
+		shortDesc: "Causes 30-severity paralysis.",
 	},
 	foresight: {
 		inherit: true,
@@ -810,15 +1148,68 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
 	},
+	freezedry: {
+		inherit: true,
+		desc: "Causes 10-severity freeze. This move's type effectiveness against Water is changed to be super effective no matter what this move's type is.",
+		shortDesc: "10-severity freeze. Super effective on Water.",
+	},
+	freezeshock: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Charges turn 1. Hits turn 2. 30-severity paralysis.",
+	},
+	frenzyplant: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
+	},
+	frostbreath: {
+		inherit: true,
+		desc: "This move is always a stage 3 critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.",
+		shortDesc: "Always results in a stage 3 critical hit.",
+	},
+	furyattack: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
+	furyswipes: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
 	gastroacid: {
 		inherit: true,
 		desc: "Causes the target's Ability to be rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode, this move fails, and receiving the effect through Baton Pass ends the effect immediately.",
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
 	},
+	gigaimpact: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
+	},
+	glaciate: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 1.",
+		shortDesc: "Lowers the target's Speed by 1.",
+	},
 	glitzyglow: {
 		inherit: true,
 		accuracy: 100,
 		basePower: 90,
+	},
+	grassyterrain: {
+		inherit: true,
+		desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.5, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power causes 30-severity sleep. Fails if the current terrain is Grassy Terrain.",
+		// desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.5, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
+	},
+	gravity: {
+		inherit: true,
+		desc: "For 5 turns, the evasiveness of all active Pokemon is multiplied by 0.6. At the time of use, Bounce, Fly, Magnet Rise, Sky Drop, and Telekinesis end immediately for all active Pokemon. During the effect, Bounce, Fly, Flying Press, High Jump Kick, Jump Kick, Magnet Rise, Sky Drop, Splash, and Telekinesis are prevented from being used by all active Pokemon. Ground-type attacks, Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability can affect Flying types or Pokemon with the Levitate Ability. Fails if this move is already in effect. Relevant Z-Powered moves can still be selected, but will be prevented at execution during this effect.",
+	},
+	growth: {
+		inherit: true,
+		desc: "Raises the user's Attack and Special Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Special Attack by 2 stages.",
 	},
 	grudge: {
 		inherit: true,
@@ -879,6 +1270,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.add('-swapboost', source, target, 'def, spd', '[from] move: Guard Swap', '[severity] ' + Scripts.severity);
 		},
 	},
+	guillotine: {
+		inherit: true,
+		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+		shortDesc: "Deals % damage from accuracy. Higher level only.",
+	},
+	gunkshot: {
+		inherit: true,
+		desc: "Causes 30-severity poison.",
+		shortDesc: "Causes 30-severity poison.",
+	},
 	haze: {
 		inherit: true,
 		desc: "Eliminates or reduces the stat stage changes of all active Pokemon.",
@@ -895,6 +1296,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				pokemon.setBoost(newBoosts);
 			}
 		},
+	},
+	headbutt: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch.",
 	},
 	healbell: {
 		inherit: true,
@@ -983,6 +1389,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	healingwish: {
+		inherit: true,
+		desc: "The user faints and the Pokemon brought out to replace it has its HP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
+		shortDesc: "User faints. Replacement is fully healed.",
+	},
+	heartstamp: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch.",
+	},
 	heartswap: {
 		inherit: true,
 		onHit(target, source) {
@@ -1000,6 +1416,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 
 			this.add('-swapboost', source, target, '[from] move: Heart Swap');
 		},
+	},
+	heatwave: {
+		inherit: true,
+		desc: "Causes 10-severity burn.",
+		shortDesc: "Causes 10-severity burn.",
 	},
 	hex: {
 		inherit: true,
@@ -1023,6 +1444,72 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			} else { modifiedDamage = move.basePower; }
 			this.damage(Math.round(source.maxhp / 2) * (1 - modifiedDamage / move.basePower), source, source, move);
 		},
+	},
+	horndrill: {
+		inherit: true,
+		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+		shortDesc: "Deals % damage from accuracy. Higher level only.",
+	},
+	howl: {
+		inherit: true,
+		desc: "Raises the user's Attack by 1 stage.",
+		shortDesc: "Raises the user's Attack by 1.",
+	},
+	hurricane: {
+		inherit: true,
+		desc: "Causes 30-severity confusion. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
+		shortDesc: "30-severity confusion. Perfect accuracy in rain.",
+		// desc: "Has a 30% chance to confuse the target. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
+	},
+	hydrocannon: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
+	},
+	hyperbeam: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
+	},
+	hyperfang: {
+		inherit: true,
+		desc: "Causes 10-severity flinch.",
+		shortDesc: "Causes 10-severity flinch.",
+	},
+	icebeam: {
+		inherit: true,
+		desc: "Causes 10-severity freeze.",
+		shortDesc: "Causes 10-severity freeze.",
+	},
+	iceburn: {
+		inherit: true,
+		desc: "Causes 30-severity burn. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Charges turn 1. Hits turn 2. 30-severity burn.",
+	},
+	icefang: {
+		inherit: true,
+		desc: "Causes 10-severity freeze and 10-severity flinch.",
+		shortDesc: "Causes 10-severity freeze and 10-severity flinch.",
+	},
+	icepunch: {
+		inherit: true,
+		desc: "Causes 10-severity freeze.",
+		shortDesc: "Causes 10-severity freeze.",
+	},
+	iciclecrash: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch.",
+	},
+	iciclespear: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
+	icywind: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 1.",
+		shortDesc: "Lowers the target's Speed by 1.",
 	},
 	imprison: {
 		inherit: true,
@@ -1067,6 +1554,17 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
+	inferno: {
+		inherit: true,
+		desc: "Causes 100-severity burn.",
+		shortDesc: "Causes 100-severity burn.",
+	},
+	infestation: {
+		inherit: true,
+		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps and damages target for up to 4 turns.",
+		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	},
 	ingrain: {
 		inherit: true,
 		desc: "The user has up to 1/16 of its maximum HP restored at the end of each turn. If severity is at least 50, the user is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, Parting Shot, U-turn, or Volt Switch. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes, Toxic Spikes, and Sticky Web, even if the user is a Flying type or has the Levitate Ability.",
@@ -1092,6 +1590,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	instruct: {
+		inherit: true,
+		desc: "The target immediately uses its last used move. Fails if the target has not made a move, if the move has 0 PP, if the target is preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide, Celebrate, Copycat, Focus Punch, Ice Ball, Instruct, King's Shield, Me First, Metronome, Mimic, Mirror Move, Nature Power, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, any two-turn move, any recharge move, or any Z-Move.",
+	},
+	ironhead: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch.",
+	},
+	irontail: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.3.",
+		shortDesc: "Lowers the target's Defense by 0.3.",
+	},
 	jumpkick: {
 		inherit: true,
 		desc: "If this attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage. If it is successful, the user loses ((100 - X) / 2)% of its maximum HP, where X is this attack's accuracy. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
@@ -1105,6 +1617,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			} else { modifiedDamage = move.basePower; }
 			this.damage(Math.round(source.maxhp / 2) * (1 - modifiedDamage / move.basePower), source, source, move);
 		},
+	},
+	karatechop: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
 	},
 	kingsshield: {
 		inherit: true,
@@ -1201,6 +1718,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	lavaplume: {
+		inherit: true,
+		desc: "Causes 30-severity burn.",
+		shortDesc: "Causes 30-severity burn.",
+	},
+	leafblade: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	leaftornado: {
+		inherit: true,
+		desc: "Lowers the target's accuracy by 0.5.",
+		shortDesc: "Lowers the target's accuracy by 0.5.",
+	},
 	leechseed: {
 		inherit: true,
 		desc: "The Pokemon at the user's position steals up to 1/8 of the target's maximum HP, rounded down, at the end of each turn. If Big Root is held by the recipient, the HP recovered is 1.3x normal, rounded half down. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Rapid Spin successfully, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
@@ -1222,6 +1754,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 		},
+	},
+	lick: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis.",
+		shortDesc: "Causes 30-severity paralysis.",
+	},
+	lightscreen: {
+		inherit: true,
+		desc: "For 5 turns, the user and its party members take 0.5x damage from special attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore a percentage of this effect depending on their stage. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+	},
+	liquidation: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.2.",
+		shortDesc: "Lowers the target's Defense by 0.2.",
 	},
 	lockon: {
 		inherit: true,
@@ -1249,6 +1795,26 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-end', source, 'Lock-On', '[silent]');
 			},
 		},
+	},
+	lowsweep: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 1.",
+		shortDesc: "Lowers the target's Speed by 1.",
+	},
+	lunardance: {
+		inherit: true,
+		desc: "The user faints and the Pokemon brought out to replace it has its HP and PP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
+		shortDesc: "User faints. Replacement is fully healed, with PP.",
+	},
+	lunge: {
+		inherit: true,
+		desc: "Lowers the target's Attack by 1.",
+		shortDesc: "Lowers the target's Attack by 1.",
+	},
+	lusterpurge: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.5.",
+		shortDesc: "Lowers the target's Sp. Def by 0.5.",
 	},
 	magiccoat: {
 		inherit: true,
@@ -1291,6 +1857,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	magmastorm: {
+		inherit: true,
+		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps and damages target for up to 4 turns.",
+		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	},
 	magnetrise: {
 		inherit: true,
 		desc: "For up to 5 turns, the user is immune to Ground-type attacks and the effects of Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability as long as it remains active. If the user uses Baton Pass, the replacement will gain the effect. Ingrain, Smack Down, Thousand Arrows, and Iron Ball override this move if the user is under any of their effects. Fails if the user is already under this effect or the effects of Ingrain, Smack Down, or Thousand Arrows.",
@@ -1328,6 +1900,20 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		basePower: 71,
 		onModifyMove(move, pokemon) {},
 		onUseMoveMessage(pokemon, target, move) {},
+	},
+	meanlook: {
+		inherit: true,
+		desc: "Prevents the target from switching out. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement will remain trapped. The effect ends if the user leaves the field.",
+	},
+	metalclaw: {
+		inherit: true,
+		desc: "Raises the user's Attack by 0.1.",
+		shortDesc: "Raises the user's Attack by 0.1.",
+	},
+	meteormash: {
+		inherit: true,
+		desc: "Raises the user's Attack by 0.2.",
+		shortDesc: "Raises the user's Attack by 0.2.",
 	},
 	metronome: {
 		inherit: true,
@@ -1459,9 +2045,71 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	mirrorshot: {
+		inherit: true,
+		desc: "Lowers the target's accuracy by 0.3.",
+		shortDesc: "Lowers the target's accuracy by 0.3.",
+	},
+	mistball: {
+		inherit: true,
+		desc: "Lowers the target's Special Attack by 0.5.",
+		shortDesc: "Lowers the target's Sp. Atk by 0.5.",
+	},
+	mistyterrain: {
+		inherit: true,
+		desc: "For 5 turns, the terrain becomes Misty Terrain. During the effect, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and grounded Pokemon cannot be inflicted with a non-volatile status condition nor confusion. Grounded Pokemon can become affected by Yawn but cannot fall asleep from its effect. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power lowers Special Attack by 0.3. Fails if the current terrain is Misty Terrain.",
+	},
+	moonblast: {
+		inherit: true,
+		desc: "Lowers the target's Special Attack by 0.3.",
+		shortDesc: "Lowers the target's Sp. Atk by 0.3.",
+	},
+	moonlight: {
+		inherit: true,
+		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+	},
+	morningsun: {
+		inherit: true,
+		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+	},
+	mudbomb: {
+		inherit: true,
+		desc: "Lowers the target's accuracy by 0.3.",
+		shortDesc: "Lowers the target's accuracy by 0.3.",
+	},
+	mudshot: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 1.",
+		shortDesc: "Lowers the target's Speed by 1.",
+	},
+	mudslap: {
+		inherit: true,
+		desc: "Lowers the target's accuracy by 1.",
+		shortDesc: "Lowers the target's accuracy by 1.",
+	},
+	muddywater: {
+		inherit: true,
+		desc: "Lowers the target's accuracy by 0.3.",
+		shortDesc: "Lowers the target's accuracy by 0.3.",
+	},
+	mysticalfire: {
+		inherit: true,
+		desc: "Lowers the target's Special Attack by 1.",
+		shortDesc: "Lowers the target's Sp. Atk by 1.",
+	},
 	naturalgift: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, binary: 1},
+	},
+	needlearm: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch.",
+	},
+	nightdaze: {
+		inherit: true,
+		desc: "Lowers the target's accuracy by 0.4.",
+		shortDesc: "Lowers the target's accuracy by 0.4.",
 	},
 	nightmare: {
 		inherit: true,
@@ -1488,6 +2136,31 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 		},
+	},
+	nightslash: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	nuzzle: {
+		inherit: true,
+		desc: "Causes 100-severity paralysis.",
+		shortDesc: "Causes 100-severity paralysis.",
+	},
+	octazooka: {
+		inherit: true,
+		desc: "Lowers the target's accuracy by 0.5.",
+		shortDesc: "Lowers the target's accuracy by 0.5.",
+	},
+	ominouswind: {
+		inherit: true,
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 0.1",
+		shortDesc: "Raises all stats by 0.1 (not acc/eva).",
+	},
+	outrage: {
+		inherit: true,
+		desc: "The user spends two turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2 turns. Confuses the user afterwards.",
 	},
 	painsplit: {
 		inherit: true,
@@ -1542,6 +2215,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	petaldance: {
+		inherit: true,
+		desc: "The user spends two turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2 turns. Confuses the user afterwards.",
+	},
+	pinmissile: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
+	playrough: {
+		inherit: true,
+		desc: "Lowers the target's Attack by 0.1.",
+		shortDesc: "Lowers the target's Attack by 0.1.",
+	},
 	pluck: {
 		inherit: true,
 		desc: "If this move is successful, its accuracy is at least 50%, and the user has not fainted, it steals the target's held Berry if it is holding one and eats it immediately, gaining its effects even if the user's item is being ignored. Items lost to this move cannot be regained with Recycle or the Harvest Ability.",
@@ -1557,6 +2245,26 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				if (item.onEat) source.ateBerry = true;
 			}
 		},
+	},
+	poisonfang: {
+		inherit: true,
+		desc: "Causes 50-severity bad poison.",
+		shortDesc: "Causes 50-severity bad poison.",
+	},
+	poisonjab: {
+		inherit: true,
+		desc: "Causes 30-severity poison.",
+		shortDesc: "Causes 30-severity poison.",
+	},
+	poisonsting: {
+		inherit: true,
+		desc: "Causes 30-severity poison.",
+		shortDesc: "Causes 30-severity poison.",
+	},
+	poisontail: {
+		inherit: true,
+		desc: "+1 critical hit stage. Causes 10-severity poison.",
+		shortDesc: "+1 critical hit stage. Causes 10-severity poison.",
 	},
 	powder: {
 		inherit: true,
@@ -1577,6 +2285,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			},
 		},
+	},
+	powdersnow: {
+		inherit: true,
+		desc: "Causes 10-severity freeze.",
+		shortDesc: "Causes 10-severity freeze.",
 	},
 	powersplit: {
 		inherit: true,
@@ -1608,12 +2321,22 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			this.add('-swapboost', source, target, 'atk, spa', '[from] move: Power Swap');
 		},
 	},
+	poweruppunch: {
+		inherit: true,
+		desc: "Raises the user's Attack by 1.",
+		shortDesc: "Raises the user's Attack by 1.",
+	},
 	present: {
 		inherit: true,
 		desc: "No additional effect.",
 		shortDesc: "No additional effect.",
 		basePower: 49,
 		onModifyMove(move, pokemon, target) {},
+	},
+	prismaticlaser: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
 	},
 	protect: {
 		inherit: true,
@@ -1652,6 +2375,26 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				else return;
 			},
 		},
+	},
+	psybeam: {
+		inherit: true,
+		desc: "Causes 10-severity confusion.",
+		shortDesc: "Causes 10-severity confusion.",
+	},
+	psychic: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.1.",
+		shortDesc: "Lowers the target's Sp. Def by 0.1.",
+	},
+	psychicterrain: {
+		inherit: true,
+		desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power lowers the target's Speed by 0.3. Fails if the current terrain is Psychic Terrain.",
+		// desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power has a 30% chance to lower the target's Speed by 1 stage. Fails if the current terrain is Psychic Terrain.",
+	},
+	psychocut: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
 	},
 	psychoshift: {
 		inherit: true,
@@ -1737,6 +2480,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			return success;
 		},
 	},
+	pursuit: {
+		inherit: true,
+		desc: "If an adjacent opposing Pokemon switches out this turn, this move hits that Pokemon before it leaves the field, even if it was not the original target. If the user moves after an opponent using Parting Shot, U-turn, or Volt Switch, but not Baton Pass, it will hit that opponent before it leaves the field. Power doubles and no accuracy check is done if the user hits an opponent switching out, and the user's turn is over; if an opponent faints from this, the replacement Pokemon does not become active until the end of the turn.",
+	},
 	quickguard: {
 		inherit: true,
 		desc: "The user and its party members are protected from attacks with original or altered priority greater than 0 made by other Pokemon, including allies, during this turn. This move modifies the same 1/X severity used by other protection moves, where X starts at 1 and triples each time this move is successfully used, but does not decrease its own severity. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn or if this move is already in effect for the user's side.",
@@ -1774,14 +2521,43 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	rapidspin: {
+		inherit: true,
+		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
+		shortDesc: "Frees user from hazards, binding, Leech Seed.",
+	},
+	razorleaf: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	razorshell: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.5.",
+		shortDesc: "Lowers the target's Defense by 0.5.",
+	},
+	razorwind: {
+		inherit: true,
+		desc: "+1 critical hit stage. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Charges, then hits foe(s) turn 2. +1 crit stage.",
+	},
 	recycle: {
 		inherit: true,
 		desc: "The user regains the item it last used. Fails if the user is holding an item, if the user has not held an item, if the item was a popped Air Balloon, if the item was picked up by a Pokemon with the Pickup Ability, or if the item was lost to Bug Bite, Covet, Incinerate, Knock Off, Pluck, or Thief. Items thrown with Fling can be regained.",
 		flags: {snatch: 1, binary: 1},
 	},
+	reflect: {
+		inherit: true,
+		desc: "For 5 turns, the user and its party members take 0.5x damage from physical attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore a percentage of this effect depending on their stage. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+	},
 	reflecttype: {
 		inherit: true,
 		flags: {protect: 1, authentic: 1, allyanim: 1, binary: 1},
+	},
+	relicsong: {
+		inherit: true,
+		desc: "Causes 10-severity sleep. If this move is successful on at least one target and the user is a Meloetta, it changes to Pirouette Forme if it is currently in Aria Forme, or changes to Aria Forme if it is currently in Pirouette Forme. This forme change does not happen if the Meloetta has the Sheer Force Ability. The Pirouette Forme reverts to Aria Forme when Meloetta is not active.",
+		shortDesc: "Causes 10-severity sleep. Meloetta transforms.",
 	},
 	rest: {
 		inherit: true,
@@ -1815,10 +2591,50 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		shortDesc: "Forces the target to switch to their next ally.",
 		flags: {reflectable: 1, mirror: 1, sound: 1, authentic: 1, allyanim: 1, binary: 1},
 	},
+	roaroftime: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
+	},
+	rockblast: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
+	},
+	rockclimb: {
+		inherit: true,
+		desc: "Causes 20-severity confusion.",
+		shortDesc: "Causes 20-severity confusion.",
+	},
+	rockslide: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch.",
+	},
+	rocksmash: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.5.",
+		shortDesc: "Lowers the target's Defense by 0.5.",
+	},
+	rocktomb: {
+		inherit: true,
+		desc: "Lowers the target's Speed by 1.",
+		shortDesc: "Lowers the target's Speed by 1.",
+	},
+	rockwrecker: {
+		inherit: true,
+		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
+		shortDesc: "User will be weakened or unable to move next turn.",
+	},
 	roleplay: {
 		inherit: true,
 		desc: "The user's Ability changes to match the target's Ability. Fails if the user's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Zen Mode, or already matches the target, or if the target's Ability is Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, or Zen Mode.",
 		flags: {authentic: 1, allyanim: 1, binary: 1},
+	},
+	rollingkick: {
+		inherit: true,
+		desc: "Causes 30-severity flinch.",
+		shortDesc: "Causes 30-severity flinch.",
 	},
 	roost: {
 		inherit: true,
@@ -1828,6 +2644,71 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (Scripts.severity! >= 50) move.self!.volatileStatus = 'roost';
 			else move.self!.volatileStatus = undefined;
 		},
+	},
+	sacredfire: {
+		inherit: true,
+		desc: "Causes 50-severity burn.",
+		shortDesc: "Causes 50-severity burn. Thaws user.",
+	},
+	sandtomb: {
+		inherit: true,
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps and damages target for up to 4 turns.",
+	},
+	scald: {
+		inherit: true,
+		desc: "Causes 30-severity burn. The target thaws out if it is frozen.",
+		shortDesc: "Causes 30-severity burn. Thaws target.",
+	},
+	searingshot: {
+		inherit: true,
+		desc: "Causes 30-severity burn.",
+		shortDesc: "Causes 30-severity burn.",
+	},
+	secretpower: {
+		inherit: true,
+		desc: "Has a different secondary effect on the target based on the battle terrain. Causes 30-severity paralysis on the regular Wi-Fi terrain and Electric Terrain, lowers Special Attack by 0.3 stage during Misty Terrain, causes 30-severity sleep during Grassy Terrain and lowers Speed by 0.3 stage during Psychic Terrain.",
+		shortDesc: "Effect varies with terrain. (30-severity paralysis)",
+	},
+	seedflare: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.8.",
+		shortDesc: "Lowers the target's Sp. Def by 0.8.",
+	},
+	shadowball: {
+		inherit: true,
+		desc: "Lowers the target's Special Defense by 0.2.",
+		shortDesc: "Lowers the target's Sp. Def by 0.2.",
+	},
+	shadowbone: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.2.",
+		shortDesc: "Lowers the target's Defense by 0.2.",
+	},
+	shadowclaw: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	shadowstrike: {
+		inherit: true,
+		desc: "Lowers the target's Defense by 0.5.",
+		shortDesc: "Lowers the target's Defense by 0.5.",
+	},
+	sheercold: {
+		inherit: true,
+		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + X)%, where X is 30 if the user is an Ice type and 20 otherwise, and fails if the target is at a higher level. Ice-type Pokemon and Pokemon with the Sturdy Ability are immune.",
+		shortDesc: "Deals % damage from accuracy. Higher level only.",
+	},
+	signalbeam: {
+		inherit: true,
+		desc: "Causes 10-severity confusion.",
+		shortDesc: "Causes 10-severity confusion.",
+	},
+	silverwind: {
+		inherit: true,
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 0.1",
+		shortDesc: "Raises all stats by 0.1 (not acc/eva).",
 	},
 	simplebeam: {
 		inherit: true,
@@ -1842,6 +2723,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		desc: "The user swaps its Ability with the target's Ability. Fails if either the user or the target's Ability is Battle Bond, Comatose, Disguise, Illusion, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Wonder Guard, or Zen Mode.",
 		flags: {protect: 1, mirror: 1, authentic: 1, allyanim: 1, binary: 1},
+	},
+	skyattack: {
+		inherit: true,
+		desc: "+1 critical hit stage. Causes 30-severity flinch. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Charges, hits turn 2. 30-severity flinch. +1 crit.",
+	},
+	slash: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
 	},
 	sleeptalk: {
 		inherit: true,
@@ -1979,6 +2870,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target) {},
 		target: "normal",
 	},
+	sludge: {
+		inherit: true,
+		desc: "Causes 30-severity poison.",
+		shortDesc: "Causes 30-severity poison.",
+	},
+	sludgebomb: {
+		inherit: true,
+		desc: "Causes 30-severity poison.",
+		shortDesc: "Causes 30-severity poison.",
+	},
+	sludgewave: {
+		inherit: true,
+		desc: "Causes 10-severity poison.",
+		shortDesc: "Causes 10-severity poison.",
+	},
 	smackdown: {
 		inherit: true,
 		desc: "This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If this move has greater than 50% accuracy and hits a target under the effect of Bounce, Fly, Magnet Rise, or Telekinesis, the effect ends. If the target is a Flying type that has not used Roost this turn or a Pokemon with the Levitate Ability, it loses its immunity to Ground-type attacks and the Arena Trap Ability as long as it remains active. During the effect, Magnet Rise fails for the target and Telekinesis fails against the target.",
@@ -2045,6 +2951,16 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			}
 		},
 	},
+	smog: {
+		inherit: true,
+		desc: "Causes 40-severity poison.",
+		shortDesc: "Causes 40-severity poison.",
+	},
+	snarl: {
+		inherit: true,
+		desc: "Lowers the target's Special Attack by 1.",
+		shortDesc: "Lowers the target's Sp. Atk by 1.",
+	},
 	snatch: {
 		inherit: true,
 		desc: "If another Pokemon uses certain non-damaging moves this turn, the user steals part of the severity of that move to use itself, and the original move is executed with the remaining severity. If multiple Pokemon use one of those moves this turn, the applicable moves are all stolen by the first Pokemon in turn order that used this move this turn. This effect is ignored while the user is under the effect of Sky Drop.",
@@ -2099,6 +3015,24 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1, binary: 1},
 	},
+	solarbeam: {
+		inherit: true,
+		desc: "This attack charges on the first turn and executes on the second. Power is halved if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm and the user is not holding Utility Umbrella. If the user is holding a Power Herb or the weather is Desolate Land or Sunny Day, the move completes in one turn.",
+	},
+	solarblade: {
+		inherit: true,
+		desc: "This attack charges on the first turn and executes on the second. Power is halved if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm and the user is not holding Utility Umbrella. If the user is holding a Power Herb or the weather is Desolate Land or Sunny Day, the move completes in one turn.",
+	},
+	spacialrend: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	spark: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis.",
+		shortDesc: "Causes 30-severity paralysis.",
+	},
 	sparklingaria: {
 		inherit: true,
 		desc: "If the user has not fainted, the target is cured of its burn or has its severity reduced.",
@@ -2149,6 +3083,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		desc: "Prevents the target from switching out. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement will remain trapped. The effect ends if the user leaves the field.",
 		flags: {protect: 1, reflectable: 1, mirror: 1, binary: 1},
+	},
+	spikecannon: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
 	},
 	spikes: {
 		inherit: true,
@@ -2229,6 +3168,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {reflectable: 1, binary: 1},
 	},
+	steameruption: {
+		inherit: true,
+		desc: "Causes 30-severity burn. The target thaws out if it is frozen.",
+		shortDesc: "Causes 30-severity burn. Thaws target.",
+	},
+	steamroller: {
+		inherit: true,
+		desc: "Causes 30-severity flinch. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+		shortDesc: "Causes 30-severity flinch.",
+	},
+	steelwing: {
+		inherit: true,
+		desc: "Raises the user's Defense by 0.1.",
+		shortDesc: "Raises the user's Defense by 0.1.",
+	},
 	stickyweb: {
 		inherit: true,
 		flags: {reflectable: 1, binary: 1},
@@ -2237,6 +3191,31 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {snatch: 1, binary: 1},
 	},
+	stokedsparksurfer: {
+		inherit: true,
+		desc: "Causes 100-severity paralysis.",
+		shortDesc: "Causes 100-severity paralysis.",
+	},
+	stomp: {
+		inherit: true,
+		desc: "Causes 30-severity flinch. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+		shortDesc: "Causes 30-severity flinch.",
+	},
+	stoneedge: {
+		inherit: true,
+		desc: "+1 critical hit stage.",
+		shortDesc: "+1 critical hit stage.",
+	},
+	stormthrow: {
+		inherit: true,
+		desc: "This move is always a stage 3 critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.",
+		shortDesc: "Always results in a stage 3 critical hit.",
+	},
+	strugglebug: {
+		inherit: true,
+		desc: "Lowers the target's Special Attack by 1.",
+		shortDesc: "Lowers the target's Sp. Atk by 1.",
+	},
 	substitute: {
 		inherit: true,
 		flags: {snatch: 1, nonsky: 1, binary: 1},
@@ -2244,6 +3223,15 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	switcheroo: {
 		inherit: true,
 		flags: {protect: 1, mirror: 1, allyanim: 1, binary: 1},
+	},
+	synthesis: {
+		inherit: true,
+		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+	},
+	tailslap: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
+		shortDesc: "Hits 3 times in one turn.",
 	},
 	taunt: {
 		inherit: true,
@@ -2344,6 +3332,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	teleport: {
+		inherit: true,
+		desc: "Fails when used.",
+		shortDesc: "Fails when used.",
+	},
 	thief: {
 		inherit: true,
 		desc: "If this attack was successful, its accuracy was at least 50%, and the user has not fainted, it steals the target's held item if the user is not holding one. The target's item is not stolen if it is a Mail or Z-Crystal, or if the target is a Kyogre holding a Blue Orb, a Groudon holding a Red Orb, a Giratina holding a Griseous Orb, an Arceus holding a Plate, a Genesect holding a Drive, a Silvally holding a Memory, or a Pokemon that can Mega Evolve holding the Mega Stone for its species. Items lost to this move cannot be regained with Recycle or the Harvest Ability.",
@@ -2372,6 +3365,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		onHit(target, source, move) {
 			if (source.isActive && Scripts.severity! >= 50) target.addVolatile('trapped', source, move, 'trapper');
 		},
+	},
+	thrash: {
+		inherit: true,
+		desc: "The user spends two turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+		shortDesc: "Lasts 2 turns. Confuses the user afterwards.",
 	},
 	throatchop: {
 		inherit: true,
@@ -2412,6 +3410,32 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				this.add('-end', target, 'Throat Chop', '[silent]');
 			},
 		},
+	},
+	thunder: {
+		inherit: true,
+		desc: "Causes 30-severity paralysis. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
+		shortDesc: "30-severity paralysis. Perfect accuracy in rain.",
+		// desc: "Has a 30% chance to paralyze the target. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
+	},
+	thunderbolt: {
+		inherit: true,
+		desc: "Causes 10-severity paralysis.",
+		shortDesc: "Causes 10-severity paralysis.",
+	},
+	thunderfang: {
+		inherit: true,
+		desc: "Causes 10-severity paralysis and 10-severity flinch.",
+		shortDesc: "Causes 10-severity paralysis, 10-severity flinch.",
+	},
+	thunderpunch: {
+		inherit: true,
+		desc: "Causes 10-severity paralysis.",
+		shortDesc: "Causes 10-severity paralysis.",
+	},
+	thundershock: {
+		inherit: true,
+		desc: "Causes 10-severity paralysis.",
+		shortDesc: "Causes 10-severity paralysis.",
 	},
 	topsyturvy: {
 		inherit: true,
@@ -2455,6 +3479,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			},
 		},
 	},
+	toxic: {
+		inherit: true,
+		desc: "Badly poisons the target. If a Poison-type Pokemon uses this move, the move does not check accuracy, even if the target is in the middle of a two-turn move.",
+		shortDesc: "Badly poisons. Perfect accuracy for Poison types.",
+	},
 	toxicspikes: {
 		inherit: true,
 		flags: {reflectable: 1, nonsky: 1, binary: 1},
@@ -2489,6 +3518,21 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			if (pokemon.hasAbility('skilllink') || move.accuracy) return 10 * move.hit;
 			return 10 * move.hit * move.accuracy;
 		},
+	},
+	tropkick: {
+		inherit: true,
+		desc: "Lowers the target's Attack by 1.",
+		shortDesc: "Lowers the target's Attack by 1.",
+	},
+	twineedle: {
+		inherit: true,
+		desc: "Hits twice, with each hit causing 20-severity poison.",
+		shortDesc: "Hits 2 times. Each hit causes 20-severity poison.",
+	},
+	twister: {
+		inherit: true,
+		desc: "Causes 20-severity flinch. Power doubles if the target is using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop.",
+		shortDesc: "Causes 20-severity flinch.",
 	},
 	uproar: {
 		inherit: true,
@@ -2577,6 +3621,11 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			move.selfSwitch = (Scripts.severity! >= 50);
 		},
 	},
+	volttackle: {
+		inherit: true,
+		desc: "Causes 10-severity paralysis. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		shortDesc: "33% recoil. Causes 10-severity paralysis.",
+	},
 	wakeupslap: {
 		inherit: true,
 		desc: "Power increases if the target is asleep, up to x2 at 100 severity. If the user has not fainted, the target's sleep is cured or has its severity reduced'.",
@@ -2608,6 +3657,27 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				}
 			}
 		},
+	},
+	waterfall: {
+		inherit: true,
+		desc: "Causes 20-severity flinch.",
+		shortDesc: "Causes 20-severity flinch.",
+	},
+	waterpulse: {
+		inherit: true,
+		desc: "Causes 20-severity confusion.",
+		shortDesc: "Causes 20-severity confusion.",
+	},
+	watershuriken: {
+		inherit: true,
+		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times. If the user is an Ash-Greninja with the Battle Bond Ability, this move has a power of 20 and always hits three times.",
+		shortDesc: "Usually goes first. Hits 3 times in one turn.",
+	},
+	whirlpool: {
+		inherit: true,
+		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps and damages target for up to 4 turns.",
+		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 	},
 	whirlwind: {
 		inherit: true,
@@ -2687,6 +3757,12 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 			return false;
 		},
 	},
+	wrap: {
+		inherit: true,
+		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps and damages target for up to 4 turns.",
+		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	},
 	yawn: {
 		inherit: true,
 		desc: "Causes the target to fall asleep at the end of the next turn. Fails when used if the target cannot fall asleep or if it already has a 100-severity non-volatile status condition. At the end of the next turn, if the target is still active, does not have a 100-severity non-volatile status condition, and can fall asleep, it falls asleep. If the target becomes affected, this effect cannot be prevented by Safeguard or a substitute, or by falling asleep and waking up during the effect.",
@@ -2709,1082 +3785,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				target.trySetStatus('slp', this.effectState.source);
 			},
 		},
-	},
-	ancientpower: {
-		inherit: true,
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 0.1",
-		shortDesc: "Raises all stats by 0.1 (not acc/eva).",
-	},
-	armthrust: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	astonish: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch",
-	},
-	attackorder: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	aurorabeam: {
-		inherit: true,
-		desc: "Lowers the target's Attack by 0.1.",
-		shortDesc: "Lowers the target's Attack by 0.1.",
-	},
-	barrage: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	bind: {
-		inherit: true,
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-	},
-	blastburn: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge on the following turn and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	blazekick: {
-		inherit: true,
-		desc: "+1 critical hit stage. Causes 10-severity burn.",
-		shortDesc: "+1 critical hit stage. Causes 10-severity burn.",
-	},
-	blizzard: {
-		inherit: true,
-		desc: "Causes 10-severity freeze. If the weather is Hail, this move does not check accuracy.",
-		shortDesc: "Causes 10-severity freeze. Can't miss in hail.",
-	},
-	blueflare: {
-		inherit: true,
-		desc: "Causes 20-severity burn.",
-		shortDesc: "Causes 20-severity burn.",
-	},
-	bodyslam: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
-		shortDesc: "Causes 30-severity paralysis.",
-	},
-	boltstrike: {
-		inherit: true,
-		desc: "Causes 20-severity paralysis.",
-		shortDesc: "Causes 20-severity paralysis.",
-	},
-	boneclub: {
-		inherit: true,
-		desc: "Causes 10-severity flinch.",
-		shortDesc: "Causes 10-severity flinch.",
-	},
-	bonerush: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	bounce: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thousand Arrows, Thunder, and Twister, and Gust and Twister have doubled power when used against it. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Bounces, then hits turn 2. 30-severity paralysis.",
-	},
-	breakingswipe: {
-		inherit: true,
-		desc: "Lowers the target's Attack by 1.",
-		shortDesc: "Lowers the target's Attack by 1.",
-	},
-	brickbreak: {
-		inherit: true,
-		desc: "If this attack is successful, the effects of Reflect, Light Screen, and Aurora Veil end for the target's side of the field before damage is calculated.",
-	},
-	bubble: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 0.1.",
-		shortDesc: "Lowers the target's Speed by 0.1.",
-	},
-	bubblebeam: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 0.1.",
-		shortDesc: "Lowers the target's Speed by 0.1.",
-	},
-	bugbuzz: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.1.",
-		shortDesc: "Lowers the target's Sp.Def by 0.1.",
-	},
-	bulldoze: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 1.",
-		shortDesc: "Lowers adjacent Pokemon's Speed by 1.",
-	},
-	bulletseed: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	chargebeam: {
-		inherit: true,
-		desc: "Raises the user's Special Attack by 0.7.",
-		shortDesc: "Raises the user's Sp. Atk by 0.7.",
-	},
-	chatter: {
-		inherit: true,
-		desc: "Causes 100-severity confusion.",
-		shortDesc: "Causes 100-severity confusion.",
-	},
-	clamp: {
-		inherit: true,
-		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-		shortDesc: "Traps and damages target for up to 4 turns.",
-		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-	},
-	cometpunch: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	confusion: {
-		inherit: true,
-		desc: "Causes 10-severity burn.",
-		shortDesc: "Causes 10-severity burn.",
-	},
-	constrict: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 0.1.",
-		shortDesc: "Lowers the target's Speed by 0.1.",
-	},
-	copycat: {
-		inherit: true,
-		desc: "The user uses the last move used by any Pokemon, including itself. Fails if no move has been used, or if the last move used was Assist, Baneful Bunker, Beak Blast, Belch, Bestow, Celebrate, Chatter, Circle Throw, Copycat, Counter, Covet, Crafty Shield, Destiny Bond, Detect, Dragon Tail, Endure, Feint, Focus Punch, Follow Me, Helping Hand, Hold Hands, King's Shield, Mat Block, Me First, Metronome, Mimic, Mirror Coat, Mirror Move, Nature Power, Protect, Rage Powder, Roar, Shell Trap, Sketch, Sleep Talk, Snatch, Spiky Shield, Spotlight, Struggle, Switcheroo, Thief, Transform, Trick, Whirlwind, or any Z-Move.",
-	},
-	coreenforcer: {
-		inherit: true,
-		desc: "If the user moves after the target, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode, this effect does not happen, and receiving the effect through Baton Pass ends the effect immediately.",
-	},
-	crabhammer: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	crosschop: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	crosspoison: {
-		inherit: true,
-		desc: "+1 critical hit stage. Causes 10-severity poison.",
-		shortDesc: "+1 critical hit stage. Causes 10-severity poison.",
-	},
-	crunch: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.2.",
-		shortDesc: "Lowers the target's Defense by 0.2.",
-	},
-	crushclaw: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.5.",
-		shortDesc: "Lowers the target's Defense by 0.5.",
-	},
-	darkpulse: {
-		inherit: true,
-		desc: "Causes 20-severity flinch.",
-		shortDesc: "Causes 20-severity flinch.",
-	},
-	defog: {
-		inherit: true,
-		desc: "Lowers the target's evasiveness by 1 stage. If this move is successful and whether or not the target's evasiveness was affected, the effects of Reflect, Light Screen, Aurora Veil, Safeguard, Mist, Spikes, Toxic Spikes, Stealth Rock, and Sticky Web end for the target's side, and the effects of Spikes, Toxic Spikes, Stealth Rock, and Sticky Web end for the user's side. Ignores a target's substitute, although a substitute will still block the lowering of evasiveness.",
-		shortDesc: "-1 evasion; clears user and target side's hazards.",
-	},
-	detect: {
-		inherit: true,
-		desc: "The user is protected from most attacks made by other Pokemon during this turn. This protection has 100/X severity, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-		// desc: "The user is protected from most attacks made by other Pokemon during this turn. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-	},
-	diamondstorm: {
-		inherit: true,
-		desc: "Raises the user's Defense by 1.",
-		shortDesc: "Raises the user's Defense by 1.",
-	},
-	discharge: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis.",
-		shortDesc: "Causes 30-severity paralysis.",
-	},
-	dizzypunch: {
-		inherit: true,
-		desc: "Causes 20-severity confusion.",
-		shortDesc: "Causes 20-severity confusion.",
-	},
-	doubleslap: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	dragonbreath: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis.",
-		shortDesc: "Causes 30-severity paralysis.",
-	},
-	dragonrush: {
-		inherit: true,
-		desc: "Causes 20-severity flinch. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
-		shortDesc: "Causes 20-severity flinch.",
-	},
-	drillrun: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	dynamicpunch: {
-		inherit: true,
-		desc: "Causes 100-severity confusion.",
-		shortDesc: "Causes 100-severity confusion.",
-	},
-	earthpower: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.1.",
-		shortDesc: "Lowers the target's Sp. Def by 0.1.",
-	},
-	electricterrain: {
-		inherit: true,
-		desc: "For 5 turns, the terrain becomes Electric Terrain. During the effect, the power of Electric-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Grounded Pokemon cannot become affected by Yawn or fall asleep from its effect. Camouflage transforms the user into an Electric type, Nature Power becomes Thunderbolt, and Secret Power causes 30-severity paralysis. Fails if the current terrain is Electric Terrain.",
-		// desc: "For 5 turns, the terrain becomes Electric Terrain. During the effect, the power of Electric-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Grounded Pokemon cannot become affected by Yawn or fall asleep from its effect. Camouflage transforms the user into an Electric type, Nature Power becomes Thunderbolt, and Secret Power has a 30% chance to cause paralysis. Fails if the current terrain is Electric Terrain.",
-	},
-	electroweb: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 1.",
-		shortDesc: "Lowers the target's Speed by 1.",
-	},
-	ember: {
-		inherit: true,
-		desc: "Causes 10-severity burn.",
-		shortDesc: "Causes 10-severity burn.",
-	},
-	energyball: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.1.",
-		shortDesc: "Lowers the target's Sp. Def by 0.1.",
-	},
-	extrasensory: {
-		inherit: true,
-		desc: "Causes 10-severity flinch.",
-		shortDesc: "Causes 10-severity flinch.",
-	},
-	fakeout: {
-		inherit: true,
-		desc: "Causes 100-severity flinch. Fails unless it is the user's first turn on the field.",
-		shortDesc: "Hits first. First turn only. 100-severity flinch.",
-	},
-	fierydance: {
-		inherit: true,
-		desc: "Raises the user's Special Attack by 0.5.",
-		shortDesc: "Raises the user's Sp. Atk by 0.5.",
-	},
-	fireblast: {
-		inherit: true,
-		desc: "Causes 10-severity burn.",
-		shortDesc: "Causes 10-severity burn.",
-	},
-	firefang: {
-		inherit: true,
-		desc: "Causes 10-severity burn and 10-severity flinch.",
-		shortDesc: "Causes 10-severity burn and 10-severity flinch.",
-	},
-	firelash: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 1.",
-		shortDesc: "Lowers the target's Defense by 1.",
-	},
-	firepunch: {
-		inherit: true,
-		desc: "Causes 10-severity burn.",
-		shortDesc: "Causes 10-severity burn.",
-	},
-	firespin: {
-		inherit: true,
-		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-		shortDesc: "Traps and damages target for up to 4 turns.",
-		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-	},
-	fissure: {
-		inherit: true,
-		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
-		shortDesc: "Deals % damage from accuracy. Higher level only.",
-	},
-	flamecharge: {
-		inherit: true,
-		desc: "Raises the user's Speed by 1.",
-		shortDesc: "Raises the user's Speed by 1.",
-	},
-	flamewheel: {
-		inherit: true,
-		desc: "Causes 10-severity burn.",
-		shortDesc: "Causes 10-severity burn. Thaws user.",
-	},
-	flamethrower: {
-		inherit: true,
-		desc: "Causes 10-severity burn.",
-		shortDesc: "Causes 10-severity burn.",
-	},
-	flareblitz: {
-		inherit: true,
-		desc: "Causes 10-severity burn. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
-		shortDesc: "33% recoil. Causes 10-severity burn. Thaws user.",
-	},
-	flashcannon: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.1.",
-		shortDesc: "Lowers the target's Sp. Def by 0.1.",
-	},
-	focusblast: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.1.",
-		shortDesc: "Lowers the target's Sp. Def by 0.1.",
-	},
-	forcepalm: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis.",
-		shortDesc: "Causes 30-severity paralysis.",
-	},
-	freezedry: {
-		inherit: true,
-		desc: "Causes 10-severity freeze. This move's type effectiveness against Water is changed to be super effective no matter what this move's type is.",
-		shortDesc: "10-severity freeze. Super effective on Water.",
-	},
-	freezeshock: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges turn 1. Hits turn 2. 30-severity paralysis.",
-	},
-	frenzyplant: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	frostbreath: {
-		inherit: true,
-		desc: "This move is always a stage 3 critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.",
-		shortDesc: "Always results in a stage 3 critical hit.",
-	},
-	furyattack: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	furyswipes: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	gigaimpact: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	glaciate: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 1.",
-		shortDesc: "Lowers the target's Speed by 1.",
-	},
-	grassyterrain: {
-		inherit: true,
-		desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.5, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power causes 30-severity sleep. Fails if the current terrain is Grassy Terrain.",
-		// desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.5, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
-	},
-	gravity: {
-		inherit: true,
-		desc: "For 5 turns, the evasiveness of all active Pokemon is multiplied by 0.6. At the time of use, Bounce, Fly, Magnet Rise, Sky Drop, and Telekinesis end immediately for all active Pokemon. During the effect, Bounce, Fly, Flying Press, High Jump Kick, Jump Kick, Magnet Rise, Sky Drop, Splash, and Telekinesis are prevented from being used by all active Pokemon. Ground-type attacks, Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability can affect Flying types or Pokemon with the Levitate Ability. Fails if this move is already in effect. Relevant Z-Powered moves can still be selected, but will be prevented at execution during this effect.",
-	},
-	growth: {
-		inherit: true,
-		desc: "Raises the user's Attack and Special Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Special Attack by 2 stages.",
-	},
-	guillotine: {
-		inherit: true,
-		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
-		shortDesc: "Deals % damage from accuracy. Higher level only.",
-	},
-	gunkshot: {
-		inherit: true,
-		desc: "Causes 30-severity poison.",
-		shortDesc: "Causes 30-severity poison.",
-	},
-	headbutt: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	healingwish: {
-		inherit: true,
-		desc: "The user faints and the Pokemon brought out to replace it has its HP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
-		shortDesc: "User faints. Replacement is fully healed.",
-	},
-	heartstamp: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	heatwave: {
-		inherit: true,
-		desc: "Causes 10-severity burn.",
-		shortDesc: "Causes 10-severity burn.",
-	},
-	horndrill: {
-		inherit: true,
-		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
-		shortDesc: "Deals % damage from accuracy. Higher level only.",
-	},
-	howl: {
-		inherit: true,
-		desc: "Raises the user's Attack by 1 stage.",
-		shortDesc: "Raises the user's Attack by 1.",
-	},
-	hurricane: {
-		inherit: true,
-		desc: "Causes 30-severity confusion. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
-		shortDesc: "30-severity confusion. Perfect accuracy in rain.",
-		// desc: "Has a 30% chance to confuse the target. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
-	},
-	hydrocannon: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	hyperbeam: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	hyperfang: {
-		inherit: true,
-		desc: "Causes 10-severity flinch.",
-		shortDesc: "Causes 10-severity flinch.",
-	},
-	icebeam: {
-		inherit: true,
-		desc: "Causes 10-severity freeze.",
-		shortDesc: "Causes 10-severity freeze.",
-	},
-	iceburn: {
-		inherit: true,
-		desc: "Causes 30-severity burn. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges turn 1. Hits turn 2. 30-severity burn.",
-	},
-	icefang: {
-		inherit: true,
-		desc: "Causes 10-severity freeze and 10-severity flinch.",
-		shortDesc: "Causes 10-severity freeze and 10-severity flinch.",
-	},
-	icepunch: {
-		inherit: true,
-		desc: "Causes 10-severity freeze.",
-		shortDesc: "Causes 10-severity freeze.",
-	},
-	iciclecrash: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	iciclespear: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	icywind: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 1.",
-		shortDesc: "Lowers the target's Speed by 1.",
-	},
-	inferno: {
-		inherit: true,
-		desc: "Causes 100-severity burn.",
-		shortDesc: "Causes 100-severity burn.",
-	},
-	infestation: {
-		inherit: true,
-		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-		shortDesc: "Traps and damages target for up to 4 turns.",
-		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-	},
-	instruct: {
-		inherit: true,
-		desc: "The target immediately uses its last used move. Fails if the target has not made a move, if the move has 0 PP, if the target is preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide, Celebrate, Copycat, Focus Punch, Ice Ball, Instruct, King's Shield, Me First, Metronome, Mimic, Mirror Move, Nature Power, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, any two-turn move, any recharge move, or any Z-Move.",
-	},
-	ironhead: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	irontail: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.3.",
-		shortDesc: "Lowers the target's Defense by 0.3.",
-	},
-	karatechop: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	lavaplume: {
-		inherit: true,
-		desc: "Causes 30-severity burn.",
-		shortDesc: "Causes 30-severity burn.",
-	},
-	leafblade: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	leaftornado: {
-		inherit: true,
-		desc: "Lowers the target's accuracy by 0.5.",
-		shortDesc: "Lowers the target's accuracy by 0.5.",
-	},
-	lick: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis.",
-		shortDesc: "Causes 30-severity paralysis.",
-	},
-	lightscreen: {
-		inherit: true,
-		desc: "For 5 turns, the user and its party members take 0.5x damage from special attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore a percentage of this effect depending on their stage. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
-	},
-	liquidation: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.2.",
-		shortDesc: "Lowers the target's Defense by 0.2.",
-	},
-	lowsweep: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 1.",
-		shortDesc: "Lowers the target's Speed by 1.",
-	},
-	lunardance: {
-		inherit: true,
-		desc: "The user faints and the Pokemon brought out to replace it has its HP and PP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
-		shortDesc: "User faints. Replacement is fully healed, with PP.",
-	},
-	lunge: {
-		inherit: true,
-		desc: "Lowers the target's Attack by 1.",
-		shortDesc: "Lowers the target's Attack by 1.",
-	},
-	lusterpurge: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.5.",
-		shortDesc: "Lowers the target's Sp. Def by 0.5.",
-	},
-	magmastorm: {
-		inherit: true,
-		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-		shortDesc: "Traps and damages target for up to 4 turns.",
-		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-	},
-	meanlook: {
-		inherit: true,
-		desc: "Prevents the target from switching out. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement will remain trapped. The effect ends if the user leaves the field.",
-	},
-	metalclaw: {
-		inherit: true,
-		desc: "Raises the user's Attack by 0.1.",
-		shortDesc: "Raises the user's Attack by 0.1.",
-	},
-	meteormash: {
-		inherit: true,
-		desc: "Raises the user's Attack by 0.2.",
-		shortDesc: "Raises the user's Attack by 0.2.",
-	},
-	mirrorshot: {
-		inherit: true,
-		desc: "Lowers the target's accuracy by 0.3.",
-		shortDesc: "Lowers the target's accuracy by 0.3.",
-	},
-	mistball: {
-		inherit: true,
-		desc: "Lowers the target's Special Attack by 0.5.",
-		shortDesc: "Lowers the target's Sp. Atk by 0.5.",
-	},
-	mistyterrain: {
-		inherit: true,
-		desc: "For 5 turns, the terrain becomes Misty Terrain. During the effect, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and grounded Pokemon cannot be inflicted with a non-volatile status condition nor confusion. Grounded Pokemon can become affected by Yawn but cannot fall asleep from its effect. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power lowers Special Attack by 0.3. Fails if the current terrain is Misty Terrain.",
-	},
-	moonblast: {
-		inherit: true,
-		desc: "Lowers the target's Special Attack by 0.3.",
-		shortDesc: "Lowers the target's Sp. Atk by 0.3.",
-	},
-	moonlight: {
-		inherit: true,
-		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
-	},
-	morningsun: {
-		inherit: true,
-		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
-	},
-	mudbomb: {
-		inherit: true,
-		desc: "Lowers the target's accuracy by 0.3.",
-		shortDesc: "Lowers the target's accuracy by 0.3.",
-	},
-	mudshot: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 1.",
-		shortDesc: "Lowers the target's Speed by 1.",
-	},
-	mudslap: {
-		inherit: true,
-		desc: "Lowers the target's accuracy by 1.",
-		shortDesc: "Lowers the target's accuracy by 1.",
-	},
-	muddywater: {
-		inherit: true,
-		desc: "Lowers the target's accuracy by 0.3.",
-		shortDesc: "Lowers the target's accuracy by 0.3.",
-	},
-	mysticalfire: {
-		inherit: true,
-		desc: "Lowers the target's Special Attack by 1.",
-		shortDesc: "Lowers the target's Sp. Atk by 1.",
-	},
-	needlearm: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	nightdaze: {
-		inherit: true,
-		desc: "Lowers the target's accuracy by 0.4.",
-		shortDesc: "Lowers the target's accuracy by 0.4.",
-	},
-	nightslash: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	nuzzle: {
-		inherit: true,
-		desc: "Causes 100-severity paralysis.",
-		shortDesc: "Causes 100-severity paralysis.",
-	},
-	octazooka: {
-		inherit: true,
-		desc: "Lowers the target's accuracy by 0.5.",
-		shortDesc: "Lowers the target's accuracy by 0.5.",
-	},
-	ominouswind: {
-		inherit: true,
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 0.1",
-		shortDesc: "Raises all stats by 0.1 (not acc/eva).",
-	},
-	outrage: {
-		inherit: true,
-		desc: "The user spends two turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
-		shortDesc: "Lasts 2 turns. Confuses the user afterwards.",
-	},
-	petaldance: {
-		inherit: true,
-		desc: "The user spends two turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
-		shortDesc: "Lasts 2 turns. Confuses the user afterwards.",
-	},
-	pinmissile: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	playrough: {
-		inherit: true,
-		desc: "Lowers the target's Attack by 0.1.",
-		shortDesc: "Lowers the target's Attack by 0.1.",
-	},
-	poisonfang: {
-		inherit: true,
-		desc: "Causes 50-severity bad poison.",
-		shortDesc: "Causes 50-severity bad poison.",
-	},
-	poisonjab: {
-		inherit: true,
-		desc: "Causes 30-severity poison.",
-		shortDesc: "Causes 30-severity poison.",
-	},
-	poisonsting: {
-		inherit: true,
-		desc: "Causes 30-severity poison.",
-		shortDesc: "Causes 30-severity poison.",
-	},
-	poisontail: {
-		inherit: true,
-		desc: "+1 critical hit stage. Causes 10-severity poison.",
-		shortDesc: "+1 critical hit stage. Causes 10-severity poison.",
-	},
-	powdersnow: {
-		inherit: true,
-		desc: "Causes 10-severity freeze.",
-		shortDesc: "Causes 10-severity freeze.",
-	},
-	poweruppunch: {
-		inherit: true,
-		desc: "Raises the user's Attack by 1.",
-		shortDesc: "Raises the user's Attack by 1.",
-	},
-	prismaticlaser: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	psybeam: {
-		inherit: true,
-		desc: "Causes 10-severity confusion.",
-		shortDesc: "Causes 10-severity confusion.",
-	},
-	psychic: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.1.",
-		shortDesc: "Lowers the target's Sp. Def by 0.1.",
-	},
-	psychicterrain: {
-		inherit: true,
-		desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power lowers the target's Speed by 0.3. Fails if the current terrain is Psychic Terrain.",
-		// desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power has a 30% chance to lower the target's Speed by 1 stage. Fails if the current terrain is Psychic Terrain.",
-	},
-	psychocut: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	pursuit: {
-		inherit: true,
-		desc: "If an adjacent opposing Pokemon switches out this turn, this move hits that Pokemon before it leaves the field, even if it was not the original target. If the user moves after an opponent using Parting Shot, U-turn, or Volt Switch, but not Baton Pass, it will hit that opponent before it leaves the field. Power doubles and no accuracy check is done if the user hits an opponent switching out, and the user's turn is over; if an opponent faints from this, the replacement Pokemon does not become active until the end of the turn.",
-	},
-	rapidspin: {
-		inherit: true,
-		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
-		shortDesc: "Frees user from hazards, binding, Leech Seed.",
-	},
-	razorleaf: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	razorshell: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.5.",
-		shortDesc: "Lowers the target's Defense by 0.5.",
-	},
-	razorwind: {
-		inherit: true,
-		desc: "+1 critical hit stage. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges, then hits foe(s) turn 2. +1 crit stage.",
-	},
-	reflect: {
-		inherit: true,
-		desc: "For 5 turns, the user and its party members take 0.5x damage from physical attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore a percentage of this effect depending on their stage. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
-	},
-	relicsong: {
-		inherit: true,
-		desc: "Causes 10-severity sleep. If this move is successful on at least one target and the user is a Meloetta, it changes to Pirouette Forme if it is currently in Aria Forme, or changes to Aria Forme if it is currently in Pirouette Forme. This forme change does not happen if the Meloetta has the Sheer Force Ability. The Pirouette Forme reverts to Aria Forme when Meloetta is not active.",
-		shortDesc: "Causes 10-severity sleep. Meloetta transforms.",
-	},
-	roaroftime: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	rockblast: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	rockclimb: {
-		inherit: true,
-		desc: "Causes 20-severity confusion.",
-		shortDesc: "Causes 20-severity confusion.",
-	},
-	rockslide: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	rocksmash: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.5.",
-		shortDesc: "Lowers the target's Defense by 0.5.",
-	},
-	rocktomb: {
-		inherit: true,
-		desc: "Lowers the target's Speed by 1.",
-		shortDesc: "Lowers the target's Speed by 1.",
-	},
-	rockwrecker: {
-		inherit: true,
-		desc: "If this move is successful, the user must recharge and will be weakened or unable to move next turn.",
-		shortDesc: "User will be weakened or unable to move next turn.",
-	},
-	rollingkick: {
-		inherit: true,
-		desc: "Causes 30-severity flinch.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	sacredfire: {
-		inherit: true,
-		desc: "Causes 50-severity burn.",
-		shortDesc: "Causes 50-severity burn. Thaws user.",
-	},
-	sandtomb: {
-		inherit: true,
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-		shortDesc: "Traps and damages target for up to 4 turns.",
-	},
-	scald: {
-		inherit: true,
-		desc: "Causes 30-severity burn. The target thaws out if it is frozen.",
-		shortDesc: "Causes 30-severity burn. Thaws target.",
-	},
-	searingshot: {
-		inherit: true,
-		desc: "Causes 30-severity burn.",
-		shortDesc: "Causes 30-severity burn.",
-	},
-	secretpower: {
-		inherit: true,
-		desc: "Has a different secondary effect on the target based on the battle terrain. Causes 30-severity paralysis on the regular Wi-Fi terrain and Electric Terrain, lowers Special Attack by 0.3 stage during Misty Terrain, causes 30-severity sleep during Grassy Terrain and lowers Speed by 0.3 stage during Psychic Terrain.",
-		shortDesc: "Effect varies with terrain. (30-severity paralysis)",
-	},
-	seedflare: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.8.",
-		shortDesc: "Lowers the target's Sp. Def by 0.8.",
-	},
-	shadowball: {
-		inherit: true,
-		desc: "Lowers the target's Special Defense by 0.2.",
-		shortDesc: "Lowers the target's Sp. Def by 0.2.",
-	},
-	shadowbone: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.2.",
-		shortDesc: "Lowers the target's Defense by 0.2.",
-	},
-	shadowclaw: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	shadowstrike: {
-		inherit: true,
-		desc: "Lowers the target's Defense by 0.5.",
-		shortDesc: "Lowers the target's Defense by 0.5.",
-	},
-	sheercold: {
-		inherit: true,
-		desc: "Deals damage to the target equal to X% of the target's maximum HP, where X is the attack's accuracy. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + X)%, where X is 30 if the user is an Ice type and 20 otherwise, and fails if the target is at a higher level. Ice-type Pokemon and Pokemon with the Sturdy Ability are immune.",
-		shortDesc: "Deals % damage from accuracy. Higher level only.",
-	},
-	signalbeam: {
-		inherit: true,
-		desc: "Causes 10-severity confusion.",
-		shortDesc: "Causes 10-severity confusion.",
-	},
-	silverwind: {
-		inherit: true,
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 0.1",
-		shortDesc: "Raises all stats by 0.1 (not acc/eva).",
-	},
-	skyattack: {
-		inherit: true,
-		desc: "+1 critical hit stage. Causes 30-severity flinch. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges, hits turn 2. 30-severity flinch. +1 crit.",
-	},
-	slash: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	sludge: {
-		inherit: true,
-		desc: "Causes 30-severity poison.",
-		shortDesc: "Causes 30-severity poison.",
-	},
-	sludgebomb: {
-		inherit: true,
-		desc: "Causes 30-severity poison.",
-		shortDesc: "Causes 30-severity poison.",
-	},
-	sludgewave: {
-		inherit: true,
-		desc: "Causes 10-severity poison.",
-		shortDesc: "Causes 10-severity poison.",
-	},
-	smog: {
-		inherit: true,
-		desc: "Causes 40-severity poison.",
-		shortDesc: "Causes 40-severity poison.",
-	},
-	snarl: {
-		inherit: true,
-		desc: "Lowers the target's Special Attack by 1.",
-		shortDesc: "Lowers the target's Sp. Atk by 1.",
-	},
-	solarbeam: {
-		inherit: true,
-		desc: "This attack charges on the first turn and executes on the second. Power is halved if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm and the user is not holding Utility Umbrella. If the user is holding a Power Herb or the weather is Desolate Land or Sunny Day, the move completes in one turn.",
-	},
-	solarblade: {
-		inherit: true,
-		desc: "This attack charges on the first turn and executes on the second. Power is halved if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm and the user is not holding Utility Umbrella. If the user is holding a Power Herb or the weather is Desolate Land or Sunny Day, the move completes in one turn.",
-	},
-	spacialrend: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	spark: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis.",
-		shortDesc: "Causes 30-severity paralysis.",
-	},
-	spikecannon: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	steameruption: {
-		inherit: true,
-		desc: "Causes 30-severity burn. The target thaws out if it is frozen.",
-		shortDesc: "Causes 30-severity burn. Thaws target.",
-	},
-	steamroller: {
-		inherit: true,
-		desc: "Causes 30-severity flinch. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	steelwing: {
-		inherit: true,
-		desc: "Raises the user's Defense by 0.1.",
-		shortDesc: "Raises the user's Defense by 0.1.",
-	},
-	stokedsparksurfer: {
-		inherit: true,
-		desc: "Causes 100-severity paralysis.",
-		shortDesc: "Causes 100-severity paralysis.",
-	},
-	stomp: {
-		inherit: true,
-		desc: "Causes 30-severity flinch. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
-		shortDesc: "Causes 30-severity flinch.",
-	},
-	stoneedge: {
-		inherit: true,
-		desc: "+1 critical hit stage.",
-		shortDesc: "+1 critical hit stage.",
-	},
-	stormthrow: {
-		inherit: true,
-		desc: "This move is always a stage 3 critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.",
-		shortDesc: "Always results in a stage 3 critical hit.",
-	},
-	strugglebug: {
-		inherit: true,
-		desc: "Lowers the target's Special Attack by 1.",
-		shortDesc: "Lowers the target's Sp. Atk by 1.",
-	},
-	synthesis: {
-		inherit: true,
-		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
-	},
-	tailslap: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times.",
-		shortDesc: "Hits 3 times in one turn.",
-	},
-	teleport: {
-		inherit: true,
-		desc: "Fails when used.",
-		shortDesc: "Fails when used.",
-	},
-	thrash: {
-		inherit: true,
-		desc: "The user spends two turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
-		shortDesc: "Lasts 2 turns. Confuses the user afterwards.",
-	},
-	thunder: {
-		inherit: true,
-		desc: "Causes 30-severity paralysis. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
-		shortDesc: "30-severity paralysis. Perfect accuracy in rain.",
-		// desc: "Has a 30% chance to paralyze the target. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%.",
-	},
-	thunderbolt: {
-		inherit: true,
-		desc: "Causes 10-severity paralysis.",
-		shortDesc: "Causes 10-severity paralysis.",
-	},
-	thunderfang: {
-		inherit: true,
-		desc: "Causes 10-severity paralysis and 10-severity flinch.",
-		shortDesc: "Causes 10-severity paralysis, 10-severity flinch.",
-	},
-	thunderpunch: {
-		inherit: true,
-		desc: "Causes 10-severity paralysis.",
-		shortDesc: "Causes 10-severity paralysis.",
-	},
-	thundershock: {
-		inherit: true,
-		desc: "Causes 10-severity paralysis.",
-		shortDesc: "Causes 10-severity paralysis.",
-	},
-	toxic: {
-		inherit: true,
-		desc: "Badly poisons the target. If a Poison-type Pokemon uses this move, the move does not check accuracy, even if the target is in the middle of a two-turn move.",
-		shortDesc: "Badly poisons. Perfect accuracy for Poison types.",
-	},
-	tropkick: {
-		inherit: true,
-		desc: "Lowers the target's Attack by 1.",
-		shortDesc: "Lowers the target's Attack by 1.",
-	},
-	twineedle: {
-		inherit: true,
-		desc: "Hits twice, with each hit causing 20-severity poison.",
-		shortDesc: "Hits 2 times. Each hit causes 20-severity poison.",
-	},
-	twister: {
-		inherit: true,
-		desc: "Causes 20-severity flinch. Power doubles if the target is using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop.",
-		shortDesc: "Causes 20-severity flinch.",
-	},
-	volttackle: {
-		inherit: true,
-		desc: "Causes 10-severity paralysis. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
-		shortDesc: "33% recoil. Causes 10-severity paralysis.",
-	},
-	waterfall: {
-		inherit: true,
-		desc: "Causes 20-severity flinch.",
-		shortDesc: "Causes 20-severity flinch.",
-	},
-	waterpulse: {
-		inherit: true,
-		desc: "Causes 20-severity confusion.",
-		shortDesc: "Causes 20-severity confusion.",
-	},
-	watershuriken: {
-		inherit: true,
-		desc: "Hits three times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will hit five times. If the user is an Ash-Greninja with the Battle Bond Ability, this move has a power of 20 and always hits three times.",
-		shortDesc: "Usually goes first. Hits 3 times in one turn.",
-	},
-	whirlpool: {
-		inherit: true,
-		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-		shortDesc: "Traps and damages target for up to 4 turns.",
-		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-	},
-	wrap: {
-		inherit: true,
-		desc: "Prevents the target from switching for up to 4 turns (up to seven turns if the user is holding Grip Claw). Causes damage to the target up to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
-		shortDesc: "Traps and damages target for up to 4 turns.",
-		// desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 	},
 	zapcannon: {
 		inherit: true,
