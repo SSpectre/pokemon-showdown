@@ -1508,7 +1508,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		desc: "Each active Pokemon receives a perish count of 4 if it doesn't already have a perish count. At the end of each turn including the turn used, the perish count of all active Pokemon lowers by 1 and Pokemon take damage of up to 100% of its maximum HP if the number reaches 0. The perish count is removed from Pokemon that switch out. If a Pokemon uses Baton Pass while it has a perish count, the replacement will gain the perish count and continue to count down.",
 		shortDesc: "All active Pokemon take up to 100% damage in 3 turns.",
-		start: "  All Pok\u00E9mon that heard the song will take damage in three turns!",
+		//start: "  All Pok\u00E9mon that heard the song will take damage in three turns!",
 		onHitField(target, source, move) {
 			let result = false;
 			let message = false;
