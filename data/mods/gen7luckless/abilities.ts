@@ -1,4 +1,5 @@
 import {Scripts} from "./scripts";
+
 export const Abilities: {[k: string]: ModdedAbilityData} = {
 	angerpoint: {
 		inherit: true,
