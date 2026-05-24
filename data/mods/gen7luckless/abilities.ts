@@ -35,10 +35,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	chlorophyll: {
-		inherit: true,
-		desc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
-		},
 	comatose: {
 		inherit: true,
 		desc: "This Pokemon cannot be statused, and is considered to have 100-severity sleep. Moongeist Beam, Sunsteel Strike, and the Mold Breaker, Teravolt, and Turboblaze Abilities cannot ignore this Ability.",
@@ -67,20 +63,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	damp: {
-		inherit: true,
-		desc: "While this Pokemon is active, Explosion, Mind Blown, Self-Destruct, and the Aftermath Ability are prevented from having an effect.",
-		shortDesc: "Prevents Explosion/Mind Blown/Self-Destruct/Aftermath while this Pokemon is active.",
-		},
-	disguise: {
-		inherit: true,
-		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken and it changes to Busted Form. Confusion damage also breaks the disguise.",
-		shortDesc: "(Mimikyu only) First hit deals 0 damage, breaks disguise.",
-		},
-	dryskin: {
-		inherit: true,
-		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum HP, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum HP, rounded down, if the weather is Sunny Day.",
-		},
 	earlybird: {
 		inherit: true,
 		shortDesc: "The severity of sleep is halved for this Pokemon.",
@@ -122,14 +104,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	flowergift: {
-		inherit: true,
-		desc: "If this Pokemon is a Cherrim and Sunny Day is active, it changes to Sunshine Form and the Attack and Special Defense of it and its allies are multiplied by 1.5.",
-		},
-	forecast: {
-		inherit: true,
-		desc: "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm.",
-		},
 	guts: {
 		inherit: true,
 		desc: "If this Pokemon has a non-volatile status condition, its Attack is increased, up to x1.5 at 100 severity; burn's physical damage halving is ignored.",
@@ -168,22 +142,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	hydration: {
-		inherit: true,
-		desc: "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active.",
-		},
-	innerfocus: {
-		inherit: true,
-		shortDesc: "This Pokemon cannot be made to flinch.",
-		},
-	intimidate: {
-		inherit: true,
-		desc: "On switch-in, this Pokemon lowers the Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
-		},
-	leafguard: {
-		inherit: true,
-		desc: "If Sunny Day is active, this Pokemon cannot gain a non-volatile status condition and Rest will fail for it.",
-		},
 	marvelscale: {
 		inherit: true,
 		desc: "If this Pokemon has a non-volatile status condition, its Defense is increased, up to x1.5 at 100 severity.",
@@ -203,10 +161,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			else if (target.status === 'all') return Math.ceil(5 * target.statusState.severity / 500);
 		},
 	},
-	moldbreaker: {
-		inherit: true,
-		desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
-		},
 	moody: {
 		inherit: true,
 		desc: "This Pokemon has all of its stats raised by 1/7 at the end of each turn.",
@@ -230,23 +184,9 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	mummy: {
-		inherit: true,
-		desc: "Pokemon making contact with this Pokemon have their Ability changed to Mummy. Does not affect a Pokemon which already has Mummy or the Abilities Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, and Zen Mode.",
-		},
 	noguard: {
 		inherit: true,
 		shortDesc: "Every move used by or against this Pokemon has perfect accuracy.",
-		},
-	oblivious: {
-		inherit: true,
-		desc: "This Pokemon cannot be infatuated or taunted. Gaining this Ability while affected cures it.",
-		shortDesc: "This Pokemon cannot be infatuated or taunted.",
-		},
-	owntempo: {
-		inherit: true,
-		desc: "This Pokemon cannot be confused. Gaining this Ability while confused cures it.",
-		shortDesc: "This Pokemon cannot be confused.",
 		},
 	poisonheal: {
 		inherit: true,
@@ -298,10 +238,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: 143,
 	},
-	powerofalchemy: {
-		inherit: true,
-		desc: "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are \"No Ability\", Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, and Zen Mode.",
-		},
 	quickfeet: {
 		inherit: true,
 		desc: "If this Pokemon has a non-volatile status condition, its Speed is increased, up to x1.5 at 100 severity.",
@@ -312,24 +248,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	raindish: {
-		inherit: true,
-		desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn.",
-		},
-	rattled: {
-		inherit: true,
-		desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
-		shortDesc: "This Pokemon's Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
-		},
-	receiver: {
-		inherit: true,
-		desc: "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are \"No Ability\", Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, and Zen Mode.",
-		},
-	scrappy: {
-		inherit: true,
-		desc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves.",
-		shortDesc: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves.",
-		},
 	serenegrace: {
 		inherit: true,
 		shortDesc: "This Pokemon's moves have their secondary effect severity doubled.",
@@ -357,10 +275,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 	skilllink: {
 		inherit: true,
 		shortDesc: "This Pokemon's multi-hit attacks always hit five times.",
-		},
-	solarpower: {
-		inherit: true,
-		desc: "If Sunny Day is active, this Pokemon's Special Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn.",
 		},
 	static: {
 		inherit: true,
@@ -392,10 +306,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		inherit: true,
 		shortDesc: "This Pokemon's attacks gain +1 critical hit stage.",
 		},
-	swiftswim: {
-		inherit: true,
-		desc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
-		},
 	synchronize: {
 		onAfterSetStatus(status, target, source, effect) {
 			if (!source || source === target) return;
@@ -421,10 +331,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	teravolt: {
-		inherit: true,
-		desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
-		},
 	toxicboost: {
 		inherit: true,
 		desc: "While this Pokemon is poisoned, its Attack increases, up to 1.5x at 100 severity.",
@@ -441,14 +347,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
-	trace: {
-		inherit: true,
-		desc: "On switch-in, or when this Pokemon acquires this ability, this Pokemon copies a random adjacent opposing Pokemon's Ability. However, if one or more adjacent Pokemon has the Ability \"No Ability\", Trace won't copy anything even if there is another valid Ability it could normally copy. Otherwise, if there is no Ability that can be copied at that time, this Ability will activate as soon as an Ability can be copied. Abilities that cannot be copied are the previously mentioned \"No Ability\", as well as Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion, Imposter, Multitype, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, and Zen Mode.",
-		},
-	turboblaze: {
-		inherit: true,
-		desc: "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dark Aura, Dazzling, Disguise, Dry Skin, Fairy Aura, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Grass Pelt, Heatproof, Heavy Metal, Hyper Cutter, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, White Smoke, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
-		},
 	waterbubble: {
 		inherit: true,
 		onUpdate(pokemon) {
